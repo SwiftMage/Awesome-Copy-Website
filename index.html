@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Copy - Clipboard History Synced Across All Your Devices</title>
+    <meta name="description" content="Awesome Copy keeps your clipboard history in sync across Mac, iPhone, and iPad. Copy once, paste anywhere.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/App icon.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#features">Features</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <a href="#pricing" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Intro Overlay - Full screen app screenshot -->
+    <div class="intro-overlay" id="intro-overlay">
+        <div class="intro-white-flash" id="intro-white"></div>
+        <img src="images/macos app screen shot - no device frame.png" alt="Awesome Copy" class="intro-screenshot">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-devices">
+            <div class="hero-device hero-iphone">
+                <img src="images/iphone 15 with frame.png" alt="Awesome Copy on iPhone">
+            </div>
+            <div class="hero-device hero-mac">
+                <img src="images/Mac app with mac frame.png" alt="Awesome Copy on Mac">
+            </div>
+            <div class="hero-device hero-ipad">
+                <img src="images/ipad with frame.png" alt="Awesome Copy on iPad">
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Copy once. Sync everywhere.</h1>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+
+        <!-- Clipboard Close-up -->
+        <div class="feature-section feature-clipboard">
+            <div class="container">
+                <div class="feature-content scroll-reveal">
+                    <h2 class="feature-title">Your clipboard, organized.</h2>
+                    <p class="feature-description">Browse what you copied—text, links, images, and more—without breaking your flow.</p>
+                </div>
+                <div class="feature-image-large scroll-reveal">
+                    <div class="feature-card">
+                        <img src="images/card list with background.png" alt="Clipboard history view" loading="lazy">
+                        <div class="feature-callouts">
+                            <div class="callout callout-1">
+                                <span class="callout-dot"></span>
+                                <span class="callout-text">Pin favorites</span>
+                            </div>
+                            <div class="callout callout-2">
+                                <span class="callout-dot"></span>
+                                <span class="callout-text">Rich previews</span>
+                            </div>
+                            <div class="callout callout-3">
+                                <span class="callout-dot"></span>
+                                <span class="callout-text">Visual cards</span>
+                            </div>
+                            <div class="callout callout-4">
+                                <span class="callout-dot"></span>
+                                <span class="callout-text">Quick copy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customizable Views -->
+        <div class="feature-section feature-views">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">Your clipboard, your way.</h2>
+                    <p class="feature-description">Choose how you see your clips—minimal, normal, or card view.</p>
+                </div>
+                <div class="views-showcase scroll-reveal">
+                    <div class="views-controls">
+                        <button class="view-btn" data-view="minimal">Minimal</button>
+                        <button class="view-btn" data-view="normal">Normal</button>
+                        <button class="view-btn active" data-view="card">Card</button>
+                        <div class="view-btn-indicator"></div>
+                    </div>
+                    <div class="views-container">
+                        <div class="view-image" data-view="minimal">
+                            <img src="images/minimal glass vertical.png" alt="Minimal view" loading="lazy">
+                        </div>
+                        <div class="view-image" data-view="normal">
+                            <img src="images/Normal list vertical.png" alt="Normal view" loading="lazy">
+                        </div>
+                        <div class="view-image active" data-view="card">
+                            <img src="images/vertical glass card.png" alt="Card view" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drag and Drop -->
+        <div class="feature-section feature-drag">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">Drag and drop, anywhere.</h2>
+                    <p class="feature-description">Grab any clip and drop it right where you need it—no extra steps required.</p>
+                </div>
+                <div class="feature-image-large scroll-reveal">
+                    <div class="feature-card feature-card-large">
+                        <img src="images/Macos app drag - with device frame.png" alt="Drag and drop feature" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="feature-section feature-categories">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">Categories that make sense.</h2>
+                    <p class="feature-description">Group related clips so your best stuff is always easy to pull back up.</p>
+                    <div class="category-chips center">
+                        <span class="chip">Text</span>
+                        <span class="chip">Links</span>
+                        <span class="chip">Images</span>
+                        <span class="chip">Files</span>
+                        <span class="chip">Code</span>
+                    </div>
+                </div>
+                <div class="feature-image-large scroll-reveal">
+                    <div class="feature-card feature-card-wide">
+                        <img src="images/narrow-desktop.png" alt="Categories feature" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy -->
+        <div class="feature-section feature-privacy">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">Privacy you can trust.</h2>
+                    <p class="feature-description">Your clipboard history stays private with powerful controls. We never collect or store any of your personal data.</p>
+                </div>
+                <div class="privacy-features scroll-reveal">
+                    <div class="privacy-showcase">
+                        <div class="privacy-image">
+                            <img src="images/ignore.png" alt="App ignore settings" loading="lazy">
+                        </div>
+                        <div class="privacy-list">
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                                    </svg>
+                                </div>
+                                <div class="privacy-text">
+                                    <h3>Ignore specific apps</h3>
+                                    <p>Exclude any app from clipboard tracking—what happens in that app stays in that app.</p>
+                                </div>
+                            </div>
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </div>
+                                <div class="privacy-text">
+                                    <h3>Password manager protection</h3>
+                                    <p>Automatically mask or ignore copies from password managers—your secrets stay secret.</p>
+                                </div>
+                            </div>
+                            <div class="privacy-item">
+                                <div class="privacy-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                    </svg>
+                                </div>
+                                <div class="privacy-text">
+                                    <h3>Auto-clear your history</h3>
+                                    <p>Optionally wipe your clipboard when the app closes, your system sleeps, or locks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- iCloud Sync -->
+        <div class="feature-section feature-sync">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">iCloud sync across Mac, iPhone, and iPad.</h2>
+                    <p class="feature-description">Copy on one device, paste on another. Secure, seamless, and always up to date.</p>
+                </div>
+                <div class="sync-devices scroll-reveal">
+                    <div class="sync-device sync-device-iphone">
+                        <img src="images/iphone 15 with frame.png" alt="iPhone" loading="lazy">
+                    </div>
+                    <div class="sync-device sync-device-ipad">
+                        <img src="images/ipad with frame.png" alt="iPad" loading="lazy">
+                    </div>
+                    <div class="sync-device sync-device-mac">
+                        <img src="images/Mac app with mac frame.png" alt="Mac" loading="lazy">
+                    </div>
+                    <div class="sync-lines">
+                        <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                            <path class="sync-line" d="M20,70 Q200,0 380,70" fill="none" stroke="url(#syncGradient)" stroke-width="2.5"/>
+                            <defs>
+                                <linearGradient id="syncGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#007AFF" stop-opacity="0.2"/>
+                                    <stop offset="50%" stop-color="#007AFF" stop-opacity="0.8"/>
+                                    <stop offset="100%" stop-color="#007AFF" stop-opacity="0.2"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Exclusion & Multi Copy -->
+        <div class="feature-section feature-dual">
+            <div class="container">
+                <div class="feature-cards-row">
+                    <div class="feature-card-item scroll-reveal">
+                        <div class="feature-card-image">
+                            <img src="images/right click menu with background.png" alt="App exclusion feature" loading="lazy">
+                        </div>
+                        <h3 class="feature-card-title">Exclude apps when you need privacy.</h3>
+                        <p class="feature-card-description">Choose apps you don't want tracked in history.</p>
+                    </div>
+                    <div class="feature-card-item scroll-reveal">
+                        <div class="feature-card-image">
+                            <img src="images/quick paste with background.png" alt="Multi copy paste feature" loading="lazy">
+                        </div>
+                        <h3 class="feature-card-title">Multi-copy. Multi-paste.</h3>
+                        <p class="feature-card-description">Select multiple clips and paste them in one go.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview and Edit -->
+        <div class="feature-section feature-preview">
+            <div class="container">
+                <div class="feature-row">
+                    <div class="feature-image scroll-reveal">
+                        <img src="images/card with color and bg.png" alt="Preview and edit feature" loading="lazy">
+                    </div>
+                    <div class="feature-content scroll-reveal">
+                        <h2 class="feature-title">Preview and edit before you paste.</h2>
+                        <p class="feature-description">Clean up text, confirm content, and paste with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Siri & iOS Keyboard -->
+        <div class="feature-section feature-accessibility">
+            <div class="container">
+                <div class="feature-content center scroll-reveal">
+                    <h2 class="feature-title">Always accessible.</h2>
+                    <p class="feature-description">Use Hey Siri shortcuts and the iOS keyboard to grab clips anytime.</p>
+                </div>
+                <div class="feature-cards-row">
+                    <div class="feature-card-item scroll-reveal">
+                        <div class="feature-card-image siri-card">
+                            <img src="images/iphone 15 with frame.png" alt="Siri integration" loading="lazy">
+                            <div class="siri-overlay">
+                                <div class="siri-waveform">
+                                    <span></span><span></span><span></span><span></span><span></span>
+                                </div>
+                                <p>"Hey Siri, paste my last copy"</p>
+                            </div>
+                        </div>
+                        <h3 class="feature-card-title">Hey Siri</h3>
+                        <p class="feature-card-description">Voice commands for hands-free clipboard access.</p>
+                    </div>
+                    <div class="feature-card-item scroll-reveal">
+                        <div class="feature-card-image">
+                            <img src="images/iOS keyboard with device frame.png" alt="iOS keyboard integration" loading="lazy">
+                        </div>
+                        <h3 class="feature-card-title">iOS Keyboard</h3>
+                        <p class="feature-card-description">Access your clips right from the keyboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Loved by people who copy all day.</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Finally, a clipboard manager that actually syncs reliably. I use it dozens of times a day."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Sarah M.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"The search feature alone is worth it. No more scrolling through hundreds of clips."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">David K.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Love the iOS keyboard extension. Makes copying between devices seamless."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Mike T.</span>
+                        <span class="testimonial-platform platform-ios">iOS</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Clean design, works flawlessly, and the preview feature saves me so much time."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Emily R.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Best clipboard manager on the Mac App Store. Period."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">James L.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"The app exclusion feature is perfect for keeping sensitive data private."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Lisa W.</span>
+                        <span class="testimonial-platform platform-ios">iOS</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Multi-paste is a game changer. Can't believe I worked without it before."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Chris P.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Worth every penny. The iCloud sync just works."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Anna S.</span>
+                        <span class="testimonial-platform platform-ios">iOS</span>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-reveal">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-quote">"Categories make organizing clips so easy. Finally, clipboard zen."</p>
+                    <div class="testimonial-author">
+                        <span class="testimonial-name">Tom H.</span>
+                        <span class="testimonial-platform platform-mac">Mac</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Simple, transparent pricing.</h2>
+            <p class="section-subtitle scroll-reveal">Choose the plan that works for you.</p>
+            <div class="pricing-cards">
+                <div class="pricing-card scroll-reveal">
+                    <h3 class="pricing-tier">Free</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">$0</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>50 clipboard items</li>
+                        <li>Basic search</li>
+                        <li>Mac app only</li>
+                        <li>7-day history</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Get Started</a>
+                </div>
+                <div class="pricing-card popular scroll-reveal">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="pricing-tier">Pro</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">$2.99</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited clipboard items</li>
+                        <li>iCloud sync across devices</li>
+                        <li>Mac, iPhone, and iPad</li>
+                        <li>Advanced search & categories</li>
+                        <li>App exclusion</li>
+                        <li>Multi copy/paste</li>
+                        <li>Preview & edit</li>
+                        <li>Siri shortcuts</li>
+                        <li>iOS keyboard extension</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start Free Trial</a>
+                </div>
+                <div class="pricing-card scroll-reveal">
+                    <h3 class="pricing-tier">Lifetime</h3>
+                    <div class="pricing-price">
+                        <span class="price-amount">$29.99</span>
+                        <span class="price-period">one-time</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Everything in Pro</li>
+                        <li>Pay once, own forever</li>
+                        <li>Free lifetime updates</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Frequently asked questions</h2>
+            <div class="faq-list">
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-question">
+                        Does this use iCloud?
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! Awesome Copy uses iCloud to securely sync your clipboard history across all your Apple devices. Your data stays in your iCloud account and is encrypted end-to-end.</p>
+                    </div>
+                </div>
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-question">
+                        Do you offer family sharing?
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, Awesome Copy supports Apple Family Sharing. One purchase can be shared with up to 5 family members.</p>
+                    </div>
+                </div>
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-question">
+                        Do I need a subscription?
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No! While we offer a monthly subscription, you can also purchase a lifetime license for a one-time payment. We also have a free tier to get you started.</p>
+                    </div>
+                </div>
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-question">
+                        Is my clipboard data secure?
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Your clipboard data is stored locally on your device and synced through your personal iCloud account. We never have access to your data, and you can exclude sensitive apps from being tracked.</p>
+                    </div>
+                </div>
+                <div class="faq-item scroll-reveal">
+                    <button class="faq-question">
+                        What devices are supported?
+                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Awesome Copy works on Mac (macOS 12+), iPhone (iOS 15+), and iPad (iPadOS 15+). All devices sync seamlessly through iCloud.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content scroll-reveal">
+                <h2 class="cta-title">Ready to upgrade your clipboard?</h2>
+                <p class="cta-subtitle">Join thousands of users who never lose a copy again.</p>
+                <div class="cta-buttons">
+                    <a href="#pricing" class="btn btn-primary btn-large">Download for macOS</a>
+                    <a href="#pricing" class="btn btn-secondary btn-large">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#faq">FAQ</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Press Kit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
