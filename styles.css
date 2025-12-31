@@ -1071,11 +1071,22 @@ ul, ol {
     box-shadow: var(--shadow-md);
 }
 
+.testimonial-header {
+    margin-bottom: var(--spacing-md);
+}
+
 .testimonial-stars {
     color: #FFB800;
     font-size: var(--font-size-sm);
-    margin-bottom: var(--spacing-md);
     letter-spacing: 2px;
+}
+
+.testimonial-title {
+    display: block;
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+    color: var(--color-text);
 }
 
 .testimonial-quote {
@@ -1134,6 +1145,12 @@ ul, ol {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-xl);
     align-items: start;
+}
+
+.pricing-cards.pricing-single {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .pricing-card {

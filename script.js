@@ -3,15 +3,17 @@
  * Handles animations, interactions, and dynamic behavior
  */
 
+// TODO: Re-enable scroll-to-top for production
 // Disable browser scroll restoration and scroll to top immediately
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-window.scrollTo(0, 0);
+// if ('scrollRestoration' in history) {
+//     history.scrollRestoration = 'manual';
+// }
+// window.scrollTo(0, 0);
 
 document.addEventListener('DOMContentLoaded', () => {
+    // TODO: Re-enable scroll-to-top for production
     // Ensure we're at the top for intro animation
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     // Initialize all components
     initNavigation();
