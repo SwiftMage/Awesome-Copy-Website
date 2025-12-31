@@ -1034,6 +1034,28 @@ ul, ol {
     50% { transform: scaleY(0.6); }
 }
 
+/* Text Card (for non-image feature cards) */
+.text-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #5856D6 100%);
+    min-height: 280px;
+}
+
+.text-card-content {
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.text-card-headline {
+    color: white;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
 /* ==========================================
    HERO FEATURES SECTION
    ========================================== */
