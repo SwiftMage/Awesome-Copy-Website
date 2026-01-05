@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Awesome Copy Keeps Your Clipboard Secure - Awesome Copy Blog</title>
+    <meta name="description" content="Learn how Awesome Copy protects your sensitive clipboard data with password manager detection, app exclusions, auto-clear options, and more.">
+    <link rel="canonical" href="https://awesomecopy.app/blog/clipboard-security">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://awesomecopy.app/blog/clipboard-security">
+    <meta property="og:title" content="How Awesome Copy Keeps Your Clipboard Secure">
+    <meta property="og:description" content="Learn how Awesome Copy protects your sensitive clipboard data with password manager detection, app exclusions, auto-clear options, and more.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/App icon.png">
+    <style>
+        .blog-post-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .blog-post {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .blog-post-header {
+            margin-bottom: var(--spacing-3xl);
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-category {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(0, 122, 255, 0.1);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        .blog-post-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+        .blog-post-title {
+            font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-excerpt {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .blog-post-content {
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        .blog-post-content h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content strong {
+            color: var(--color-text);
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+        .blog-post-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .blog-post-content a {
+            color: var(--color-primary);
+        }
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        .feature-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        .feature-box h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .feature-box p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
+        }
+        .feature-box ul {
+            margin-bottom: 0;
+            margin-top: var(--spacing-sm);
+        }
+        .feature-box li {
+            font-size: var(--font-size-sm);
+        }
+        .option-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        .option-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+        .option-card h5 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        .option-card p {
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+        }
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(52, 199, 89, 0.05));
+            border-left: 3px solid #34c759;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .tip-callout p {
+            margin-bottom: 0;
+        }
+        .blog-post-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-4xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+        }
+        .blog-post-nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .blog-post-nav a:hover {
+            text-decoration: underline;
+        }
+        .hero-icon {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary), #5856d6);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+        .hero-icon svg {
+            width: 80px;
+            height: 80px;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .option-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#testimonials">Testimonials</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="../blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-page">
+        <div class="container">
+            <div class="blog-post">
+                <div class="hero-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                </div>
+
+                <header class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-category">Security</span>
+                        <span class="blog-post-date">January 5, 2026</span>
+                    </div>
+                    <h1 class="blog-post-title">How Awesome Copy Keeps Your Clipboard Secure</h1>
+                    <p class="blog-post-excerpt">Your clipboard often contains sensitive data like passwords, credit card numbers, and private messages. Here's how Awesome Copy gives you complete control over your clipboard security.</p>
+                </header>
+
+                <div class="blog-post-content">
+                    <p>When you use a clipboard manager, you're trusting it with everything you copy. That includes passwords from your password manager, sensitive documents, private conversations, and financial information. At Awesome Copy, we take this responsibility seriously.</p>
+
+                    <p>We've built multiple layers of security features that let you decide exactly how your clipboard data is handled. Whether you want to completely exclude certain apps, mask sensitive content, or automatically clear your history, Awesome Copy gives you the control you need.</p>
+
+                    <h2>Smart Password Manager Detection</h2>
+
+                    <p>One of the most common concerns with clipboard managers is how they handle passwords. When you copy a password from 1Password, Bitwarden, Apple Passwords, or other password managers, you don't want it sitting in your clipboard history forever.</p>
+
+                    <p>Awesome Copy automatically detects when you copy from password managers using the industry-standard <strong>concealed content marker</strong> (org.nspasteboard.ConcealedType). This is the same standard that major password managers use to signal that content is sensitive.</p>
+
+                    <p>When we detect concealed content, you have three options:</p>
+
+                    <div class="option-grid">
+                        <div class="option-card">
+                            <h5>Skip</h5>
+                            <p>Completely ignore the copy. It's never recorded in your history.</p>
+                        </div>
+                        <div class="option-card">
+                            <h5>Mask</h5>
+                            <p>Record the item but display it as bullets (••••••••) so you know it exists without revealing content.</p>
+                        </div>
+                        <div class="option-card">
+                            <h5>Show</h5>
+                            <p>Record and display normally, like any other clipboard item.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            Where to find this setting
+                        </h4>
+                        <p><strong>Settings > Privacy Options</strong> - Choose how to handle concealed content from password managers.</p>
+                    </div>
+
+                    <h2>Ignore Specific Apps</h2>
+
+                    <p>Sometimes you want to completely exclude certain apps from clipboard recording. Maybe it's a banking app, a secure messaging platform, or any application where you handle sensitive data regularly.</p>
+
+                    <p>The <strong>Ignore Apps</strong> feature lets you build a list of apps that Awesome Copy will never record from. When you copy something while one of these apps is active, it simply won't appear in your clipboard history.</p>
+
+                    <div class="feature-box">
+                        <h4>How we detect the source app</h4>
+                        <p>When something is copied, Awesome Copy identifies which app performed the copy by checking the frontmost application. We capture:</p>
+                        <ul>
+                            <li>The app's unique bundle identifier (e.g., com.1password.1password)</li>
+                            <li>The app's display name</li>
+                            <li>The app's icon for easy recognition</li>
+                        </ul>
+                    </div>
+
+                    <h2>Auto-Clear Your History</h2>
+
+                    <p>For users who want extra peace of mind, Awesome Copy offers automatic history clearing tied to system events. You can enable any combination of these options:</p>
+
+                    <h3>Clear on Quit</h3>
+                    <p>When you close Awesome Copy, your entire clipboard history is automatically cleared. This is perfect if you want a fresh start every time you use the app.</p>
+
+                    <h3>Clear on Screen Lock</h3>
+                    <p>When your Mac locks (like when you press Control + Command + Q or close your laptop), your history is cleared. This protects your data if someone else accesses your Mac while you're away. <strong>Pinned items are preserved</strong> so you don't lose important clips.</p>
+
+                    <h3>Clear on Sleep</h3>
+                    <p>Similar to screen lock, this clears your history when your Mac goes to sleep. Again, <strong>pinned items are preserved</strong>.</p>
+
+                    <div class="tip-callout">
+                        <p><strong>Tip:</strong> Pin your frequently-used clips (like email signatures or code snippets) so they survive auto-clear events. Pinned items are never automatically deleted.</p>
+                    </div>
+
+                    <h2>History Time Limits</h2>
+
+                    <p>Instead of letting clipboard items accumulate forever, you can set a time limit for how long items are kept. Awesome Copy offers these options:</p>
+
+                    <ul>
+                        <li><strong>1 Hour</strong> - For maximum privacy, only keep recent items</li>
+                        <li><strong>1 Day</strong> - A fresh start each day</li>
+                        <li><strong>1 Week</strong> - The default, balanced option</li>
+                        <li><strong>1 Month</strong> - For users who need longer history</li>
+                        <li><strong>1 Year</strong> - Maximum history retention</li>
+                    </ul>
+
+                    <p>Items older than your selected time limit are automatically deleted during regular cleanup operations. This happens seamlessly in the background.</p>
+
+                    <h2>Your Data Stays on Your Devices</h2>
+
+                    <p>Unlike some clipboard managers that sync through third-party servers, Awesome Copy uses <strong>iCloud</strong> exclusively for syncing. Your clipboard data travels directly between your devices using Apple's encrypted infrastructure. We never see, store, or have access to your clipboard content.</p>
+
+                    <p>This means:</p>
+                    <ul>
+                        <li>Your data is encrypted end-to-end</li>
+                        <li>Only your devices can access your clipboard history</li>
+                        <li>No third-party servers ever touch your data</li>
+                        <li>You're protected by Apple's security standards</li>
+                    </ul>
+
+                    <h2>Take Control of Your Clipboard</h2>
+
+                    <p>Security isn't one-size-fits-all. That's why we've built these features to be flexible and customizable. Whether you want to ignore all password manager copies, clear your history every time your Mac sleeps, or just set a reasonable time limit, Awesome Copy gives you the tools to protect your data the way you want.</p>
+
+                    <p>All these settings are available in the Awesome Copy preferences. Take a few minutes to configure them to match your security needs, and copy with confidence knowing your sensitive data is protected.</p>
+
+                    <div class="feature-box">
+                        <h4>Ready to get started?</h4>
+                        <p>Download Awesome Copy and explore these security features in <strong>Settings > Privacy Options</strong> and <strong>Settings > General</strong>.</p>
+                    </div>
+                </div>
+
+                <nav class="blog-post-nav">
+                    <a href="../blog.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="../images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="../index.html#features">Features</a>
+                        <a href="../index.html#pricing">Pricing</a>
+                        <a href="../blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="../privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="../crash-reports.html">Submit Crash Report</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

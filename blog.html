@@ -3,124 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Crash Reports - Awesome Copy</title>
-    <meta name="description" content="Learn how to find and submit crash reports for Awesome Copy to help us improve the app.">
+    <title>Blog - Awesome Copy</title>
+    <meta name="description" content="Tips, tutorials, and updates about Awesome Copy - the clipboard manager for Mac, iPhone, and iPad.">
+    <link rel="canonical" href="https://awesomecopy.app/blog">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/App icon.png">
     <style>
-        .legal-page {
+        .blog-page {
             padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
             min-height: 100vh;
         }
-        .legal-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .blog-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
         }
-        .legal-content h1 {
+        .blog-header h1 {
             font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
             font-weight: 700;
             margin-bottom: var(--spacing-sm);
             letter-spacing: -0.02em;
         }
-        .legal-content .subtitle {
+        .blog-header p {
             color: var(--color-text-secondary);
             font-size: var(--font-size-lg);
-            margin-bottom: var(--spacing-3xl);
         }
-        .legal-content h2 {
-            font-size: var(--font-size-xl);
-            font-weight: 600;
-            margin-top: var(--spacing-2xl);
-            margin-bottom: var(--spacing-md);
-            color: var(--color-text);
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        .legal-content p {
-            font-size: var(--font-size-base);
-            line-height: 1.7;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-lg);
-        }
-        .legal-content strong {
-            color: var(--color-text);
-        }
-        .legal-content a {
-            color: var(--color-primary);
-        }
-        .legal-content a:hover {
-            text-decoration: underline;
-        }
-        .legal-content ol {
-            margin-bottom: var(--spacing-xl);
-            padding-left: var(--spacing-xl);
-        }
-        .legal-content ol li {
-            font-size: var(--font-size-base);
-            line-height: 1.7;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-md);
-            padding-left: var(--spacing-sm);
-        }
-        .legal-content ol li strong {
-            color: var(--color-text);
-        }
-        .code-block {
-            background: var(--color-background-secondary);
+        .blog-card {
+            background: var(--color-background);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-md) var(--spacing-lg);
-            font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-            font-size: var(--font-size-sm);
-            color: var(--color-text);
-            margin: var(--spacing-sm) 0 var(--spacing-md);
-            overflow-x: auto;
-            user-select: all;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
         }
-        .tip-box {
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(0, 122, 255, 0.04));
-            border: 1px solid rgba(0, 122, 255, 0.2);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-lg);
-            margin: var(--spacing-xl) 0;
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
-        .tip-box p {
-            margin-bottom: 0;
-            color: var(--color-text);
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary), #5856d6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .tip-box strong {
-            color: var(--color-primary);
+        .blog-card-image svg {
+            width: 64px;
+            height: 64px;
+            color: white;
+            opacity: 0.9;
         }
-        .email-link {
-            display: inline-flex;
+        .blog-card-content {
+            padding: var(--spacing-xl);
+        }
+        .blog-card-meta {
+            display: flex;
             align-items: center;
             gap: var(--spacing-sm);
-            background: var(--color-primary);
-            color: white !important;
-            padding: var(--spacing-md) var(--spacing-xl);
-            border-radius: var(--radius-full);
-            font-weight: 500;
-            text-decoration: none !important;
-            margin: var(--spacing-md) 0;
-            transition: background var(--transition-fast);
+            margin-bottom: var(--spacing-sm);
         }
-        .email-link:hover {
-            background: var(--color-primary-dark);
-            text-decoration: none !important;
+        .blog-card-category {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
-        .file-examples {
-            background: var(--color-background-secondary);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-md) var(--spacing-lg);
-            margin: var(--spacing-sm) 0 var(--spacing-md);
+        .blog-card-date {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
         }
-        .file-examples code {
-            display: block;
-            font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-            font-size: var(--font-size-sm);
+        .blog-card-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.3;
+        }
+        .blog-card-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .blog-card-title a:hover {
+            color: var(--color-primary);
+        }
+        .blog-card-excerpt {
+            font-size: var(--font-size-base);
             color: var(--color-text-secondary);
-            margin: var(--spacing-xs) 0;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-card-link {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .blog-card-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -147,71 +144,42 @@
         </div>
     </nav>
 
-    <!-- Crash Reports Content -->
-    <section class="legal-page">
+    <!-- Blog Content -->
+    <section class="blog-page">
         <div class="container">
-            <div class="legal-content">
-                <h1>Submit Crash Reports</h1>
-                <p class="subtitle">Help us improve Awesome Copy by sending crash logs when something goes wrong.</p>
+            <div class="blog-header">
+                <h1>Blog</h1>
+                <p>Tips, tutorials, and updates from the Awesome Copy team</p>
+            </div>
 
-                <p>If you've experienced a crash in Awesome Copy, sending us the crash report helps us identify and fix the issue quickly. Follow the steps below to locate and submit your crash log.</p>
-
-                <h2>How to Find Crash Reports</h2>
-                <ol>
-                    <li><strong>Open Finder</strong> on your Mac</li>
-
-                    <li><strong>Go to the crash logs folder</strong><br>
-                    Press <strong>Cmd + Shift + G</strong> (Go to Folder) and enter:
-                    <div class="code-block">~/Library/Logs/DiagnosticReports</div>
-                    </li>
-
-                    <li><strong>Look for Awesome Copy crash files</strong><br>
-                    They will be named something like:
-                    <div class="file-examples">
-                        <code>AwesomeCopy-2026-01-02-123456.ips</code>
-                        <code>AwesomeCopy_2026-01-02-123456.crash</code>
+            <div class="blog-grid">
+                <!-- Security Post -->
+                <article class="blog-card">
+                    <div class="blog-card-image">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
                     </div>
-                    </li>
-
-                    <li><strong>Sort by Date Modified</strong><br>
-                    Click the "Date Modified" column header in Finder to see the most recent crashes first</li>
-
-                    <li><strong>Open the crash log</strong><br>
-                    Double-click to open it in Console.app, or right-click and choose <strong>"Open With > TextEdit"</strong> to view as plain text</li>
-
-                    <li><strong>Copy or save the file</strong><br>
-                    Drag it to your Desktop or another location to prepare it for sending</li>
-                </ol>
-
-                <div class="tip-box">
-                    <p><strong>Tip:</strong> If you don't find crash files in the main folder, also check the retired logs folder:</p>
-                    <div class="code-block">~/Library/Logs/DiagnosticReports/Retired</div>
-                </div>
-
-                <h2>Send Us the Crash Report</h2>
-                <p>Once you've located the crash file, please email it to us along with a brief description of what you were doing when the crash occurred. This helps us reproduce and fix the issue faster.</p>
-
-                <a href="mailto:awesomecopyapp@gmail.com?subject=Awesome%20Copy%20Crash%20Report" class="email-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                        <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                    Email Crash Report
-                </a>
-
-                <p>Or send directly to: <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a></p>
-
-                <h2>What to Include</h2>
-                <p>When submitting a crash report, please include:</p>
-                <ol>
-                    <li><strong>The crash log file</strong> (.ips or .crash file)</li>
-                    <li><strong>What you were doing</strong> when the crash happened</li>
-                    <li><strong>Your macOS version</strong> (found in Apple menu > About This Mac)</li>
-                    <li><strong>Awesome Copy version</strong> (found in Awesome Copy > About)</li>
-                    <li><strong>Any other details</strong> that might be helpful</li>
-                </ol>
-
-                <p>Thank you for helping us make Awesome Copy better!</p>
+                    <div class="blog-card-content">
+                        <div class="blog-card-meta">
+                            <span class="blog-card-category">Security</span>
+                            <span class="blog-card-date">January 5, 2026</span>
+                        </div>
+                        <h2 class="blog-card-title">
+                            <a href="blog/clipboard-security.html">How Awesome Copy Keeps Your Clipboard Secure</a>
+                        </h2>
+                        <p class="blog-card-excerpt">
+                            Your clipboard often contains sensitive data. Learn how Awesome Copy protects your passwords, private information, and gives you complete control over your clipboard history.
+                        </p>
+                        <a href="blog/clipboard-security.html" class="blog-card-link">
+                            Read more
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
