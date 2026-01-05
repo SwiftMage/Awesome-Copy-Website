@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How NSPasteboard Works: The Technology Behind Your Clipboard - Awesome Copy Blog</title>
+    <meta name="description" content="A deep dive into Apple's NSPasteboard API - the technology that powers clipboard functionality on macOS and how Awesome Copy uses it.">
+    <link rel="canonical" href="https://awesomecopy.app/blog/how-nspasteboard-works">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://awesomecopy.app/blog/how-nspasteboard-works">
+    <meta property="og:title" content="How NSPasteboard Works: The Technology Behind Your Clipboard">
+    <meta property="og:description" content="A deep dive into Apple's NSPasteboard API - the technology that powers clipboard functionality on macOS and how Awesome Copy uses it.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/App icon.png">
+    <style>
+        .blog-post-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .blog-post {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .blog-post-header {
+            margin-bottom: var(--spacing-3xl);
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-category {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(0, 122, 255, 0.1);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        .blog-post-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+        .blog-post-title {
+            font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-excerpt {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .blog-post-content {
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        .blog-post-content h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content strong {
+            color: var(--color-text);
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+        .blog-post-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .blog-post-content a {
+            color: var(--color-primary);
+        }
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        .code-block {
+            background: var(--color-background-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+            margin: var(--spacing-lg) 0;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+        .code-block .comment {
+            color: var(--color-text-tertiary);
+        }
+        .code-block .keyword {
+            color: #af52de;
+        }
+        .code-block .string {
+            color: #ff3b30;
+        }
+        .code-block .type {
+            color: #5856d6;
+        }
+        .feature-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        .feature-box h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .feature-box p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
+        }
+        .feature-box ul {
+            margin-bottom: 0;
+            margin-top: var(--spacing-sm);
+        }
+        .feature-box li {
+            font-size: var(--font-size-sm);
+        }
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+        }
+        .type-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+        }
+        .type-card h5 {
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+            font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+        }
+        .type-card p {
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+        }
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 122, 255, 0.05));
+            border-left: 3px solid var(--color-primary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .tip-callout p {
+            margin-bottom: 0;
+        }
+        .diagram-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        .diagram-box .flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        .diagram-box .flow-item {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+        .diagram-box .flow-arrow {
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-xl);
+        }
+        .blog-post-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-4xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+        }
+        .blog-post-nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .blog-post-nav a:hover {
+            text-decoration: underline;
+        }
+        .hero-icon {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #5856d6, #af52de);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+        .hero-icon svg {
+            width: 80px;
+            height: 80px;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .type-grid {
+                grid-template-columns: 1fr;
+            }
+            .diagram-box .flow {
+                flex-direction: column;
+            }
+            .diagram-box .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#testimonials">Testimonials</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="../blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-page">
+        <div class="container">
+            <div class="blog-post">
+                <div class="hero-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                    </svg>
+                </div>
+
+                <header class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-category">Technical</span>
+                        <span class="blog-post-date">January 5, 2026</span>
+                    </div>
+                    <h1 class="blog-post-title">How NSPasteboard Works: The Technology Behind Your Clipboard</h1>
+                    <p class="blog-post-excerpt">Every time you press Command+C, you're using one of macOS's most fundamental APIs. Here's a deep dive into NSPasteboard and how Awesome Copy leverages it to build a powerful clipboard manager.</p>
+                </header>
+
+                <div class="blog-post-content">
+                    <p>The clipboard is something we use dozens (or hundreds) of times every day, yet most of us never think about how it actually works. On macOS, the magic happens through an API called <strong>NSPasteboard</strong> - Apple's system for transferring data between applications.</p>
+
+                    <p>Understanding NSPasteboard helps explain both how clipboard managers like Awesome Copy work and why they can offer features that go beyond simple copy and paste.</p>
+
+                    <h2>What is NSPasteboard?</h2>
+
+                    <p>NSPasteboard is Apple's clipboard API that's been part of macOS (and its predecessor NeXTSTEP) for decades. Despite its age, it's a remarkably sophisticated system that handles much more than just text.</p>
+
+                    <p>At its core, NSPasteboard is a <strong>shared data repository</strong> that any application can write to or read from. When you copy something, the source application writes data to the pasteboard. When you paste, the destination application reads from it.</p>
+
+                    <div class="diagram-box">
+                        <div class="flow">
+                            <div class="flow-item">Source App</div>
+                            <span class="flow-arrow">→</span>
+                            <div class="flow-item">NSPasteboard</div>
+                            <span class="flow-arrow">→</span>
+                            <div class="flow-item">Destination App</div>
+                        </div>
+                    </div>
+
+                    <p>But here's what makes it interesting: the pasteboard doesn't just store one piece of data. It stores <strong>multiple representations</strong> of the same content, allowing the destination app to choose the format that works best for it.</p>
+
+                    <h2>Multiple Representations: The Key Feature</h2>
+
+                    <p>When you copy text from a webpage, the pasteboard might contain:</p>
+
+                    <ul>
+                        <li><strong>Rich text (RTF)</strong> - with formatting like bold, italics, and colors</li>
+                        <li><strong>Plain text</strong> - just the characters without formatting</li>
+                        <li><strong>HTML</strong> - the original markup from the webpage</li>
+                    </ul>
+
+                    <p>When you paste into a rich text editor like Pages, it uses the RTF version to preserve your formatting. Paste into Terminal, and it grabs the plain text version instead. Same clipboard content, different representations for different contexts.</p>
+
+                    <div class="feature-box">
+                        <h4>Common Pasteboard Types</h4>
+                        <p>Here are some of the UTI (Uniform Type Identifier) types you'll encounter:</p>
+                    </div>
+
+                    <div class="type-grid">
+                        <div class="type-card">
+                            <h5>public.utf8-plain-text</h5>
+                            <p>Plain text content</p>
+                        </div>
+                        <div class="type-card">
+                            <h5>public.rtf</h5>
+                            <p>Rich formatted text</p>
+                        </div>
+                        <div class="type-card">
+                            <h5>public.html</h5>
+                            <p>HTML markup</p>
+                        </div>
+                        <div class="type-card">
+                            <h5>public.png</h5>
+                            <p>PNG image data</p>
+                        </div>
+                        <div class="type-card">
+                            <h5>public.file-url</h5>
+                            <p>File references</p>
+                        </div>
+                        <div class="type-card">
+                            <h5>public.url</h5>
+                            <p>Web URLs</p>
+                        </div>
+                    </div>
+
+                    <h2>The General Pasteboard</h2>
+
+                    <p>macOS actually has multiple pasteboards for different purposes, but the one you interact with when copying and pasting is called the <strong>general pasteboard</strong>. In code, you access it like this:</p>
+
+                    <div class="code-block">
+<span class="keyword">let</span> pasteboard = <span class="type">NSPasteboard</span>.general</div>
+
+                    <p>This single line gives you access to the system clipboard. From here, you can read what's currently on the clipboard, write new content, or monitor for changes.</p>
+
+                    <h2>How Awesome Copy Reads the Clipboard</h2>
+
+                    <p>Clipboard managers need to know when new content appears on the pasteboard. NSPasteboard provides a property called <strong>changeCount</strong> - an integer that increments every time the pasteboard content changes.</p>
+
+                    <p>Awesome Copy monitors this change count on a regular interval. When it detects an increment, it knows something new has been copied:</p>
+
+                    <div class="code-block">
+<span class="comment">// Simplified example of clipboard monitoring</span>
+<span class="keyword">var</span> lastChangeCount = pasteboard.changeCount
+
+<span class="keyword">func</span> checkForChanges() {
+    <span class="keyword">if</span> pasteboard.changeCount != lastChangeCount {
+        lastChangeCount = pasteboard.changeCount
+        <span class="comment">// New content detected - process it</span>
+        processNewClipboardContent()
+    }
+}</div>
+
+                    <p>This polling approach is efficient and reliable. The change count is a simple integer comparison, so checking it thousands of times per second would have negligible performance impact (though we don't need to check nearly that often).</p>
+
+                    <h2>Reading Different Content Types</h2>
+
+                    <p>Once we detect new content, Awesome Copy reads all available representations. This is why we can show you a preview of copied images, extract URLs from rich text, and display formatted content:</p>
+
+                    <div class="code-block">
+<span class="comment">// Check what types are available</span>
+<span class="keyword">let</span> types = pasteboard.types ?? []
+
+<span class="comment">// Read string content</span>
+<span class="keyword">if let</span> string = pasteboard.string(forType: .string) {
+    <span class="comment">// Handle text content</span>
+}
+
+<span class="comment">// Read image content</span>
+<span class="keyword">if let</span> imageData = pasteboard.data(forType: .png) {
+    <span class="comment">// Handle image content</span>
+}
+
+<span class="comment">// Read file URLs</span>
+<span class="keyword">if let</span> urls = pasteboard.readObjects(forClasses: [<span class="type">NSURL</span>.<span class="keyword">self</span>]) {
+    <span class="comment">// Handle file references</span>
+}</div>
+
+                    <h2>Detecting the Source Application</h2>
+
+                    <p>One of Awesome Copy's features is showing you which app each clipboard item came from. NSPasteboard doesn't directly tell us this, but we can determine it by checking which application was active when the copy occurred:</p>
+
+                    <div class="code-block">
+<span class="keyword">let</span> frontApp = <span class="type">NSWorkspace</span>.shared.frontmostApplication
+<span class="keyword">let</span> appName = frontApp?.localizedName  <span class="comment">// "Safari"</span>
+<span class="keyword">let</span> bundleID = frontApp?.bundleIdentifier  <span class="comment">// "com.apple.Safari"</span></div>
+
+                    <p>We capture this information at the moment we detect the clipboard change, giving you context about where each clip originated.</p>
+
+                    <h2>Special Pasteboard Markers</h2>
+
+                    <p>Some applications add special markers to indicate the nature of their content. The most important one for security is <strong>org.nspasteboard.ConcealedType</strong>.</p>
+
+                    <p>Password managers like 1Password and Bitwarden set this marker when you copy a password. It signals to clipboard managers that the content is sensitive and should be handled carefully:</p>
+
+                    <div class="code-block">
+<span class="comment">// Check for concealed (password) content</span>
+<span class="keyword">let</span> concealedType = <span class="type">NSPasteboard.PasteboardType</span>(<span class="string">"org.nspasteboard.ConcealedType"</span>)
+<span class="keyword">let</span> isConcealed = pasteboard.data(forType: concealedType) != <span class="keyword">nil</span></div>
+
+                    <p>When Awesome Copy detects this marker, it respects your privacy settings - either skipping the item entirely, masking it with bullets, or recording it normally based on your preference.</p>
+
+                    <div class="tip-callout">
+                        <p><strong>Learn more:</strong> Read our article on <a href="clipboard-security.html">How Awesome Copy Keeps Your Clipboard Secure</a> for details on how we handle sensitive content.</p>
+                    </div>
+
+                    <h2>Writing Back to the Pasteboard</h2>
+
+                    <p>When you select a clip from Awesome Copy's history and paste it, we write that content back to the system pasteboard so it's available to whatever app you're pasting into:</p>
+
+                    <div class="code-block">
+<span class="comment">// Clear and write new content</span>
+pasteboard.clearContents()
+pasteboard.setString(clipContent, forType: .string)
+
+<span class="comment">// For rich content, we can write multiple types</span>
+pasteboard.setData(rtfData, forType: .rtf)
+pasteboard.setData(htmlData, forType: .html)</div>
+
+                    <p>By writing multiple representations, we ensure the destination app gets the format it needs - just like the original copy operation.</p>
+
+                    <h2>The Pasteboard's Limitations</h2>
+
+                    <p>NSPasteboard is powerful, but it has some limitations that affect clipboard managers:</p>
+
+                    <ul>
+                        <li><strong>No history:</strong> The pasteboard only holds the most recent copy. Previous items are overwritten, which is exactly why clipboard managers exist.</li>
+                        <li><strong>No notifications:</strong> There's no system callback when content changes. We have to poll the changeCount to detect updates.</li>
+                        <li><strong>No source info:</strong> The pasteboard doesn't track which app wrote to it. We have to infer this from the frontmost application.</li>
+                        <li><strong>Memory limits:</strong> Very large items (like huge images) can strain the pasteboard. Awesome Copy handles this by storing references when appropriate.</li>
+                    </ul>
+
+                    <h2>Beyond the General Pasteboard</h2>
+
+                    <p>While most clipboard operations use the general pasteboard, macOS has other specialized pasteboards:</p>
+
+                    <ul>
+                        <li><strong>Find pasteboard:</strong> Stores the last search term (shared across apps when you use Find)</li>
+                        <li><strong>Drag pasteboard:</strong> Used during drag-and-drop operations</li>
+                        <li><strong>Custom pasteboards:</strong> Apps can create private pasteboards for internal use</li>
+                    </ul>
+
+                    <p>Awesome Copy focuses on the general pasteboard since that's where your copy/paste actions happen, but the same API principles apply to all pasteboard types.</p>
+
+                    <h2>A Foundation for Productivity</h2>
+
+                    <p>NSPasteboard might be decades old, but it's a robust foundation that enables clipboard managers to exist. By understanding how it works - the change count monitoring, multiple representations, special markers, and source detection - you can appreciate what happens behind the scenes every time you press Command+C.</p>
+
+                    <p>Awesome Copy builds on this foundation to give you a complete clipboard history, intelligent organization, and the security features you need to copy with confidence. All powered by a simple but elegant API that Apple got right from the beginning.</p>
+
+                    <div class="feature-box">
+                        <h4>Try Awesome Copy</h4>
+                        <p>Experience the power of a proper clipboard manager. <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12">Download Awesome Copy</a> and never lose a copied item again.</p>
+                    </div>
+                </div>
+
+                <nav class="blog-post-nav">
+                    <a href="../blog.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="../images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="../index.html#features">Features</a>
+                        <a href="../index.html#pricing">Pricing</a>
+                        <a href="../blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="../privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="../crash-reports.html">Submit Crash Report</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
