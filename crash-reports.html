@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Awesome Copy</title>
-    <meta name="description" content="Privacy Policy for Awesome Copy - Clipboard History app for Mac, iPhone, and iPad.">
+    <title>Submit Crash Reports - Awesome Copy</title>
+    <meta name="description" content="Learn how to find and submit crash reports for Awesome Copy to help us improve the app.">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,9 +25,9 @@
             margin-bottom: var(--spacing-sm);
             letter-spacing: -0.02em;
         }
-        .legal-content .last-updated {
+        .legal-content .subtitle {
             color: var(--color-text-secondary);
-            font-size: var(--font-size-sm);
+            font-size: var(--font-size-lg);
             margin-bottom: var(--spacing-3xl);
         }
         .legal-content h2 {
@@ -51,6 +51,76 @@
         }
         .legal-content a:hover {
             text-decoration: underline;
+        }
+        .legal-content ol {
+            margin-bottom: var(--spacing-xl);
+            padding-left: var(--spacing-xl);
+        }
+        .legal-content ol li {
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            padding-left: var(--spacing-sm);
+        }
+        .legal-content ol li strong {
+            color: var(--color-text);
+        }
+        .code-block {
+            background: var(--color-background-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: var(--font-size-sm);
+            color: var(--color-text);
+            margin: var(--spacing-sm) 0 var(--spacing-md);
+            overflow-x: auto;
+            user-select: all;
+        }
+        .tip-box {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.08), rgba(0, 122, 255, 0.04));
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .tip-box p {
+            margin-bottom: 0;
+            color: var(--color-text);
+        }
+        .tip-box strong {
+            color: var(--color-primary);
+        }
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            background: var(--color-primary);
+            color: white !important;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            text-decoration: none !important;
+            margin: var(--spacing-md) 0;
+            transition: background var(--transition-fast);
+        }
+        .email-link:hover {
+            background: var(--color-primary-dark);
+            text-decoration: none !important;
+        }
+        .file-examples {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin: var(--spacing-sm) 0 var(--spacing-md);
+        }
+        .file-examples code {
+            display: block;
+            font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin: var(--spacing-xs) 0;
         }
     </style>
 </head>
@@ -77,34 +147,71 @@
         </div>
     </nav>
 
-    <!-- Privacy Policy Content -->
+    <!-- Crash Reports Content -->
     <section class="legal-page">
         <div class="container">
             <div class="legal-content">
-                <h1>Privacy Policy</h1>
-                <p class="last-updated">Last Updated: October 2024</p>
+                <h1>Submit Crash Reports</h1>
+                <p class="subtitle">Help us improve Awesome Copy by sending crash logs when something goes wrong.</p>
 
-                <p>We are committed to protecting your privacy. This Privacy Policy explains our practices regarding information when you use the Awesome Copy app.</p>
+                <p>If you've experienced a crash in Awesome Copy, sending us the crash report helps us identify and fix the issue quickly. Follow the steps below to locate and submit your crash log.</p>
 
-                <h2>Information We Collect</h2>
-                <p>The Awesome Copy app itself <strong>does not collect or store any personal information</strong> directly from its users. All clipboard data managed by the app remains stored locally on your device and is never transmitted to us or any third party.</p>
-                <p>We do not require you to provide any personal data to use the core features of the app.</p>
-                <p>For subscription management, we use RevenueCat, a third-party service that processes purchase information. RevenueCat may collect certain identifying information such as user IDs, device information, and transaction details to manage your subscription status. This information is used solely for managing your subscription and providing access to premium features. For more information about how RevenueCat handles your data, please review their Privacy Policy.</p>
+                <h2>How to Find Crash Reports</h2>
+                <ol>
+                    <li><strong>Open Finder</strong> on your Mac</li>
 
-                <h2>Data Usage</h2>
-                <p>Since we do not collect personal information directly, we do not use it.</p>
-                <p>Any diagnostic or crash report data collected by Apple through the standard App Store mechanisms is anonymous and used solely for improving app stability and performance.</p>
-                <p>Information collected by RevenueCat is used exclusively for subscription management purposes, including verifying purchase status, providing access to premium features, and processing transactions. This data is handled according to RevenueCat's privacy policy and is necessary for the functioning of subscription features.</p>
+                    <li><strong>Go to the crash logs folder</strong><br>
+                    Press <strong>Cmd + Shift + G</strong> (Go to Folder) and enter:
+                    <div class="code-block">~/Library/Logs/DiagnosticReports</div>
+                    </li>
 
-                <h2>Children's Privacy</h2>
-                <p>Awesome Copy is not specifically designed for children. We do not knowingly collect any personal information from any users, including children.</p>
+                    <li><strong>Look for Awesome Copy crash files</strong><br>
+                    They will be named something like:
+                    <div class="file-examples">
+                        <code>AwesomeCopy-2026-01-02-123456.ips</code>
+                        <code>AwesomeCopy_2026-01-02-123456.crash</code>
+                    </div>
+                    </li>
 
-                <h2>Third-Party Services</h2>
-                <p>Awesome Copy uses RevenueCat, a third-party service, to manage in-app subscriptions. RevenueCat collects and processes transaction information and device identifiers necessary for subscription management. This information is governed by RevenueCat's Privacy Policy.</p>
-                <p>Standard Apple services for crash reporting and analytics may collect anonymized data as per Apple's policies.</p>
+                    <li><strong>Sort by Date Modified</strong><br>
+                    Click the "Date Modified" column header in Finder to see the most recent crashes first</li>
 
-                <h2>Changes to This Privacy Policy</h2>
-                <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last Updated" date. We encourage you to review this Privacy Policy periodically.</p>
+                    <li><strong>Open the crash log</strong><br>
+                    Double-click to open it in Console.app, or right-click and choose <strong>"Open With > TextEdit"</strong> to view as plain text</li>
+
+                    <li><strong>Copy or save the file</strong><br>
+                    Drag it to your Desktop or another location to prepare it for sending</li>
+                </ol>
+
+                <div class="tip-box">
+                    <p><strong>Tip:</strong> If you don't find crash files in the main folder, also check the retired logs folder:</p>
+                    <div class="code-block">~/Library/Logs/DiagnosticReports/Retired</div>
+                </div>
+
+                <h2>Send Us the Crash Report</h2>
+                <p>Once you've located the crash file, please email it to us along with a brief description of what you were doing when the crash occurred. This helps us reproduce and fix the issue faster.</p>
+
+                <a href="mailto:awesomecopyapp@gmail.com?subject=Awesome%20Copy%20Crash%20Report" class="email-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    Email Crash Report
+                </a>
+
+                <p>Or send directly to: <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a></p>
+
+                <h2>What to Include</h2>
+                <p>When submitting a crash report, please include:</p>
+                <ol>
+                    <li><strong>The crash log file</strong> (.ips or .crash file)</li>
+                    <li><strong>What you were doing</strong> when the crash happened</li>
+                    <li><strong>Your macOS version</strong> (found in Apple menu > About This Mac)</li>
+                    <li><strong>Awesome Copy version</strong> (found in Awesome Copy > About)</li>
+                    <li><strong>Any other details</strong> that might be helpful</li>
+                </ol>
+
+                <p>Thank you for helping us make Awesome Copy better!</p>
             </div>
         </div>
     </section>
