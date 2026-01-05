@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Paste: The Fastest Way to Access Your Clipboard History - Awesome Copy Blog</title>
+    <meta name="description" content="Learn how to use Awesome Copy's Quick Paste window - a compact popup that appears right at your cursor for instant access to your clipboard history.">
+    <link rel="canonical" href="https://awesomecopy.app/blog/quick-paste-window">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://awesomecopy.app/blog/quick-paste-window">
+    <meta property="og:title" content="Quick Paste: The Fastest Way to Access Your Clipboard History">
+    <meta property="og:description" content="Learn how to use Awesome Copy's Quick Paste window - a compact popup that appears right at your cursor for instant access to your clipboard history.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/App icon.png">
+    <style>
+        .blog-post-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .blog-post {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .blog-post-header {
+            margin-bottom: var(--spacing-3xl);
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-category {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(0, 122, 255, 0.1);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        .blog-post-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+        .blog-post-title {
+            font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-excerpt {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .blog-post-content {
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        .blog-post-content h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content strong {
+            color: var(--color-text);
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+        .blog-post-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .blog-post-content a {
+            color: var(--color-primary);
+        }
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        .feature-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        .feature-box h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .feature-box p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
+        }
+        .feature-box ul {
+            margin-bottom: 0;
+            margin-top: var(--spacing-sm);
+        }
+        .feature-box li {
+            font-size: var(--font-size-sm);
+        }
+        .keyboard-shortcut {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .key {
+            display: inline-block;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            font-family: 'SF Mono', SFMono-Regular, Consolas, monospace;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            color: var(--color-text);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            min-width: 28px;
+            text-align: center;
+        }
+        .key-combo {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0 var(--spacing-xs);
+        }
+        .key-plus {
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-sm);
+        }
+        .shortcut-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+        }
+        .shortcut-table th,
+        .shortcut-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .shortcut-table th {
+            font-weight: 600;
+            color: var(--color-text);
+            font-size: var(--font-size-sm);
+        }
+        .shortcut-table td {
+            font-size: var(--font-size-sm);
+        }
+        .shortcut-table td:first-child {
+            width: 40%;
+        }
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(52, 199, 89, 0.05));
+            border-left: 3px solid #34c759;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .tip-callout p {
+            margin-bottom: 0;
+        }
+        .pro-tip {
+            background: linear-gradient(135deg, rgba(255, 149, 0, 0.1), rgba(255, 149, 0, 0.05));
+            border-left: 3px solid #ff9500;
+        }
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+        .blog-post-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-4xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+        }
+        .blog-post-nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .blog-post-nav a:hover {
+            text-decoration: underline;
+        }
+        .hero-image {
+            width: 100%;
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--spacing-3xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .shortcut-table th,
+            .shortcut-table td {
+                padding: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#testimonials">Testimonials</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="../blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-page">
+        <div class="container">
+            <div class="blog-post">
+                <div class="hero-image">
+                    <img src="../images/quick paste light.png" alt="Quick Paste window showing clipboard history popup next to cursor">
+                </div>
+
+                <header class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-category">Features</span>
+                        <span class="blog-post-date">January 5, 2026</span>
+                    </div>
+                    <h1 class="blog-post-title">Quick Paste: The Fastest Way to Access Your Clipboard History</h1>
+                    <p class="blog-post-excerpt">Press a hotkey, and a compact paste window appears right at your cursor. Navigate with your keyboard, type to filter, and paste with a single click. Here's everything you need to know about Quick Paste.</p>
+                </header>
+
+                <div class="blog-post-content">
+                    <p>The main Awesome Copy window is great for browsing your clipboard history, but sometimes you just need to quickly grab something you copied a few minutes ago. That's where <strong>Quick Paste</strong> comes in - a lightweight popup designed for speed.</p>
+
+                    <h2>What is Quick Paste?</h2>
+
+                    <p>Quick Paste is a compact floating window that gives you instant access to your recent clipboard items. Unlike the main app window, Quick Paste is designed to get out of your way:</p>
+
+                    <ul>
+                        <li>Appears right next to your mouse cursor</li>
+                        <li>Shows your most recent clips in a compact list</li>
+                        <li>Disappears as soon as you paste or click away</li>
+                        <li>Supports keyboard navigation and search</li>
+                    </ul>
+
+                    <p>Think of it as a quick-access panel that's always one hotkey away, no matter what app you're in.</p>
+
+                    <h2>Activating Quick Paste</h2>
+
+                    <p>Quick Paste is triggered by a customizable keyboard shortcut. By default, press:</p>
+
+                    <div class="feature-box">
+                        <h4>Default Hotkey</h4>
+                        <p style="margin-top: var(--spacing-sm);">
+                            <span class="key-combo">
+                                <span class="key">⌘</span>
+                                <span class="key-plus">+</span>
+                                <span class="key">Shift</span>
+                                <span class="key-plus">+</span>
+                                <span class="key">V</span>
+                            </span>
+                        </p>
+                    </div>
+
+                    <p>When you press the hotkey, the Quick Paste window instantly appears right next to your mouse cursor. This positioning is intentional - your eyes and cursor are already in the area where you're working, so the paste menu appears exactly where you need it.</p>
+
+                    <h3>Changing the Hotkey</h3>
+
+                    <p>Don't like the default shortcut? You can customize it:</p>
+
+                    <ol class="step-list">
+                        <li><strong>Open Awesome Copy Settings</strong> - Click the menu bar icon and select Settings, or press <span class="key-combo"><span class="key">⌘</span><span class="key-plus">+</span><span class="key">,</span></span></li>
+                        <li><strong>Go to the General tab</strong> - Find the "Quick Paste Hotkey" option</li>
+                        <li><strong>Click the hotkey field</strong> - It will start listening for your new shortcut</li>
+                        <li><strong>Press your desired key combination</strong> - Choose something that doesn't conflict with other apps</li>
+                    </ol>
+
+                    <div class="tip-callout pro-tip">
+                        <p><strong>Pro tip:</strong> Choose a hotkey that's easy to press with one hand. Many users like <span class="key-combo"><span class="key">⌥</span><span class="key-plus">+</span><span class="key">V</span></span> (Option+V) since it's similar to the standard paste shortcut but uses Option instead of Command.</p>
+                    </div>
+
+                    <h2>Navigating Quick Paste</h2>
+
+                    <p>Once the Quick Paste window is open, you have several ways to find and select the clip you want.</p>
+
+                    <h3>Keyboard Navigation</h3>
+
+                    <p>Use these keys to move through your clipboard history:</p>
+
+                    <table class="shortcut-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Shortcut</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Move down</td>
+                                <td><span class="key">↓</span> or <span class="key">Tab</span></td>
+                            </tr>
+                            <tr>
+                                <td>Move up</td>
+                                <td><span class="key">↑</span> or <span class="key-combo"><span class="key">Shift</span><span class="key-plus">+</span><span class="key">Tab</span></span></td>
+                            </tr>
+                            <tr>
+                                <td>Paste selected item</td>
+                                <td><span class="key">Return</span> or <span class="key">Enter</span></td>
+                            </tr>
+                            <tr>
+                                <td>Close without pasting</td>
+                                <td><span class="key">Esc</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>The arrow keys let you quickly scroll through your history. When you find what you need, just press Return to paste it into your current application.</p>
+
+                    <h3>Type to Filter</h3>
+
+                    <p>Have a lot of clips and need to find something specific? Just start typing. Quick Paste includes a <strong>search filter</strong> that narrows down your clips as you type:</p>
+
+                    <ul>
+                        <li>Type any part of the text you're looking for</li>
+                        <li>The list updates in real-time to show matching clips</li>
+                        <li>Works for text content, URLs, and even file names</li>
+                        <li>Case-insensitive for easier searching</li>
+                    </ul>
+
+                    <p>For example, if you copied an email address earlier, just type "gmail" or "@" and Quick Paste will filter to show only clips containing that text.</p>
+
+                    <div class="tip-callout">
+                        <p><strong>Tip:</strong> Combine filtering with keyboard navigation. Type a few characters to narrow the list, then use arrow keys to select and Return to paste.</p>
+                    </div>
+
+                    <h2>Image Previews</h2>
+
+                    <p>Quick Paste isn't just for text. When you've copied images, they appear as <strong>visual thumbnails</strong> in the list, so you can quickly identify the right screenshot or graphic.</p>
+
+                    <p>Image previews show:</p>
+
+                    <ul>
+                        <li>A thumbnail of the actual image content</li>
+                        <li>The image dimensions</li>
+                        <li>File size information</li>
+                    </ul>
+
+                    <p>This makes it easy to distinguish between multiple screenshots or find that specific image you copied earlier without having to remember exactly when you copied it.</p>
+
+                    <h2>Paste on Click</h2>
+
+                    <p>While keyboard navigation is the fastest way to use Quick Paste, you can also use your mouse:</p>
+
+                    <ul>
+                        <li><strong>Single click</strong> on any clip to instantly paste it</li>
+                        <li>The window closes automatically after pasting</li>
+                        <li>Click outside the window to dismiss it without pasting</li>
+                    </ul>
+
+                    <p>The paste happens immediately - there's no need to click and then press a separate paste command. One click and the content goes right into your current application at the cursor position.</p>
+
+                    <h2>Where Quick Paste Opens</h2>
+
+                    <p>Quick Paste is designed to appear exactly where you need it. When you press the hotkey:</p>
+
+                    <ol>
+                        <li>The window appears <strong>next to your mouse cursor</strong></li>
+                        <li>It positions itself to avoid going off-screen</li>
+                        <li>On multi-monitor setups, it appears on the screen where your cursor is</li>
+                    </ol>
+
+                    <p>This cursor-relative positioning means you don't have to move your eyes or mouse to a fixed location. The paste menu comes to you, not the other way around.</p>
+
+                    <div class="feature-box">
+                        <h4>Smart Positioning</h4>
+                        <p>Quick Paste automatically adjusts its position near screen edges. If your cursor is at the bottom-right corner, the window will appear above and to the left so it stays fully visible.</p>
+                    </div>
+
+                    <h2>Quick Paste vs. Main Window</h2>
+
+                    <p>When should you use Quick Paste versus opening the main Awesome Copy window? Here's a quick guide:</p>
+
+                    <table class="shortcut-table">
+                        <thead>
+                            <tr>
+                                <th>Use Quick Paste when...</th>
+                                <th>Use Main Window when...</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Grabbing a recent clip</td>
+                                <td>Browsing older history</td>
+                            </tr>
+                            <tr>
+                                <td>You know what you're looking for</td>
+                                <td>Organizing or pinning clips</td>
+                            </tr>
+                            <tr>
+                                <td>Speed is the priority</td>
+                                <td>Editing clip content</td>
+                            </tr>
+                            <tr>
+                                <td>Working in another app</td>
+                                <td>Managing categories</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>Most day-to-day pasting from history happens through Quick Paste because it's faster and less disruptive to your workflow.</p>
+
+                    <h2>Tips for Power Users</h2>
+
+                    <p>Get the most out of Quick Paste with these advanced tips:</p>
+
+                    <h3>Muscle Memory</h3>
+                    <p>The real power of Quick Paste comes when it becomes second nature. Practice the hotkey until it's automatic: press, type a few filter characters if needed, arrow to select, Return to paste. The whole sequence takes just a second or two.</p>
+
+                    <h3>Keep Recent Items Accessible</h3>
+                    <p>Quick Paste shows your most recent clips first. If you know you'll need something again soon, copy it fresh to bump it to the top of the list.</p>
+
+                    <h3>Pin Frequently Used Clips</h3>
+                    <p>Items you paste often (like email signatures or code snippets) can be pinned in the main Awesome Copy window. Pinned items appear at the top of Quick Paste, so they're always just a hotkey away.</p>
+
+                    <h2>Get Started</h2>
+
+                    <p>Quick Paste is available in Awesome Copy right out of the box. If you haven't tried it yet:</p>
+
+                    <ol class="step-list">
+                        <li><strong>Make sure Awesome Copy is running</strong> - Check for the icon in your menu bar</li>
+                        <li><strong>Copy a few things</strong> - Build up some clipboard history</li>
+                        <li><strong>Press the hotkey</strong> - Default is <span class="key-combo"><span class="key">⌘</span><span class="key-plus">+</span><span class="key">Shift</span><span class="key-plus">+</span><span class="key">V</span></span></li>
+                        <li><strong>Navigate and paste</strong> - Use arrows and Return, or just click</li>
+                    </ol>
+
+                    <p>Once you get used to Quick Paste, you'll wonder how you ever managed with just Command+V.</p>
+
+                    <div class="feature-box">
+                        <h4>Download Awesome Copy</h4>
+                        <p>Experience Quick Paste and all the other features that make clipboard management effortless. <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12">Get Awesome Copy on the App Store</a>.</p>
+                    </div>
+                </div>
+
+                <nav class="blog-post-nav">
+                    <a href="../blog.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="../images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="../index.html#features">Features</a>
+                        <a href="../index.html#pricing">Pricing</a>
+                        <a href="../blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="../privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="../crash-reports.html">Submit Crash Report</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
