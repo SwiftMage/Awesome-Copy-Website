@@ -11,6 +11,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://awesomecopy.app/blog/collection-view</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://awesomecopy.app/blog/clipboard-security</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
