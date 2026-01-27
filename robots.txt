@@ -1,0 +1,7 @@
+# Robots.txt for awesomecopy.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://awesomecopy.app/sitemap.xml
