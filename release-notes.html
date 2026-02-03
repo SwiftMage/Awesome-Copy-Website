@@ -98,58 +98,75 @@
             margin-bottom: 0;
         }
         .category-title {
-            font-size: var(--font-size-base);
+            font-size: var(--font-size-sm);
             font-weight: 600;
-            color: var(--color-text);
+            color: var(--color-text-secondary);
             margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            border-bottom: 2px solid var(--color-primary);
+            display: inline-block;
         }
 
         /* Feature items */
         .feature-item {
             display: flex;
             gap: var(--spacing-md);
-            padding: var(--spacing-md) 0;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-sm);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+        .feature-item:hover {
+            border-color: rgba(0, 122, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
         .feature-icon {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 2px;
         }
         .feature-icon svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
         }
-        .feature-icon.blue { background: rgba(0, 122, 255, 0.15); color: #007AFF; }
-        .feature-icon.purple { background: rgba(88, 86, 214, 0.15); color: #5856D6; }
-        .feature-icon.green { background: rgba(52, 199, 89, 0.15); color: #34C759; }
-        .feature-icon.orange { background: rgba(255, 149, 0, 0.15); color: #FF9500; }
-        .feature-icon.red { background: rgba(255, 59, 48, 0.15); color: #FF3B30; }
-        .feature-icon.cyan { background: rgba(50, 173, 230, 0.15); color: #32ADE6; }
-        .feature-icon.pink { background: rgba(255, 45, 85, 0.15); color: #FF2D55; }
-        .feature-icon.indigo { background: rgba(88, 86, 214, 0.15); color: #5856D6; }
-        .feature-icon.yellow { background: rgba(255, 204, 0, 0.15); color: #FFCC00; }
-        .feature-icon.gray { background: rgba(142, 142, 147, 0.15); color: #8E8E93; }
-        .feature-icon.bugfix { background: rgba(142, 142, 147, 0.1); color: #8E8E93; }
+        .feature-icon.blue { background: rgba(0, 122, 255, 0.12); color: #007AFF; }
+        .feature-icon.purple { background: rgba(88, 86, 214, 0.12); color: #5856D6; }
+        .feature-icon.green { background: rgba(52, 199, 89, 0.12); color: #34C759; }
+        .feature-icon.orange { background: rgba(255, 149, 0, 0.12); color: #FF9500; }
+        .feature-icon.red { background: rgba(255, 59, 48, 0.12); color: #FF3B30; }
+        .feature-icon.cyan { background: rgba(50, 173, 230, 0.12); color: #32ADE6; }
+        .feature-icon.pink { background: rgba(255, 45, 85, 0.12); color: #FF2D55; }
+        .feature-icon.indigo { background: rgba(88, 86, 214, 0.12); color: #5856D6; }
+        .feature-icon.yellow { background: rgba(255, 204, 0, 0.15); color: #D4A800; }
+        .feature-icon.gray { background: rgba(142, 142, 147, 0.12); color: #8E8E93; }
+        .feature-icon.bugfix { background: rgba(52, 199, 89, 0.08); color: #34C759; }
         .feature-content {
             flex: 1;
             min-width: 0;
+            padding: 2px 0;
         }
         .feature-title {
             font-size: var(--font-size-base);
             font-weight: 600;
             color: var(--color-text);
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
         .feature-desc {
             font-size: var(--font-size-sm);
             color: var(--color-text-secondary);
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         /* Two-column layout for larger versions */
