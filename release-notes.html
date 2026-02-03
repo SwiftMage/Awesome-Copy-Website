@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17371664680"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17371664680');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Notes - Awesome Copy</title>
+    <meta name="description" content="Release notes and version history for Awesome Copy - the clipboard manager for Mac. See what's new in each update.">
+    <link rel="canonical" href="https://awesomecopy.app/release-notes">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://awesomecopy.app/release-notes">
+    <meta property="og:title" content="Release Notes - Awesome Copy">
+    <meta property="og:description" content="Release notes and version history for Awesome Copy - the clipboard manager for Mac.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Release Notes - Awesome Copy">
+    <meta name="twitter:description" content="Release notes and version history for Awesome Copy - the clipboard manager for Mac.">
+    <meta name="twitter:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/App icon.png">
+    <style>
+        .release-notes-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .release-notes {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .release-notes-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+        .release-notes-header h1 {
+            font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.02em;
+        }
+        .release-notes-header p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+        }
+
+        /* Version block */
+        .version-block {
+            margin-bottom: var(--spacing-3xl);
+            padding-bottom: var(--spacing-3xl);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .version-block:last-child {
+            border-bottom: none;
+        }
+        .version-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+        .version-badge {
+            background: var(--color-primary);
+            color: white;
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-full);
+            white-space: nowrap;
+        }
+        .version-badge.latest {
+            background: linear-gradient(135deg, var(--color-primary), #5856d6);
+        }
+        .version-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+
+        /* Category sections within a version */
+        .version-category {
+            margin-bottom: var(--spacing-xl);
+        }
+        .version-category:last-child {
+            margin-bottom: 0;
+        }
+        .category-title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Feature items */
+        .feature-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) 0;
+        }
+        .feature-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-icon svg {
+            width: 16px;
+            height: 16px;
+        }
+        .feature-icon.blue { background: rgba(0, 122, 255, 0.15); color: #007AFF; }
+        .feature-icon.purple { background: rgba(88, 86, 214, 0.15); color: #5856D6; }
+        .feature-icon.green { background: rgba(52, 199, 89, 0.15); color: #34C759; }
+        .feature-icon.orange { background: rgba(255, 149, 0, 0.15); color: #FF9500; }
+        .feature-icon.red { background: rgba(255, 59, 48, 0.15); color: #FF3B30; }
+        .feature-icon.cyan { background: rgba(50, 173, 230, 0.15); color: #32ADE6; }
+        .feature-icon.pink { background: rgba(255, 45, 85, 0.15); color: #FF2D55; }
+        .feature-icon.indigo { background: rgba(88, 86, 214, 0.15); color: #5856D6; }
+        .feature-icon.yellow { background: rgba(255, 204, 0, 0.15); color: #FFCC00; }
+        .feature-icon.gray { background: rgba(142, 142, 147, 0.15); color: #8E8E93; }
+        .feature-icon.bugfix { background: rgba(142, 142, 147, 0.1); color: #8E8E93; }
+        .feature-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .feature-title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 2px;
+        }
+        .feature-desc {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Two-column layout for larger versions */
+        .version-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+        }
+        @media (max-width: 768px) {
+            .version-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* TOC */
+        .version-toc {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-3xl);
+            justify-content: center;
+        }
+        .version-toc a {
+            font-size: var(--font-size-sm);
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-full);
+            transition: all var(--transition-fast);
+        }
+        .version-toc a:hover {
+            background: rgba(0, 122, 255, 0.1);
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Release Notes Content -->
+    <section class="release-notes-page">
+        <div class="container">
+            <div class="release-notes">
+                <div class="release-notes-header">
+                    <h1>Release Notes</h1>
+                    <p>See what's new in every update of Awesome Copy</p>
+                </div>
+
+                <!-- Table of Contents -->
+                <div class="version-toc">
+                    <a href="#v5.11">v5.11</a>
+                    <a href="#v5.07">v5.07</a>
+                    <a href="#v5.06">v5.06</a>
+                    <a href="#v5.04">v5.04</a>
+                    <a href="#v5.02">v5.02</a>
+                    <a href="#v5.0">v5.0</a>
+                    <a href="#v4.20">v4.20</a>
+                    <a href="#v3.0">v3.0</a>
+                </div>
+
+                <!-- Version 5.11 -->
+                <div class="version-block" id="v5.11">
+                    <div class="version-header">
+                        <span class="version-badge latest">Version 5.11</span>
+                        <span class="version-date">February 2, 2026</span>
+                    </div>
+
+                    <div class="version-columns">
+                        <div>
+                            <div class="version-category">
+                                <h3 class="category-title">New Features</h3>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Last Copied Text in Menu Bar</div>
+                                        <div class="feature-desc">New option to show the last copied text in the menu bar after the app icon for quick reference.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon purple">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M18 15l.75 2.25L21 18l-2.25.75L18 21l-.75-2.25L15 18l2.25-.75z"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">New Menu Bar Icon Animations</div>
+                                        <div class="feature-desc">Added Fly Up and Blink animation options - more subtle and pair nicely with the new menu bar text option.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon green">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="7"/><circle cx="12" cy="8" r="2"/><path d="M12 14v2"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">App Launch Authentication</div>
+                                        <div class="feature-desc">Require a password or Touch ID to launch the program, protecting users with sensitive clipboard data.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Security & Privacy Settings Section</div>
+                                        <div class="feature-desc">New dedicated Security & Privacy section in settings for better organization of privacy-related options.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon orange">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Passwords Smart Filter</div>
+                                        <div class="feature-desc">New smart filter to show all password entries in clipboard history, making it easy to find concealed items from password managers.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon red">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">URL Tracking Data Removal</div>
+                                        <div class="feature-desc">Strip tracking data out of copied URLs, either automatically or manually. Configure in the Security & Privacy settings.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon cyan">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Copy Image File Path</div>
+                                        <div class="feature-desc">New 'Copy Path' option in the image right-click menu to quickly copy the file path.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="version-category">
+                                <h3 class="category-title">CleanShot X & Shottr Support</h3>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">CleanShot X Screenshot Names</div>
+                                        <div class="feature-desc">Screenshots taken with CleanShot X now display proper names.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Annotate in CleanShot X</div>
+                                        <div class="feature-desc">New right-click option to open images in CleanShot X for annotation.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon orange">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="3"/><path d="M5 12l7 7 7-7"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Pin to Desktop & Quick Access Overlay</div>
+                                        <div class="feature-desc">New right-click options to pin images to the desktop or open in CleanShot X's quick access overlay.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon orange">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Open in Shottr</div>
+                                        <div class="feature-desc">New right-click option to open an image directly in Shottr for annotation and editing.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="version-category">
+                                <h3 class="category-title">Changes</h3>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon green">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Horizontal Snippet Single-Click Copy</div>
+                                        <div class="feature-desc">Clicking a snippet in horizontal view now copies and selects immediately instead of requiring a double-click.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Single-Click Selects Item</div>
+                                        <div class="feature-desc">When 'Double-Click Action' is set to copy, a single click now selects the clipboard item for preview and context menu access.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon purple">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 12h16"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Adaptive Header Buttons</div>
+                                        <div class="feature-desc">Vertical list header buttons dynamically adjust to fit when the list gets narrow.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon orange">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Screen Edge Gap Removal</div>
+                                        <div class="feature-desc">'Distance from screen edge' setting can now be set to fully remove the gap between the list and the screen edge.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon cyan">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Cleaner Dynamic Island</div>
+                                        <div class="feature-desc">Snugged up the Dynamic Island window around the content box for a tighter appearance.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon blue">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">&Command;+K Opens Context Menu</div>
+                                        <div class="feature-desc">Press &#8984;+K to bring up the same context menu as right-clicking a clipboard item.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="version-category">
+                                <h3 class="category-title">Bug Fixes</h3>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Fixed Auto-Hide Delay</div>
+                                        <div class="feature-desc">Auto-hide delay timer was waiting too long before hiding the window.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Fixed Startup Crash</div>
+                                        <div class="feature-desc">Fixed a crash that could occur at startup.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Smoother Horizontal to Floating Transition</div>
+                                        <div class="feature-desc">Changing from horizontal to floating list in settings now works more smoothly.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Fixed Item Clipping</div>
+                                        <div class="feature-desc">Normal and card view items were getting cut off in certain configurations.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">Fixed Horizontal Keyboard Navigation</div>
+                                        <div class="feature-desc">Fixed keyboard navigation jumping scroll position to the edge.</div>
+                                    </div>
+                                </div>
+
+                                <div class="feature-item">
+                                    <div class="feature-icon bugfix">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="feature-title">More Fixes</div>
+                                        <div class="feature-desc">Fixed cover dock after screen lock, faster mouse wheel scrolling, fixed smart search background on older macOS, fixed copy preview password masking, and fixed copy preview getting stuck open.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 5.07 -->
+                <div class="version-block" id="v5.07">
+                    <div class="version-header">
+                        <span class="version-badge">Version 5.07</span>
+                        <span class="version-date">January 10, 2026</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">New Features</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Collections View</div>
+                                <div class="feature-desc">A powerful new way to browse and organize your clipboard history. Access it from the menu bar app's right-click menu.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">App Object Support</div>
+                                <div class="feature-desc">Optional support for app objects like documents, slides, spreadsheets, Figma designs, and more.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Undo Deletion</div>
+                                <div class="feature-desc">Accidentally deleted a clipboard item? Press Command+Z to undo deletion of up to 10 items.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Text Selection Popup</div>
+                                <div class="feature-desc">A floating Copy/Cut/Paste toolbar appears near your cursor when you select text in any app. Optional feature, disabled by default.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon red">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="3"/><path d="M5 12l7 7 7-7"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Pinned Items Position Setting</div>
+                                <div class="feature-desc">New setting to control whether pinned items move to the top of the list or stay in their original position.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Auto-Show on Copy</div>
+                                <div class="feature-desc">Automatically show the clipboard history after copying, then dismiss it after a configurable delay unless you interact with it.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Settings Search</div>
+                                <div class="feature-desc">New search field in settings makes it easy to find any setting quickly.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Changes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="3"/><path d="M5 12l7 7 7-7"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Improved Card Pin Icon</div>
+                                <div class="feature-desc">Changed card style pin indicator to a blue filled pin for better visibility.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Pinned Smart Category</div>
+                                <div class="feature-desc">Added 'Pinned' to smart categories to quickly view all your pinned clipboard items.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon gray">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Mission Control Exclusion</div>
+                                <div class="feature-desc">AwesomeCopy windows are now excluded from Mission Control for a cleaner desktop.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Copy Preview Improvements</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Improved Drop Zone</div>
+                                <div class="feature-desc">Drop zone now shows 'Drop here' text with consistent sizing for single and multiple files.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Click File Stack to Copy</div>
+                                <div class="feature-desc">Clicking a file stack copies the content to clipboard and history.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Hover Delay for Peek</div>
+                                <div class="feature-desc">Customizable hover time delay before opening the peek window to prevent accidental activations.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Fixed application support folder duplication, history/snippets toggle button, video thumbnails, Quick Paste theme contrast, and various crash fixes.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 5.06 -->
+                <div class="version-block" id="v5.06">
+                    <div class="version-header">
+                        <span class="version-badge">Version 5.06</span>
+                        <span class="version-date">January 5, 2026</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Major Features</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Clipboard Vault</div>
+                                <div class="feature-desc">Save clipboard history items as persistent files with automatic duplicate detection. Your important clips are always safe.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Snippets iCloud Sync</div>
+                                <div class="feature-desc">Snippets now sync via iCloud! Create, edit, and delete snippets on macOS and they automatically appear on your iOS devices.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Dynamic Island Copy Preview</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Peek & Pin Modes</div>
+                                <div class="feature-desc">Copy any file or image to see a quick preview near your notch. Click to pin it open and start collecting files.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">File Shelf</div>
+                                <div class="feature-desc">Pinned windows become a collection shelf - keep copying and files stack up visually. Drag the entire stack to drop all files at once.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon pink">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 8 4"/><path d="M5 19.5C5.5 18 6 15 6 12"/><path d="M22 12c0 5.5-4.5 10-10 10a10 10 0 0 1-8-4"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Shake to Open</div>
+                                <div class="feature-desc">Select a file and shake it to instantly open the preview.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon indigo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Notch Hover</div>
+                                <div class="feature-desc">Mouse over the notch to reveal the preview; move away to close it.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Privacy & Security</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Clear History on Screen Lock</div>
+                                <div class="feature-desc">Automatically clears clipboard history when you lock your screen.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon indigo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Clear History on Sleep</div>
+                                <div class="feature-desc">Automatically clears clipboard history when your Mac goes to sleep.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Settings & Customization</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Footer Icon Customization</div>
+                                <div class="feature-desc">Include/exclude every icon in the footer for total customization of your clipboard interface.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon yellow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Liquid Glass Sticky Notes</div>
+                                <div class="feature-desc">Sticky notes now have beautiful Liquid Glass pop up window chrome controls for a modern look.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Drag & Drop Improvements</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Smart Text Field Dropping</div>
+                                <div class="feature-desc">Dragging text into text fields now pastes directly instead of creating a text file. Hold Shift for plain text, Option for .txt files.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Fixed Russian settings sidebar, list auto-scroll, space bar preview trigger, scroll performance, delete selection behavior, Clear theme Quick Paste, start at system startup, paste as plain text, and Escape key behavior for translate/preview windows.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 5.04 -->
+                <div class="version-block" id="v5.04">
+                    <div class="version-header">
+                        <span class="version-badge">Version 5.04</span>
+                        <span class="version-date">December 10, 2025</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">New Features</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Liquid Glass Support for All Themes</div>
+                                <div class="feature-desc">All themes now support macOS 26's Liquid Glass effect with beautiful animated backgrounds.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Video Thumbnails</div>
+                                <div class="feature-desc">Copied video files now display thumbnail previews in your clipboard history.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Smart Title Bar Colors</div>
+                                <div class="feature-desc">Automatic color extraction from app icons for title bars. Every app gets a beautiful, matching color.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon pink">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Enhanced Hex Color Display</div>
+                                <div class="feature-desc">Improved hex color code display with better visual representation and color preview in all list styles.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon indigo">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Copy Keyboard Symbols Menu</div>
+                                <div class="feature-desc">Right-click the menu bar icon to access modifier keys, navigation keys, and over 100 common macOS shortcuts for one-click copying.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Redesigned Context Menu</div>
+                                <div class="feature-desc">Completely redesigned the right-click menu with new options, better organization, and keyboard hotkeys.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Text-to-Speech Control Window</div>
+                                <div class="feature-desc">New pop-down window with play/pause, speed adjustment, and progress tracking for text-to-speech playback.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">macOS 13 Ventura Support</div>
+                                <div class="feature-desc">AwesomeCopy now supports macOS 13 Ventura and later.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Settings & Navigation</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Auto-Select Most Recent Item</div>
+                                <div class="feature-desc">Automatically select the most recent clipboard item when opening the history window.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">User Settings Persistence</div>
+                                <div class="feature-desc">Settings are saved to macOS Keychain and automatically restored after reinstalling.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Command+F Opens Search</div>
+                                <div class="feature-desc">Press Command+F to quickly open and focus the search field.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Redesigned Shift-Click Selection</div>
+                                <div class="feature-desc">Works like macOS Finder. Escape clears selection, Command+A selects all.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Performance improvements for scrolling and resizing, crash fixes, multi-file copy in card style, image overflow fix, Apple Intelligence in card menu, copy preview settings, and edit text dialog line spacing.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 5.02 -->
+                <div class="version-block" id="v5.02">
+                    <div class="version-header">
+                        <span class="version-badge">Version 5.02</span>
+                        <span class="version-date">December 1, 2025</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Highlights</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">App Color Matching Title Bar</div>
+                                <div class="feature-desc">Card style items feature a title bar that matches the source app's color.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Live Link Quick Look</div>
+                                <div class="feature-desc">Quick Look for links now opens a live preview of the website instead of just showing the link text.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Improved Search Bar Layout</div>
+                                <div class="feature-desc">Search bar is centered in top/bottom position, full-width in left/right/floating position.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon gray">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Horizontal Scroll Wheel Support</div>
+                                <div class="feature-desc">Scroll the horizontal list using the vertical scroll wheel for more natural navigation.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Fixed search bar clipping, card context menu, rich text display, pinned items deletion bug, iCloud notifications, and various crash fixes.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 5.0 -->
+                <div class="version-block" id="v5.0">
+                    <div class="version-header">
+                        <span class="version-badge">Version 5.0</span>
+                        <span class="version-date">November 15, 2025</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Major Features</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Screen Text Capture (OCR)</div>
+                                <div class="feature-desc">Drag a box anywhere on screen, run OCR on the selected region, and drop the extracted text into your history.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon gray">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Minimal Text-Only List Mode</div>
+                                <div class="feature-desc">Clean, focused list with single-line text - no icons, previews, or rich media.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Card List Style</div>
+                                <div class="feature-desc">Each clipboard entry displays as a distinct card with clear visual separation and modern design.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Campfire Theme</div>
+                                <div class="feature-desc">Flickering flames, floating embers, and twinkling stars on a pure black background.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Custom Sound Support</div>
+                                <div class="feature-desc">Select your own audio file as the copy sound in General Settings.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon cyan">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">iCloud Sync Diagnostics</div>
+                                <div class="feature-desc">Step-by-step diagnostic wizard for troubleshooting sync issues with direct links to system settings.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Sync Copied Files to iCloud</div>
+                                <div class="feature-desc">New control in iCloud Sync settings with a per-user slider (1-500 MB) for file upload limits.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon yellow">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Snippet Folders & Search</div>
+                                <div class="feature-desc">Create snippet folders directly, drag-and-drop between folders, and search works in the snippets tab.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Hardened startup, fixed ignored apps, Quick Paste history limit, snippet name spacing, text lines per item, import/export metadata, file picker location, OCR in Quick Paste, edit text dialog, crash recovery, RevenueCat subscription, and multi-monitor window positioning.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 4.20 -->
+                <div class="version-block" id="v4.20">
+                    <div class="version-header">
+                        <span class="version-badge">Version 4.20</span>
+                        <span class="version-date">November 20, 2025</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">New Features</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Link Previews</div>
+                                <div class="feature-desc">Copied links display rich preview cards with images, titles, and descriptions on both macOS and iOS.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon pink">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Audio Album Art & Playback</div>
+                                <div class="feature-desc">Audio files show album artwork and can be played directly from your clipboard list.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">New Crayon Box Theme</div>
+                                <div class="feature-desc">Vibrant rainbow gradients flowing from top to bottom for a colorful clipboard experience.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Copy on First Click</div>
+                                <div class="feature-desc">History items copy immediately even when the window is unfocused - no more double-clicking.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">iOS to macOS Sync</div>
+                                <div class="feature-desc">Items copied on iOS devices now sync seamlessly to your Mac. Two-way deletion sync included.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon orange">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Time-Based History Limits</div>
+                                <div class="feature-desc">Automatically remove items older than a specific time period (1 hour to 1 year).</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"/><path d="M6 8h.001"/><path d="M10 8h.001"/><path d="M14 8h.001"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Redesigned iOS Keyboard</div>
+                                <div class="feature-desc">Completely redesigned keyboard extension with a fresh, modern interface.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Text-to-Speech</div>
+                                <div class="feature-desc">Right-click any text entry to have it read aloud. Select multiple entries and use 'Read All' for sequential reading.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Bug Fixes</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon bugfix">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Multiple Fixes</div>
+                                <div class="feature-desc">Original file types preserved, auto paste restored, Notes app compatibility, CloudKit reliability, file size display, category filter sync, transparency persistence, drag-to-reorder persistence, resizable edit window, Command+comma settings shortcut, and history limit enforcement.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Version 3.0 -->
+                <div class="version-block" id="v3.0">
+                    <div class="version-header">
+                        <span class="version-badge">Version 3.0</span>
+                        <span class="version-date">October 15, 2025</span>
+                    </div>
+
+                    <div class="version-category">
+                        <h3 class="category-title">Highlights</h3>
+
+                        <div class="feature-item">
+                            <div class="feature-icon blue">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Reworked iCloud Sync</div>
+                                <div class="feature-desc">More responsive and reliable cloud synchronization across all your devices.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Enhanced Quick Paste Window</div>
+                                <div class="feature-desc">Search, image thumbnails, and keyboard arrow controls for faster clipboard access.</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
+                            </div>
+                            <div class="feature-content">
+                                <div class="feature-title">Middle Mouse Button Support</div>
+                                <div class="feature-desc">Open Quick Paste window with middle mouse button.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="crash-reports.html">Submit Crash Report</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
