@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17371664680"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17371664680');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCloud Sync Troubleshooting - Awesome Copy</title>
+    <meta name="description" content="Step-by-step guide to fix iCloud sync issues in Awesome Copy. Troubleshoot clipboard history syncing between your Mac, iPhone, and iPad.">
+    <link rel="canonical" href="https://awesomecopy.app/icloud-troubleshooting">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://awesomecopy.app/icloud-troubleshooting">
+    <meta property="og:title" content="iCloud Sync Troubleshooting - Awesome Copy">
+    <meta property="og:description" content="Step-by-step guide to fix iCloud sync issues in Awesome Copy.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="iCloud Sync Troubleshooting - Awesome Copy">
+    <meta name="twitter:description" content="Step-by-step guide to fix iCloud sync issues in Awesome Copy.">
+    <meta name="twitter:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/App icon.png">
+    <style>
+        .troubleshooting-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .troubleshooting {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .troubleshooting-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+        .troubleshooting-header-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #007AFF, #5856d6);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        .troubleshooting-header-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        .troubleshooting-header h1 {
+            font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.02em;
+        }
+        .troubleshooting-header p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+            line-height: 1.6;
+        }
+
+        /* Step cards */
+        .step-card {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl) var(--spacing-2xl);
+            margin-bottom: var(--spacing-lg);
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .step-card:hover {
+            border-color: rgba(0, 122, 255, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .step-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-sm);
+            font-weight: 700;
+        }
+        .step-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        .step-desc {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+        .step-desc:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Platform instructions */
+        .platform-instructions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+        @media (max-width: 600px) {
+            .platform-instructions {
+                grid-template-columns: 1fr;
+            }
+        }
+        .platform-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+        }
+        .platform-label {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .platform-label svg {
+            width: 14px;
+            height: 14px;
+        }
+        .platform-path {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .platform-path strong {
+            color: var(--color-text);
+        }
+
+        /* Tip callout */
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(52, 199, 89, 0.05));
+            border-left: 3px solid #34c759;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+        .tip-callout p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .tip-callout strong {
+            color: var(--color-text);
+        }
+
+        /* Info callout */
+        .info-callout {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 122, 255, 0.05));
+            border-left: 3px solid #007AFF;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-top: var(--spacing-md);
+        }
+        .info-callout p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .info-callout strong {
+            color: var(--color-text);
+        }
+
+        /* Still need help section */
+        .still-need-help {
+            text-align: center;
+            margin-top: var(--spacing-4xl);
+            padding: var(--spacing-3xl);
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-xl);
+        }
+        .still-need-help h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+        .still-need-help p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.6;
+        }
+        .still-need-help a.contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: var(--font-size-base);
+            transition: background var(--transition-fast);
+        }
+        .still-need-help a.contact-btn:hover {
+            background: #0066d6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Troubleshooting Content -->
+    <section class="troubleshooting-page">
+        <div class="container">
+            <div class="troubleshooting">
+                <div class="troubleshooting-header">
+                    <div class="troubleshooting-header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+                        </svg>
+                    </div>
+                    <h1>iCloud Sync Troubleshooting</h1>
+                    <p>Follow these steps to resolve iCloud sync issues between your Mac, iPhone, and iPad.</p>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h2 class="step-title">Toggle iCloud Sync Off and Back On</h2>
+                    </div>
+                    <p class="step-desc">Open Awesome Copy, go to <strong>Settings > iCloud Sync</strong>. Turn sync <strong>OFF</strong>, wait a few seconds, then turn it back <strong>ON</strong>. This reinitializes the connection and often resolves temporary sync issues.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h2 class="step-title">Verify You're Using the Same Apple ID</h2>
+                    </div>
+                    <p class="step-desc">All devices must be signed into the exact same iCloud account for sync to work.</p>
+
+                    <div class="platform-instructions">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Mac
+                            </div>
+                            <p class="platform-path"><strong>System Settings</strong> > Click your name/Apple ID at the top > Verify the Apple ID shown.</p>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path"><strong>Settings</strong> > Tap your name at the top > Verify the Apple ID matches your Mac.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h2 class="step-title">Check iCloud Storage</h2>
+                    </div>
+                    <p class="step-desc">Full iCloud storage prevents any new data from syncing.</p>
+
+                    <div class="platform-instructions">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Mac
+                            </div>
+                            <p class="platform-path"><strong>System Settings</strong> > <strong>Apple ID</strong> > <strong>iCloud</strong> > Check the storage bar > Click "Manage" if needed.</p>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path"><strong>Settings</strong> > <strong>[Your Name]</strong> > <strong>iCloud</strong> > <strong>Manage Account Storage</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-callout">
+                        <p><strong>Tips to free space:</strong> Delete old device backups, remove large files from iCloud Drive, delete old photos/videos, or upgrade your iCloud storage plan.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h2 class="step-title">Enable Notifications</h2>
+                    </div>
+                    <p class="step-desc">iCloud uses silent push notifications to tell the app when new data is available. Without notifications enabled, sync may be significantly delayed.</p>
+
+                    <div class="platform-instructions">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Mac
+                            </div>
+                            <p class="platform-path"><strong>System Settings</strong> > <strong>Notifications</strong> > Find <strong>Awesome Copy</strong> > <strong>Allow Notifications</strong>.</p>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path"><strong>Settings</strong> > <strong>Notifications</strong> > Find <strong>Awesome Copy</strong> > <strong>Allow Notifications</strong> > Enable <strong>Time-Sensitive Notifications</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">5</div>
+                        <h2 class="step-title">Enable Background App Refresh (iOS Only)</h2>
+                    </div>
+                    <p class="step-desc">On Mac, this happens automatically when the app is open. On iOS, Background App Refresh must be enabled for sync to work in the background.</p>
+
+                    <div class="platform-instructions" style="grid-template-columns: 1fr;">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path"><strong>Settings</strong> > <strong>General</strong> > <strong>Background App Refresh</strong> > Set to <strong>"Wi-Fi & Cellular Data"</strong> > Toggle <strong>Awesome Copy</strong> ON.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">6</div>
+                        <h2 class="step-title">Update to the Latest App Version</h2>
+                    </div>
+                    <p class="step-desc">Version mismatches between devices can cause sync conflicts. Make sure all devices are running the latest version of Awesome Copy.</p>
+
+                    <div class="platform-instructions">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Mac
+                            </div>
+                            <p class="platform-path">Open the <strong>App Store</strong> > Click <strong>Updates</strong> > Find Awesome Copy and update if available.</p>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path"><strong>App Store</strong> > Tap your profile icon > Scroll to find Awesome Copy and update if available.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">7</div>
+                        <h2 class="step-title">Restart Your Devices</h2>
+                    </div>
+                    <p class="step-desc">Restarting re-establishes iCloud connections and clears caches that may be preventing sync.</p>
+
+                    <div class="platform-instructions">
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Mac
+                            </div>
+                            <p class="platform-path"><strong>Apple menu</strong> > <strong>Restart</strong>.</p>
+                        </div>
+                        <div class="platform-box">
+                            <div class="platform-label">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                                iPhone / iPad
+                            </div>
+                            <p class="platform-path">Press and hold the power button > <strong>Slide to power off</strong> > Wait a moment > Turn back on.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-callout">
+                        <p>After restarting, wait a few minutes for iCloud connections to re-establish, then check if sync is working.</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="step-card">
+                    <div class="step-header">
+                        <div class="step-number">8</div>
+                        <h2 class="step-title">Send a Diagnostics Report</h2>
+                    </div>
+                    <p class="step-desc">If sync still isn't working after trying all the steps above, you can send us a diagnostics report so we can investigate further.</p>
+                    <p class="step-desc">Open Awesome Copy > <strong>Settings</strong> > <strong>Help & Support</strong> > <strong>Diagnose iCloud Sync Issues</strong> > <strong>Send Diagnostics</strong>.</p>
+
+                    <div class="info-callout">
+                        <p>The diagnostics report includes sync configuration, account status, database statistics, and recent sync activity. <strong>No personal clipboard content is included.</strong> Copy the diagnostics and email them to <a href="mailto:awesomecopyapp@gmail.com" style="color: var(--color-primary);">awesomecopyapp@gmail.com</a>.</p>
+                    </div>
+                </div>
+
+                <!-- Still need help -->
+                <div class="still-need-help">
+                    <h2>Still Need Help?</h2>
+                    <p>If you've tried all the steps above and sync still isn't working, reach out to us and we'll help you get things sorted.</p>
+                    <a href="mailto:awesomecopyapp@gmail.com" class="contact-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        Contact Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="release-notes.html">Release Notes</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="crash-reports.html">Submit Crash Report</a>
+                        <a href="icloud-troubleshooting.html">iCloud Troubleshooting</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
