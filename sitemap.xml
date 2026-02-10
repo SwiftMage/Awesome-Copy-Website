@@ -36,7 +36,17 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://awesomecopy.app/troubleshooting</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://awesomecopy.app/icloud-troubleshooting</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://awesomecopy.app/troubleshooting/reset-settings</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>

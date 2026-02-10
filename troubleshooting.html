@@ -12,116 +12,117 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Awesome Copy</title>
-    <meta name="description" content="Tips, tutorials, and updates about Awesome Copy - the clipboard manager for Mac, iPhone, and iPad.">
-    <link rel="canonical" href="https://awesomecopy.app/blog">
+    <title>Troubleshooting - Awesome Copy</title>
+    <meta name="description" content="Troubleshooting guides for Awesome Copy. Fix iCloud sync issues, reset settings, and resolve common problems.">
+    <link rel="canonical" href="https://awesomecopy.app/troubleshooting">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://awesomecopy.app/troubleshooting">
+    <meta property="og:title" content="Troubleshooting - Awesome Copy">
+    <meta property="og:description" content="Troubleshooting guides for Awesome Copy. Fix iCloud sync issues, reset settings, and resolve common problems.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Troubleshooting - Awesome Copy">
+    <meta name="twitter:description" content="Troubleshooting guides for Awesome Copy. Fix iCloud sync issues, reset settings, and resolve common problems.">
+    <meta name="twitter:image" content="https://awesomecopy.app/images/og-image.png">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/App icon.png">
     <style>
-        .blog-page {
+        .troubleshooting-hub-page {
             padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
             min-height: 100vh;
         }
-        .blog-header {
+        .troubleshooting-hub-header {
             text-align: center;
             margin-bottom: var(--spacing-4xl);
         }
-        .blog-header h1 {
+        .troubleshooting-hub-header-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #ff9500, #ff3b30);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+        }
+        .troubleshooting-hub-header-icon svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+        .troubleshooting-hub-header h1 {
             font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
             font-weight: 700;
             margin-bottom: var(--spacing-sm);
             letter-spacing: -0.02em;
         }
-        .blog-header p {
+        .troubleshooting-hub-header p {
             color: var(--color-text-secondary);
             font-size: var(--font-size-lg);
         }
-        .blog-grid {
+        .troubleshooting-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: var(--spacing-xl);
             max-width: 1000px;
             margin: 0 auto;
         }
-        .blog-card {
+        .troubleshooting-card {
             background: var(--color-background);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-xl);
             overflow: hidden;
             transition: transform var(--transition-fast), box-shadow var(--transition-fast);
         }
-        .blog-card:hover {
+        .troubleshooting-card:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
         }
-        .blog-card-image {
+        .troubleshooting-card-icon {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--color-primary), #5856d6);
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .blog-card-image svg {
-            width: 64px;
-            height: 64px;
+        .troubleshooting-card-icon svg {
+            width: 56px;
+            height: 56px;
             color: white;
             opacity: 0.9;
         }
-        .blog-card-image-photo {
-            background: var(--color-background-secondary);
-            padding: var(--spacing-md);
-        }
-        .blog-card-image-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: var(--radius-md);
-        }
-        .blog-card-content {
+        .troubleshooting-card-content {
             padding: var(--spacing-xl);
         }
-        .blog-card-meta {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-sm);
-        }
-        .blog-card-category {
-            font-size: var(--font-size-xs);
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .blog-card-date {
-            font-size: var(--font-size-xs);
-            color: var(--color-text-tertiary);
-        }
-        .blog-card-title {
+        .troubleshooting-card-title {
             font-size: var(--font-size-xl);
             font-weight: 600;
             color: var(--color-text);
             margin-bottom: var(--spacing-sm);
             line-height: 1.3;
         }
-        .blog-card-title a {
+        .troubleshooting-card-title a {
             color: inherit;
             text-decoration: none;
         }
-        .blog-card-title a:hover {
+        .troubleshooting-card-title a:hover {
             color: var(--color-primary);
         }
-        .blog-card-excerpt {
+        .troubleshooting-card-desc {
             font-size: var(--font-size-base);
             color: var(--color-text-secondary);
             line-height: 1.6;
             margin-bottom: var(--spacing-md);
         }
-        .blog-card-link {
+        .troubleshooting-card-link {
             font-size: var(--font-size-sm);
             font-weight: 500;
             color: var(--color-primary);
@@ -130,11 +131,11 @@
             align-items: center;
             gap: var(--spacing-xs);
         }
-        .blog-card-link:hover {
+        .troubleshooting-card-link:hover {
             text-decoration: underline;
         }
         @media (max-width: 768px) {
-            .blog-grid {
+            .troubleshooting-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -163,86 +164,36 @@
         </div>
     </nav>
 
-    <!-- Blog Content -->
-    <section class="blog-page">
+    <!-- Troubleshooting Hub -->
+    <section class="troubleshooting-hub-page">
         <div class="container">
-            <div class="blog-header">
-                <h1>Blog</h1>
-                <p>Tips, tutorials, and updates from the Awesome Copy team</p>
+            <div class="troubleshooting-hub-header">
+                <div class="troubleshooting-hub-header-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                </div>
+                <h1>Troubleshooting</h1>
+                <p>Step-by-step guides to help you resolve common issues</p>
             </div>
 
-            <div class="blog-grid">
-                <!-- Collection View Post -->
-                <article class="blog-card">
-                    <div class="blog-card-image blog-card-image-photo">
-                        <img src="images/Awesome Copy Collections View.png" alt="Collection View interface">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta">
-                            <span class="blog-card-category">Features</span>
-                            <span class="blog-card-date">January 27, 2026</span>
-                        </div>
-                        <h2 class="blog-card-title">
-                            <a href="blog/collection-view.html">Collection View: Your Full-Screen Clipboard Command Center</a>
-                        </h2>
-                        <p class="blog-card-excerpt">
-                            Need to browse through hundreds of clipboard items? Collection View gives you a powerful full-screen window to search, filter, and manage your entire clipboard history.
-                        </p>
-                        <a href="blog/collection-view.html" class="blog-card-link">
-                            Read more
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Quick Paste Post -->
-                <article class="blog-card">
-                    <div class="blog-card-image blog-card-image-photo">
-                        <img src="images/quick paste light.png" alt="Quick Paste window">
-                    </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta">
-                            <span class="blog-card-category">Features</span>
-                            <span class="blog-card-date">January 5, 2026</span>
-                        </div>
-                        <h2 class="blog-card-title">
-                            <a href="blog/quick-paste-window.html">Quick Paste: The Fastest Way to Access Your Clipboard History</a>
-                        </h2>
-                        <p class="blog-card-excerpt">
-                            Press a hotkey and a compact paste window appears right at your cursor. Navigate with your keyboard, type to filter, and paste with a single click.
-                        </p>
-                        <a href="blog/quick-paste-window.html" class="blog-card-link">
-                            Read more
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- NSPasteboard Post -->
-                <article class="blog-card">
-                    <div class="blog-card-image" style="background: linear-gradient(135deg, #5856d6, #af52de);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            <div class="troubleshooting-grid">
+                <!-- iCloud Sync -->
+                <article class="troubleshooting-card">
+                    <div class="troubleshooting-card-icon" style="background: linear-gradient(135deg, #007AFF, #5856d6);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
                         </svg>
                     </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta">
-                            <span class="blog-card-category">Technical</span>
-                            <span class="blog-card-date">January 5, 2026</span>
-                        </div>
-                        <h2 class="blog-card-title">
-                            <a href="blog/how-nspasteboard-works.html">How NSPasteboard Works: The Technology Behind Your Clipboard</a>
+                    <div class="troubleshooting-card-content">
+                        <h2 class="troubleshooting-card-title">
+                            <a href="icloud-troubleshooting.html">iCloud Sync Issues</a>
                         </h2>
-                        <p class="blog-card-excerpt">
-                            A deep dive into Apple's NSPasteboard API - the technology that powers clipboard functionality on macOS and how Awesome Copy uses it to build a powerful clipboard manager.
+                        <p class="troubleshooting-card-desc">
+                            Clipboard history not syncing between your Mac, iPhone, or iPad? Follow these steps to fix iCloud sync.
                         </p>
-                        <a href="blog/how-nspasteboard-works.html" class="blog-card-link">
-                            Read more
+                        <a href="icloud-troubleshooting.html" class="troubleshooting-card-link">
+                            View Guide
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -250,27 +201,23 @@
                     </div>
                 </article>
 
-                <!-- Security Post -->
-                <article class="blog-card">
-                    <div class="blog-card-image">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="m9 12 2 2 4-4"/>
+                <!-- Reset Settings -->
+                <article class="troubleshooting-card">
+                    <div class="troubleshooting-card-icon" style="background: linear-gradient(135deg, #ff9500, #ff3b30);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="1 4 1 10 7 10"/>
+                            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
                         </svg>
                     </div>
-                    <div class="blog-card-content">
-                        <div class="blog-card-meta">
-                            <span class="blog-card-category">Security</span>
-                            <span class="blog-card-date">January 5, 2026</span>
-                        </div>
-                        <h2 class="blog-card-title">
-                            <a href="blog/clipboard-security.html">How Awesome Copy Keeps Your Clipboard Secure</a>
+                    <div class="troubleshooting-card-content">
+                        <h2 class="troubleshooting-card-title">
+                            <a href="troubleshooting/reset-settings.html">Something Not Working Correctly</a>
                         </h2>
-                        <p class="blog-card-excerpt">
-                            Your clipboard often contains sensitive data. Learn how Awesome Copy protects your passwords, private information, and gives you complete control over your clipboard history.
+                        <p class="troubleshooting-card-desc">
+                            If something isn't behaving right, resetting settings can often fix the issue. Learn how to back up and reset your configuration.
                         </p>
-                        <a href="blog/clipboard-security.html" class="blog-card-link">
-                            Read more
+                        <a href="troubleshooting/reset-settings.html" class="troubleshooting-card-link">
+                            View Guide
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
