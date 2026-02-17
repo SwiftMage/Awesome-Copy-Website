@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17371664680"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17371664680');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every App on Your Mac Can Read Your Clipboard - Awesome Copy Blog</title>
+    <meta name="description" content="You might hesitate to trust a clipboard manager. But every app on your Mac already has unrestricted access to your clipboard — and none of them have to tell you about it.">
+    <link rel="canonical" href="https://awesomecopy.app/blog/clipboard-trust">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://awesomecopy.app/blog/clipboard-trust">
+    <meta property="og:title" content="Every App on Your Mac Can Read Your Clipboard">
+    <meta property="og:description" content="You might hesitate to trust a clipboard manager. But every app on your Mac already has unrestricted access to your clipboard — and none of them have to tell you about it.">
+    <meta property="og:image" content="https://awesomecopy.app/images/og-image.png">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/App icon.png">
+    <style>
+        .blog-post-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .blog-post {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .blog-post-header {
+            margin-bottom: var(--spacing-3xl);
+        }
+        .blog-post-meta {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-category {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(0, 122, 255, 0.1);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+        }
+        .blog-post-date {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+        }
+        .blog-post-title {
+            font-size: clamp(var(--font-size-2xl), 5vw, var(--font-size-4xl));
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-excerpt {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+        .blog-post-content {
+            font-size: var(--font-size-base);
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+        .blog-post-content h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+        }
+        .blog-post-content p {
+            margin-bottom: var(--spacing-lg);
+        }
+        .blog-post-content strong {
+            color: var(--color-text);
+        }
+        .blog-post-content ul, .blog-post-content ol {
+            margin-bottom: var(--spacing-lg);
+            padding-left: var(--spacing-xl);
+        }
+        .blog-post-content li {
+            margin-bottom: var(--spacing-sm);
+        }
+        .blog-post-content a {
+            color: var(--color-primary);
+        }
+        .blog-post-content a:hover {
+            text-decoration: underline;
+        }
+        .feature-box {
+            background: var(--color-background-secondary);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+        }
+        .feature-box h4 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .feature-box p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
+        }
+        .feature-box ul {
+            margin-bottom: 0;
+            margin-top: var(--spacing-sm);
+        }
+        .feature-box li {
+            font-size: var(--font-size-sm);
+        }
+        .feature-box code {
+            background: rgba(0, 0, 0, 0.06);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(52, 199, 89, 0.05));
+            border-left: 3px solid #34c759;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .tip-callout p {
+            margin-bottom: 0;
+        }
+        .info-callout {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(0, 122, 255, 0.05));
+            border-left: 3px solid #007AFF;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+        .info-callout p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+        .info-callout strong {
+            color: var(--color-text);
+        }
+        .blog-post-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-4xl);
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-border);
+        }
+        .blog-post-nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        .blog-post-nav a:hover {
+            text-decoration: underline;
+        }
+        .hero-icon {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #ff9500, #ff3b30);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+        .hero-icon svg {
+            width: 80px;
+            height: 80px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <img src="../images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="../index.html#features">Features</a>
+                <a href="../index.html#pricing">Pricing</a>
+                <a href="../index.html#faq">FAQ</a>
+                <a href="../blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Blog Post Content -->
+    <article class="blog-post-page">
+        <div class="container">
+            <div class="blog-post">
+                <div class="hero-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+
+                <header class="blog-post-header">
+                    <div class="blog-post-meta">
+                        <span class="blog-post-category">Security</span>
+                        <span class="blog-post-date">February 16, 2026</span>
+                    </div>
+                    <h1 class="blog-post-title">Every App on Your Mac Can Read Your Clipboard</h1>
+                    <p class="blog-post-excerpt">You might hesitate to trust a clipboard manager with your data. But here's what most people don't realize: every app you have open is already reading your clipboard — and none of them have to tell you about it.</p>
+                </header>
+
+                <div class="blog-post-content">
+                    <h2>The Concern</h2>
+
+                    <p>"Would you really trust your clipboard history to a third-party app?"</p>
+
+                    <p>It's a fair question. Your clipboard carries some of the most sensitive data on your computer — passwords, bank account numbers, private messages, API keys, addresses. Being cautious about where that data goes is smart.</p>
+
+                    <p>But this concern is built on a misconception: the idea that your clipboard data is private by default, and that a clipboard manager is somehow opening it up to risk. The reality is the exact opposite.</p>
+
+                    <h2>How macOS Clipboard Access Actually Works</h2>
+
+                    <p>On macOS, the clipboard is managed by a system called <strong>NSPasteboard</strong>. It's the same mechanism that makes Command+C and Command+V work across every app on your Mac.</p>
+
+                    <p>Here's the important part: <strong>any running application can read the contents of your clipboard at any time.</strong> There is no permission prompt. No notification. No approval dialog. Nothing.</p>
+
+                    <div class="feature-box">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                            What it looks like in code
+                        </h4>
+                        <p>Any Mac app can read your clipboard with a single line of code:</p>
+                        <p><code>let contents = NSPasteboard.general.string(forType: .string)</code></p>
+                        <p>That's it. No permission request. No user consent. The app just... reads it.</p>
+                    </div>
+
+                    <p>This is fundamentally different from how macOS handles other sensitive data. Want to access the camera? The user gets a permission dialog. Microphone? Permission dialog. Contacts, location, files outside the sandbox? All require explicit user approval.</p>
+
+                    <p>The clipboard? Wide open. Always has been.</p>
+
+                    <h2>Your Clipboard Is Already Being Read</h2>
+
+                    <p>Think about how many apps are running on your Mac right now. Your browser. Your text editor. Your email client. Slack or Discord. Maybe Spotify, a note-taking app, a calendar app, an IDE.</p>
+
+                    <p><strong>Every single one of them can read your clipboard at any time.</strong> And many of them do — not maliciously, but as part of normal operation:</p>
+
+                    <ul>
+                        <li><strong>Text editors and IDEs</strong> read the clipboard every time you press Command+V, and some pre-read it to show paste previews</li>
+                        <li><strong>Browsers</strong> access the clipboard for paste operations in web forms, and websites can request clipboard access via JavaScript</li>
+                        <li><strong>Chat apps</strong> read the clipboard when you paste images, links, or text</li>
+                        <li><strong>Password managers</strong> actively monitor the clipboard to auto-clear passwords after a timeout</li>
+                        <li><strong>URL handlers</strong> and link preview apps may read the clipboard on focus to offer quick actions</li>
+                    </ul>
+
+                    <p>You already trust dozens of apps with clipboard access without giving it a second thought. The only difference with a clipboard manager is that it's honest about what it's doing.</p>
+
+                    <h2>What About iOS?</h2>
+
+                    <p>You might be thinking, "Wait — doesn't my iPhone warn me when an app reads my clipboard?" You're right. Starting with iOS 14, Apple added a banner notification that appears when an app reads the clipboard ("App pasted from..."). This was a major transparency improvement, and it famously caught several apps reading the clipboard without good reason.</p>
+
+                    <div class="info-callout">
+                        <p><strong>macOS has no such notification.</strong> On your Mac, apps read the clipboard in complete silence. There is no banner, no log, no indicator. You have absolutely no way of knowing which apps are reading your clipboard or how often.</p>
+                    </div>
+
+                    <p>This means the "threat model" people worry about with clipboard managers — an app having access to your copied data — is already happening right now, with every app on your Mac, completely invisibly.</p>
+
+                    <h2>A Clipboard Manager Is More Transparent, Not Less</h2>
+
+                    <p>Here's the irony: a clipboard manager like Awesome Copy is actually the <strong>most transparent</strong> app on your system when it comes to clipboard access.</p>
+
+                    <p>Think about it:</p>
+
+                    <ul>
+                        <li><strong>It tells you exactly what it does.</strong> The entire purpose of the app is to save your clipboard history. There's no hidden behavior — it's the stated function.</li>
+                        <li><strong>It gives you controls.</strong> You can exclude specific apps, auto-delete items, conceal passwords, set retention limits, and clear your history on demand.</li>
+                        <li><strong>It shows you what it's captured.</strong> You can see every item in your clipboard history, when it was copied, and from which app. No other app on your system gives you this visibility.</li>
+                        <li><strong>It puts you in charge.</strong> You decide what gets saved, for how long, and what gets excluded. Compare that to the random background app that reads your clipboard without you ever knowing.</li>
+                    </ul>
+
+                    <p>Without a clipboard manager, your clipboard is a black box. Data goes in, data comes out, and you have no visibility into what happens in between. With Awesome Copy, you get a complete audit trail of your clipboard activity.</p>
+
+                    <h2>What Awesome Copy Does to Protect You</h2>
+
+                    <p>Beyond being transparent about clipboard access, Awesome Copy includes a full suite of privacy features designed to keep your sensitive data safe:</p>
+
+                    <div class="feature-box">
+                        <h4>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            Built-in privacy controls
+                        </h4>
+                        <ul>
+                            <li><strong>Password concealment</strong> — Automatically detects and masks passwords from password managers</li>
+                            <li><strong>App exclusion list</strong> — Completely ignore clipboard activity from specific apps</li>
+                            <li><strong>Auto-delete</strong> — Clear history on quit, screen lock, or sleep</li>
+                            <li><strong>Time-based retention</strong> — Automatically purge items older than your chosen limit</li>
+                            <li><strong>URL tracking removal</strong> — Strip tracking parameters from copied URLs</li>
+                            <li><strong>Local-first storage</strong> — Your clipboard data stays on your devices</li>
+                            <li><strong>iCloud sync</strong> — When enabled, syncs through Apple's encrypted infrastructure — never through third-party servers</li>
+                        </ul>
+                    </div>
+
+                    <p>For a deeper dive into all of these features, check out our full guide: <a href="clipboard-security.html">How Awesome Copy Keeps Your Clipboard Secure</a>.</p>
+
+                    <h2>The Real Question</h2>
+
+                    <p>The question was never "should I trust a clipboard manager with my data?" Your data is already being accessed by every app on your system. The real question is:</p>
+
+                    <p><strong>Would you rather have one transparent app that shows you exactly what it captures, gives you full control over your data, and is built with privacy features from the ground up — or would you rather leave your clipboard as a free-for-all where dozens of apps read it silently with zero accountability?</strong></p>
+
+                    <p>A clipboard manager doesn't create a new risk. It gives you visibility and control over a risk that already exists.</p>
+
+                    <div class="tip-callout">
+                        <p><strong>Bottom line:</strong> Every app on your Mac can already read everything you copy. Awesome Copy is just the only one that's upfront about it — and the only one that lets you do something about it.</p>
+                    </div>
+                </div>
+
+                <nav class="blog-post-nav">
+                    <a href="../blog.html">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Back to Blog
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="../images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="../index.html#features">Features</a>
+                        <a href="../index.html#pricing">Pricing</a>
+                        <a href="../index.html#faq">FAQ</a>
+                        <a href="../blog.html">Blog</a>
+                        <a href="../release-notes.html">Release Notes</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="../privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="../crash-reports.html">Submit Crash Report</a>
+                        <a href="../troubleshooting.html">Troubleshooting</a>
+                        <a href="mailto:awesomecopyapp@gmail.com">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
