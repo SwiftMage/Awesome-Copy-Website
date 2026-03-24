@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17371664680"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17371664680');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Awesome Copy</title>
+    <meta name="description" content="Get support for Awesome Copy - Clipboard History app for Mac, iPhone, and iPad. Contact us or browse self-help resources.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/App icon.png">
+    <style>
+        .legal-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .legal-content h1 {
+            font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.02em;
+        }
+        .legal-content .page-subtitle {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-3xl);
+            line-height: 1.6;
+        }
+        .legal-content h2 {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text);
+        }
+        .legal-content p {
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+        .legal-content strong {
+            color: var(--color-text);
+        }
+        .legal-content a {
+            color: var(--color-primary);
+        }
+        .legal-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact card */
+        .contact-card {
+            background: var(--color-surface, rgba(255,255,255,0.05));
+            border: 1px solid var(--color-border, rgba(255,255,255,0.1));
+            border-radius: 16px;
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-lg);
+        }
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-card-icon svg {
+            width: 24px;
+            height: 24px;
+            color: #fff;
+        }
+        .contact-card-body h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        .contact-card-body p {
+            margin-bottom: var(--spacing-sm);
+        }
+        .contact-card-body .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        .contact-card-body .email-link:hover {
+            text-decoration: underline;
+        }
+        .response-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 99px;
+            margin-top: var(--spacing-sm);
+        }
+        .response-badge::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            flex-shrink: 0;
+        }
+
+        /* Self-help cards */
+        .selfhelp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+        @media (max-width: 600px) {
+            .selfhelp-grid { grid-template-columns: 1fr; }
+            .contact-card { flex-direction: column; }
+        }
+        .selfhelp-card {
+            display: flex;
+            flex-direction: column;
+            background: var(--color-surface, rgba(255,255,255,0.05));
+            border: 1px solid var(--color-border, rgba(255,255,255,0.1));
+            border-radius: 14px;
+            padding: var(--spacing-xl);
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .selfhelp-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        .selfhelp-card h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-xs);
+        }
+        .selfhelp-card p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            flex: 1;
+        }
+        .selfhelp-card .card-arrow {
+            margin-top: var(--spacing-md);
+            color: var(--color-primary);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        /* FAQ items */
+        .faq-item {
+            border-top: 1px solid var(--color-border, rgba(255,255,255,0.1));
+            padding: var(--spacing-lg) 0;
+        }
+        .faq-item:last-child {
+            border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.1));
+        }
+        .faq-item h3 {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+        }
+        .faq-item p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/App icon.png" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="nav-cta">Download</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Support Content -->
+    <section class="legal-page">
+        <div class="container">
+            <div class="legal-content">
+                <h1>Support</h1>
+                <p class="page-subtitle">We're here to help. Browse the resources below or reach out directly — we'll get back to you as soon as possible.</p>
+
+                <!-- Contact card -->
+                <h2>Contact Us</h2>
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M2 7l10 7 10-7"/>
+                        </svg>
+                    </div>
+                    <div class="contact-card-body">
+                        <h3>Email Support</h3>
+                        <p>Send us a detailed description of your issue and we'll do our best to help. The more detail you include — your device, macOS version, and steps to reproduce — the faster we can assist.</p>
+                        <a class="email-link" href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a>
+                        <div class="response-badge">Responses within 48 hours</div>
+                    </div>
+                </div>
+
+                <!-- Self-help resources -->
+                <h2>Self-Help Resources</h2>
+                <p>Many common issues can be resolved quickly using the guides below.</p>
+                <div class="selfhelp-grid">
+                    <a href="troubleshooting.html" class="selfhelp-card">
+                        <h3>Troubleshooting Guide</h3>
+                        <p>Step-by-step solutions for the most common issues, including sync problems, missing clipboard history, and permission errors.</p>
+                        <span class="card-arrow">View guide &rarr;</span>
+                    </a>
+                    <a href="crash-reports.html" class="selfhelp-card">
+                        <h3>Submit a Crash Report</h3>
+                        <p>Experiencing crashes? Submit a crash report so we can investigate and push a fix as quickly as possible.</p>
+                        <span class="card-arrow">Submit report &rarr;</span>
+                    </a>
+                </div>
+
+                <!-- Common questions -->
+                <h2>Common Questions</h2>
+
+                <div class="faq-item">
+                    <h3>Why isn't Awesome Copy syncing between my devices?</h3>
+                    <p>Sync requires iCloud Drive to be enabled on all your devices and that you are signed into the same Apple ID. Check that iCloud Drive is turned on in System Settings &rarr; Apple ID &rarr; iCloud. If the issue persists, see the <a href="troubleshooting.html">Troubleshooting Guide</a>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I restore my subscription after reinstalling?</h3>
+                    <p>Open Awesome Copy, go to Settings, and tap or click <strong>Restore Purchases</strong>. Make sure you are signed into the same Apple ID used to purchase the subscription. If your subscription does not restore, contact us at <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a>.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Awesome Copy isn't capturing clipboard items — why?</h3>
+                    <p>On macOS, Awesome Copy requires Accessibility permissions to monitor the clipboard. Go to <strong>System Settings &rarr; Privacy &amp; Security &rarr; Accessibility</strong> and make sure Awesome Copy is enabled. You may need to remove and re-add it if it was recently updated.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I cancel my subscription?</h3>
+                    <p>Subscriptions are managed by Apple. To cancel, open the <strong>App Store</strong> on your device, tap your profile picture, go to <strong>Subscriptions</strong>, and select Awesome Copy. From there you can cancel or manage your plan.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is my clipboard data private?</h3>
+                    <p>Yes. All clipboard data is stored locally on your device and synced privately via iCloud. We never have access to your clipboard contents. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>I found a bug — how do I report it?</h3>
+                    <p>Please use our <a href="crash-reports.html">crash report form</a> or send an email to <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a> with a description of the issue, your device model, and macOS/iOS version. Screenshots or screen recordings are very helpful.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="images/minimal-framed.png" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/App icon.png" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="release-notes.html">Release Notes</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Service</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="crash-reports.html">Submit Crash Report</a>
+                        <a href="troubleshooting.html">Troubleshooting</a>
+                        <a href="support.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter/X">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Reddit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Mastodon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.545c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054c1.517.363 3.072.546 4.632.546.376 0 .75 0 1.125-.01 1.57-.044 3.224-.124 4.768-.422.038-.008.077-.015.11-.024 2.435-.464 4.753-1.92 4.989-5.604.008-.145.03-1.52.03-1.67.002-.512.167-3.63-.024-5.545zm-3.748 9.195h-2.561V8.29c0-1.309-.55-1.976-1.67-1.976-1.23 0-1.846.79-1.846 2.35v3.403h-2.546V8.663c0-1.56-.617-2.35-1.848-2.35-1.112 0-1.668.668-1.67 1.977v6.218H4.822V8.102c0-1.31.337-2.35 1.011-3.12.696-.77 1.608-1.164 2.74-1.164 1.311 0 2.302.5 2.962 1.498l.638 1.06.638-1.06c.66-.999 1.65-1.498 2.96-1.498 1.13 0 2.043.395 2.74 1.164.675.77 1.012 1.81 1.012 3.12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
