@@ -176,6 +176,12 @@ ul, ol {
     color: var(--color-text);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
 .nav-cta {
     background: var(--color-primary);
     color: white !important;
@@ -189,6 +195,17 @@ ul, ol {
 .nav-cta:hover {
     background: var(--color-primary-dark);
     transform: scale(1.02);
+}
+
+.nav-cta-ghost {
+    background: transparent;
+    color: var(--color-text) !important;
+    border: 1.5px solid var(--color-border);
+}
+
+.nav-cta-ghost:hover {
+    background: var(--color-surface, rgba(255,255,255,0.05));
+    border-color: var(--color-primary);
 }
 
 .nav-mobile-toggle {
@@ -1813,6 +1830,10 @@ ul, ol {
     }
 
     .nav-cta {
+        display: none;
+    }
+
+    .nav-actions {
         display: none;
     }
 
