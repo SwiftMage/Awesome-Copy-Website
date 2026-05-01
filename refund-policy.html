@@ -12,69 +12,77 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - Awesome Copy</title>
-    <meta name="description" content="Awesome Copy is $7.99 — a one-time purchase with a 7-day free trial. No subscription. All features. Free lifetime updates.">
-    <link rel="canonical" href="https://awesomecopy.app/pricing.html">
+    <title>Refund Policy - Awesome Copy</title>
+    <meta name="description" content="Refund policy for direct purchases of Awesome Copy. App Store purchases are handled by Apple.">
+    <link rel="canonical" href="https://awesomecopy.app/refund-policy.html">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="images/App icon.png">
     <style>
-        .pricing-page {
+        .legal-page {
             padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
             min-height: 100vh;
         }
-        .pricing-page-header {
-            text-align: center;
-            margin-bottom: var(--spacing-4xl);
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .pricing-page-header h1 {
+        .legal-content h1 {
             font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
             font-weight: 700;
             margin-bottom: var(--spacing-sm);
             letter-spacing: -0.02em;
         }
-        .pricing-page-header p {
+        .legal-content .last-updated {
             color: var(--color-text-secondary);
-            font-size: var(--font-size-lg);
-            line-height: 1.6;
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-3xl);
         }
-
-        .pricing-page-faq {
-            max-width: 640px;
-            margin: var(--spacing-5xl) auto 0;
-        }
-        .pricing-page-faq h2 {
-            font-size: var(--font-size-2xl);
-            font-weight: 700;
-            margin-bottom: var(--spacing-2xl);
-            letter-spacing: -0.01em;
-        }
-        .faq-item {
-            border-top: 1px solid var(--color-border, rgba(255,255,255,0.1));
-            padding: var(--spacing-lg) 0;
-        }
-        .faq-item:last-child {
-            border-bottom: 1px solid var(--color-border, rgba(255,255,255,0.1));
-        }
-        .faq-item h3 {
-            font-size: var(--font-size-base);
+        .legal-content h2 {
+            font-size: var(--font-size-xl);
             font-weight: 600;
+            margin-top: var(--spacing-2xl);
+            margin-bottom: var(--spacing-md);
             color: var(--color-text);
-            margin-bottom: var(--spacing-sm);
         }
-        .faq-item p {
+        .legal-content p {
             font-size: var(--font-size-base);
             line-height: 1.7;
             color: var(--color-text-secondary);
-            margin-bottom: 0;
+            margin-bottom: var(--spacing-lg);
         }
-        .faq-item a {
+        .legal-content ul {
+            margin: 0 0 var(--spacing-lg) var(--spacing-xl);
+            padding: 0;
+        }
+        .legal-content ul li {
+            font-size: var(--font-size-base);
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+        .legal-content strong {
+            color: var(--color-text);
+        }
+        .legal-content a {
             color: var(--color-primary);
         }
-        .faq-item a:hover {
+        .legal-content a:hover {
             text-decoration: underline;
+        }
+        .scope-notice {
+            background: var(--color-surface, rgba(255,255,255,0.05));
+            border: 1px solid var(--color-border, rgba(255,255,255,0.12));
+            border-left: 3px solid var(--color-primary);
+            border-radius: 10px;
+            padding: var(--spacing-lg) var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        .scope-notice p {
+            margin-bottom: 0;
+            font-size: var(--font-size-sm);
         }
     </style>
 </head>
@@ -101,76 +109,37 @@
         </div>
     </nav>
 
-    <!-- Pricing Content -->
-    <section class="pricing-page">
+    <!-- Refund Policy Content -->
+    <section class="legal-page">
         <div class="container">
-            <div class="pricing-page-header">
-                <h1>Simple, transparent pricing.</h1>
-                <p>Try free for 7 days. One price. All features. Forever yours.</p>
-            </div>
+            <div class="legal-content">
+                <h1>Refund Policy</h1>
+                <p class="last-updated">Last Updated: April 2026</p>
 
-            <div class="pricing-cards pricing-single">
-                <div class="pricing-card popular">
-                    <span class="trial-badge">7-Day Free Trial</span>
-                    <h3 class="pricing-tier">Awesome Copy</h3>
-                    <div class="pricing-price">
-                        <span class="price-amount">$7.99</span>
-                        <span class="price-period">one-time purchase</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>7-day free trial included</li>
-                        <li>Unlimited clipboard items</li>
-                        <li>iCloud sync across devices</li>
-                        <li>Mac, iPhone, and iPad</li>
-                        <li>Advanced search &amp; categories</li>
-                        <li>App exclusion</li>
-                        <li>Multi copy/paste</li>
-                        <li>Preview &amp; edit</li>
-                        <li>Siri shortcuts</li>
-                        <li>iOS keyboard extension</li>
-                        <li>Free lifetime updates</li>
-                    </ul>
-                    <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="btn btn-primary">Start Free Trial</a>
-                </div>
-            </div>
-
-            <div class="pricing-page-faq">
-                <h2>Common questions</h2>
-
-                <div class="faq-item">
-                    <h3>Do I need a subscription?</h3>
-                    <p>No subscription required. Awesome Copy is a one-time purchase of $7.99 with a 7-day free trial included. Pay once and enjoy all features forever with free lifetime updates.</p>
+                <div class="scope-notice">
+                    <p><strong>Scope:</strong> This policy applies only to purchases of Awesome Copy made directly through us, outside of the Apple App Store. If you purchased through the App Store, refunds are handled entirely by Apple — please visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> to request one.</p>
                 </div>
 
-                <div class="faq-item">
-                    <h3>What happens after the free trial?</h3>
-                    <p>After the 7-day trial, you'll be prompted to purchase Awesome Copy for $7.99. If you don't purchase, the app will stop saving new clipboard items, but you won't lose any data already captured.</p>
-                </div>
+                <h2>7-Day Refund Window</h2>
+                <p>If you purchased Awesome Copy directly from us and are not satisfied, you may request a full refund within <strong>7 days</strong> of your purchase date — no questions asked. We want you to feel confident trying the app, and we'd rather issue a refund than have you feel stuck with something that isn't working for you.</p>
 
-                <div class="faq-item">
-                    <h3>Do you offer family sharing?</h3>
-                    <p>Yes, Awesome Copy supports Apple Family Sharing. One purchase can be shared with up to 5 family members.</p>
-                </div>
+                <h2>How to Request a Refund</h2>
+                <p>To request a refund, email us at <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a> with the subject line <strong>"Refund Request"</strong> and include:</p>
+                <ul>
+                    <li>The email address used at the time of purchase</li>
+                    <li>Your order number or purchase confirmation (if available)</li>
+                    <li>A brief description of the issue, if you'd like to share one</li>
+                </ul>
+                <p>We'll process your refund within 5 business days of receiving your request. Refunds are returned to the original payment method.</p>
 
-                <div class="faq-item">
-                    <h3>Does this use iCloud?</h3>
-                    <p>Yes. Awesome Copy uses iCloud to securely sync your clipboard history across all your Apple devices. Your data stays in your iCloud account and is encrypted end-to-end.</p>
-                </div>
+                <h2>After the 7-Day Window</h2>
+                <p>Refund requests made more than 7 days after the purchase date are evaluated on a case-by-case basis. If you're experiencing a technical issue, please reach out — we'll do our best to resolve it before treating the request as a refund.</p>
 
-                <div class="faq-item">
-                    <h3>What devices are supported?</h3>
-                    <p>Awesome Copy works on Mac (macOS 12+), iPhone (iOS 15+), and iPad (iPadOS 15+). All devices sync seamlessly through iCloud.</p>
-                </div>
+                <h2>App Store Purchases</h2>
+                <p>Purchases made through the Apple App Store are governed by Apple's own refund policy and are outside our control. To request an App Store refund, visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> and sign in with the Apple ID used for the purchase.</p>
 
-                <div class="faq-item">
-                    <h3>How do I restore my purchase after reinstalling?</h3>
-                    <p>Open Awesome Copy, go to Settings, and tap or click <strong>Restore Purchases</strong>. Make sure you are signed into the same Apple ID used to purchase. If it doesn't restore, contact us at <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a>.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Is my clipboard data secure?</h3>
-                    <p>Absolutely. Your clipboard data is stored locally on your device and synced through your personal iCloud account. We never have access to your data, and you can exclude sensitive apps from being tracked. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
-                </div>
+                <h2>Contact</h2>
+                <p>If you have any questions about this policy, reach out at <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a> or visit our <a href="support.html">Support page</a>.</p>
             </div>
         </div>
     </section>
