@@ -76,6 +76,29 @@
         .faq-item a:hover {
             text-decoration: underline;
         }
+        .purchase-divider {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        .purchase-divider::before,
+        .purchase-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--color-border, rgba(255,255,255,0.1));
+        }
+        .direct-license-note {
+            text-align: center;
+            font-size: var(--font-size-xs, 0.75rem);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-sm);
+            margin-bottom: 0;
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
@@ -131,6 +154,9 @@
                         <li>Free lifetime updates</li>
                     </ul>
                     <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="btn btn-primary">Start Free Trial</a>
+                    <div class="purchase-divider"><span>or</span></div>
+                    <a href="https://buy.polar.sh/polar_cl_DlDGyXwFNiapo0VkMWWiNCLXhDqgYiErfs1td44paPm" class="btn btn-secondary" data-polar-checkout data-polar-checkout-theme="dark">Buy Direct License — $7.99</a>
+                    <p class="direct-license-note">Includes license key &middot; 14-day refund guarantee</p>
                 </div>
             </div>
 
@@ -234,5 +260,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
 </body>
 </html>
