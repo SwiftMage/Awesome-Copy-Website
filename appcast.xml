@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>AwesomeCopy-6.0.2-347</title>
+        <item>
+            <title>6.0.2</title>
+            <pubDate>Sun, 03 May 2026 01:51:28 -0400</pubDate>
+            <sparkle:version>347</sparkle:version>
+            <sparkle:shortVersionString>6.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.0.2-347.dmg" sparkle:edSignature="4SpoG8jbErqdPFnJLEoM7IC2Bj01lftQF4wTf+LDWdJwQpEUi0+HFKPJg/QqBw+vmcJB2MsK6QJV6Vf0P8vuCw==" length="21876172" type="application/octet-stream"/>
+        </item>
+    </channel>
+</rss>
