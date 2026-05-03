@@ -3,23 +3,6 @@
  * Handles animations, interactions, and dynamic behavior
  */
 
-// TEMPORARY: disable all download and purchase links site-wide
-// Remove this block to re-enable
-(function () {
-    var patterns = ['apps.apple.com', 'buy.polar.sh', 'polar.sh', 'supabase.co/storage'];
-    document.querySelectorAll('a').forEach(function (link) {
-        var href = link.getAttribute('href') || '';
-        if (patterns.some(function (p) { return href.indexOf(p) !== -1; })) {
-            link.setAttribute('href', '#');
-            link.removeAttribute('data-polar-checkout');
-            link.removeAttribute('data-polar-checkout-theme');
-            link.removeAttribute('download');
-            link.addEventListener('click', function (e) { e.preventDefault(); });
-            link.style.opacity = '0.4';
-            link.style.cursor = 'not-allowed';
-        }
-    });
-})();
 
 // TODO: Re-enable scroll-to-top for production
 // Disable browser scroll restoration and scroll to top immediately
