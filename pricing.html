@@ -22,12 +22,16 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
         .pricing-page {
-            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            padding: calc(var(--nav-height) + var(--spacing-3xl)) 0 var(--spacing-5xl);
             min-height: 100vh;
+            background:
+                radial-gradient(circle at top left, rgba(0, 122, 255, 0.08), transparent 32rem),
+                linear-gradient(180deg, var(--color-background-tertiary) 0%, var(--color-background) 34%);
         }
         .pricing-page-header {
             text-align: center;
-            margin-bottom: var(--spacing-4xl);
+            max-width: 760px;
+            margin: 0 auto var(--spacing-2xl);
         }
         .pricing-page-header h1 {
             font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
@@ -39,6 +43,60 @@
             color: var(--color-text-secondary);
             font-size: var(--font-size-lg);
             line-height: 1.6;
+        }
+        .pricing-hero-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            margin: 0 auto var(--spacing-lg);
+            box-shadow: var(--shadow-md);
+        }
+        .pricing-price-lockup {
+            display: inline-flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin: var(--spacing-xl) 0 var(--spacing-md);
+        }
+        .pricing-price-lockup .price {
+            font-size: clamp(3.25rem, 8vw, 5rem);
+            line-height: 0.95;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+        .pricing-price-lockup .terms {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+        }
+        .pricing-facts {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1px;
+            max-width: 760px;
+            margin: 0 auto var(--spacing-3xl);
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            background: var(--color-border);
+            box-shadow: var(--shadow-sm);
+        }
+        .pricing-fact {
+            background: rgba(255, 255, 255, 0.88);
+            padding: var(--spacing-md);
+            text-align: center;
+        }
+        .pricing-fact strong {
+            display: block;
+            color: var(--color-text);
+            font-size: var(--font-size-sm);
+            font-weight: 700;
+        }
+        .pricing-fact span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-xs);
+            margin-top: 2px;
         }
 
         .pricing-page-faq {
@@ -103,7 +161,7 @@
         /* ---- Version Comparison ---- */
         .version-comparison {
             max-width: 860px;
-            margin: var(--spacing-5xl) auto 0;
+            margin: 0 auto;
         }
         .version-comparison-header {
             text-align: center;
@@ -123,10 +181,11 @@
             display: flex;
             align-items: flex-start;
             gap: var(--spacing-md);
-            background: #FFF8ED;
-            border: 1px solid #F5C842;
+            background: rgba(255, 248, 237, 0.72);
+            border: 1px solid rgba(245, 200, 66, 0.45);
             border-radius: var(--radius-md);
             padding: var(--spacing-md) var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
             margin-bottom: var(--spacing-2xl);
         }
         .comparison-notice svg {
@@ -147,14 +206,35 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-lg);
+            align-items: stretch;
         }
         .comparison-card {
+            position: relative;
             background: var(--color-background-secondary);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-xl);
             padding: var(--spacing-xl);
             display: flex;
             flex-direction: column;
+            box-shadow: var(--shadow-sm);
+        }
+        .comparison-card.is-recommended {
+            background: var(--color-background);
+            border-color: rgba(0, 122, 255, 0.42);
+            box-shadow: 0 18px 60px rgba(0, 122, 255, 0.13);
+        }
+        .recommended-ribbon {
+            position: absolute;
+            top: -13px;
+            right: var(--spacing-xl);
+            background: var(--color-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            padding: 5px 12px;
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
         .comparison-card .comparison-features-list {
             flex: 1;
@@ -174,10 +254,18 @@
         .comparison-card-header {
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
+            justify-content: space-between;
+            gap: var(--spacing-md);
             margin-bottom: var(--spacing-lg);
             padding-bottom: var(--spacing-lg);
             border-bottom: 1px solid var(--color-border);
+        }
+        .comparison-card-intent {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            margin-top: var(--spacing-sm);
         }
         .comparison-card-badge {
             display: inline-flex;
@@ -202,10 +290,28 @@
             font-size: var(--font-size-lg);
             font-weight: 700;
             margin-bottom: 4px;
+            margin-top: var(--spacing-sm);
         }
         .comparison-card-subtitle {
             font-size: var(--font-size-sm);
             color: var(--color-text-secondary);
+        }
+        .comparison-card-price {
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .comparison-card-price strong {
+            display: block;
+            font-size: var(--font-size-3xl);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+        .comparison-card-price span {
+            display: block;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            margin-top: 4px;
         }
         .comparison-features-list {
             list-style: none;
@@ -238,8 +344,31 @@
             color: var(--color-text-secondary);
         }
         @media (max-width: 640px) {
+            .pricing-page {
+                padding-top: calc(var(--nav-height) + var(--spacing-2xl));
+            }
+            .pricing-price-lockup {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-xs);
+            }
+            .pricing-facts {
+                grid-template-columns: 1fr 1fr;
+            }
             .comparison-grid {
                 grid-template-columns: 1fr;
+            }
+            .comparison-card-header {
+                align-items: flex-start;
+            }
+        }
+        @media (max-width: 420px) {
+            .comparison-card-header {
+                flex-direction: column;
+            }
+            .comparison-card-price {
+                text-align: left;
             }
         }
     </style>
@@ -271,8 +400,32 @@
     <section class="pricing-page">
         <div class="container">
             <div class="pricing-page-header">
+                <img src="images/App icon.png" alt="Awesome Copy" class="pricing-hero-icon">
                 <h1>Simple, transparent pricing.</h1>
                 <p>One price. All features. Forever yours. Two ways to buy.</p>
+                <div class="pricing-price-lockup" aria-label="$7.99 one-time purchase">
+                    <span class="price">$7.99</span>
+                    <span class="terms">one-time purchase</span>
+                </div>
+            </div>
+
+            <div class="pricing-facts" aria-label="Pricing highlights">
+                <div class="pricing-fact">
+                    <strong>No subscription</strong>
+                    <span>Pay once</span>
+                </div>
+                <div class="pricing-fact">
+                    <strong>7-day trial</strong>
+                    <span>Try before buying</span>
+                </div>
+                <div class="pricing-fact">
+                    <strong>All features</strong>
+                    <span>Included</span>
+                </div>
+                <div class="pricing-fact">
+                    <strong>Updates</strong>
+                    <span>Included</span>
+                </div>
             </div>
 
             <!-- Version Comparison -->
@@ -293,12 +446,18 @@
 
                 <div class="comparison-grid">
                     <!-- Direct Download -->
-                    <div class="comparison-card">
+                    <div class="comparison-card is-recommended">
+                        <span class="recommended-ribbon">Recommended</span>
                         <div class="comparison-card-header">
                             <div>
                                 <span class="comparison-card-badge badge-direct">Direct Download</span>
                                 <h3>DMG License</h3>
                                 <span class="comparison-card-subtitle">Sold &amp; fulfilled by Polar</span>
+                                <span class="comparison-card-intent">Best for most Mac users</span>
+                            </div>
+                            <div class="comparison-card-price">
+                                <strong>$7.99</strong>
+                                <span>one-time</span>
                             </div>
                         </div>
                         <ul class="comparison-features-list">
@@ -347,6 +506,11 @@
                                 <span class="comparison-card-badge badge-appstore">App Store</span>
                                 <h3>App Store Purchase</h3>
                                 <span class="comparison-card-subtitle">Sold &amp; fulfilled by Apple</span>
+                                <span class="comparison-card-intent">Best if you prefer Apple billing</span>
+                            </div>
+                            <div class="comparison-card-price">
+                                <strong>$7.99</strong>
+                                <span>one-time</span>
                             </div>
                         </div>
                         <ul class="comparison-features-list">
