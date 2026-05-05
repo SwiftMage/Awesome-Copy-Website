@@ -5,7 +5,7 @@
 
 // TEMPORARY: disable download and purchase links
 (function () {
-    var patterns = ['supabase.co/storage', 'buy.polar.sh', 'polar.sh'];
+    var patterns = ['buy.polar.sh', 'polar.sh'];
     document.querySelectorAll('a').forEach(function (link) {
         var href = link.getAttribute('href') || '';
         if (patterns.some(function (p) { return href.indexOf(p) !== -1; })) {

@@ -99,6 +99,149 @@
             margin-bottom: 0;
             opacity: 0.7;
         }
+
+        /* ---- Version Comparison ---- */
+        .version-comparison {
+            max-width: 860px;
+            margin: var(--spacing-5xl) auto 0;
+        }
+        .version-comparison-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+        .version-comparison-header h2 {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-bottom: var(--spacing-sm);
+        }
+        .version-comparison-header p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-base);
+        }
+        .comparison-notice {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            background: #FFF8ED;
+            border: 1px solid #F5C842;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+        .comparison-notice svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #C48A00;
+        }
+        .comparison-notice p {
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+            color: #5C4500;
+            margin: 0;
+        }
+        .comparison-notice strong {
+            font-weight: 600;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+        .comparison-card {
+            background: var(--color-background-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+        }
+        .comparison-card .comparison-features-list {
+            flex: 1;
+        }
+        .comparison-card-footer {
+            margin-top: var(--spacing-xl);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--color-border);
+        }
+        .comparison-card-footer .btn {
+            width: 100%;
+            text-align: center;
+        }
+        .comparison-card-footer .direct-license-note {
+            margin-top: var(--spacing-sm);
+        }
+        .comparison-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .comparison-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+        }
+        .badge-direct {
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--color-primary);
+        }
+        .badge-appstore {
+            background: rgba(52, 199, 89, 0.12);
+            color: #1A8C3A;
+        }
+        .comparison-card h3 {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .comparison-card-subtitle {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+        .comparison-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+        .comparison-features-list li {
+            display: flex;
+            gap: 10px;
+            font-size: var(--font-size-sm);
+            line-height: 1.55;
+            color: var(--color-text);
+        }
+        .comparison-features-list li .cf-icon {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+        }
+        .comparison-features-list li .cf-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .comparison-features-list li .cf-desc {
+            display: block;
+            color: var(--color-text-secondary);
+        }
+        @media (max-width: 640px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -132,78 +275,118 @@
                 <p>One price. All features. Forever yours. Two ways to buy.</p>
             </div>
 
-            <div class="pricing-cards pricing-single">
-                <div class="pricing-card popular">
-                    <h3 class="pricing-tier">Awesome Copy</h3>
-                    <div class="pricing-price">
-                        <span class="price-amount">$7.99</span>
-                        <span class="price-period">one-time purchase</span>
+            <!-- Version Comparison -->
+            <div class="version-comparison">
+                <div class="version-comparison-header">
+                    <h2>Direct download vs. App Store</h2>
+                    <p>Both versions are $7.99 and share the same core feature set. Here's how they differ.</p>
+                </div>
+
+                <div class="comparison-notice">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <p><strong>Purchases are not transferable between versions.</strong> A direct download license cannot be converted to an App Store purchase, and vice versa. Choose the version that best fits your needs before buying.</p>
+                </div>
+
+                <div class="comparison-grid">
+                    <!-- Direct Download -->
+                    <div class="comparison-card">
+                        <div class="comparison-card-header">
+                            <div>
+                                <span class="comparison-card-badge badge-direct">Direct Download</span>
+                                <h3>DMG License</h3>
+                                <span class="comparison-card-subtitle">Sold &amp; fulfilled by Polar</span>
+                            </div>
+                        </div>
+                        <ul class="comparison-features-list">
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Expanded feature set</span>
+                                    <span class="cf-desc">Runs outside of Apple's sandbox, enabling advanced integrations and capabilities that App Store policies restrict.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Faster updates</span>
+                                    <span class="cf-desc">New features and fixes ship directly to you without waiting on the App Store review process.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Payments &amp; refunds via Polar</span>
+                                    <span class="cf-desc">All billing is handled through Polar with a 14-day money-back guarantee.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">License key via email</span>
+                                    <span class="cf-desc">Your license supports up to 3 activations — covering a new Mac, an OS reinstall, or any other device switch.</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="comparison-card-footer">
+                            <a href="https://buy.polar.sh/polar_cl_DlDGyXwFNiapo0VkMWWiNCLXhDqgYiErfs1td44paPm" class="btn btn-primary" data-polar-checkout data-polar-checkout-theme="light">Buy Direct — $7.99</a>
+                            <p class="direct-license-note">Mac only &middot; Includes license key &middot; 14-day refund guarantee</p>
+                            <div class="purchase-divider"><span>or try it free first</span></div>
+                            <a href="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.0.2-347.dmg" class="btn btn-ghost" download>Download for Mac</a>
+                            <p class="direct-license-note">Free trial included &middot; Purchase in-app when ready</p>
+                        </div>
                     </div>
-                    <ul class="pricing-features">
-                        <li>Unlimited clipboard items</li>
-                        <li>iCloud sync across devices</li>
-                        <li>Mac, iPhone, and iPad</li>
-                        <li>Advanced search &amp; categories</li>
-                        <li>App exclusion</li>
-                        <li>Multi copy/paste</li>
-                        <li>Preview &amp; edit</li>
-                        <li>Siri shortcuts</li>
-                        <li>iOS keyboard extension</li>
-                        <li>Free lifetime updates</li>
-                    </ul>
-                    <a href="https://buy.polar.sh/polar_cl_DlDGyXwFNiapo0VkMWWiNCLXhDqgYiErfs1td44paPm" class="btn btn-primary" data-polar-checkout data-polar-checkout-theme="light">Buy Direct — $7.99</a>
-                    <p class="direct-license-note">Mac only &middot; Includes license key &middot; 14-day refund guarantee</p>
-                    <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="btn btn-secondary">Buy on the App Store</a>
-                    <p class="direct-license-note">Mac, iPhone &amp; iPad &middot; Managed via Apple ID</p>
-                    <div class="purchase-divider"><span>or try it free first</span></div>
-                    <a href="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.0.2-347.dmg" class="btn btn-ghost" download>Download for Mac</a>
-                    <p class="direct-license-note">Free trial included &middot; Purchase in-app when ready</p>
+
+                    <!-- App Store -->
+                    <div class="comparison-card">
+                        <div class="comparison-card-header">
+                            <div>
+                                <span class="comparison-card-badge badge-appstore">App Store</span>
+                                <h3>App Store Purchase</h3>
+                                <span class="comparison-card-subtitle">Sold &amp; fulfilled by Apple</span>
+                            </div>
+                        </div>
+                        <ul class="comparison-features-list">
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#1A8C3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Apple-reviewed &amp; approved</span>
+                                    <span class="cf-desc">Every release is reviewed by Apple, providing an added layer of assurance around security and stability.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#1A8C3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Sandboxed environment</span>
+                                    <span class="cf-desc">Enforces Apple's strict security and privacy guidelines at the OS level, limiting app access to system resources.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#1A8C3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Payments &amp; refunds via Apple</span>
+                                    <span class="cf-desc">Billing, receipts, and refund requests are handled entirely through Apple and your existing payment method on file.</span>
+                                </span>
+                            </li>
+                            <li>
+                                <svg class="cf-icon" viewBox="0 0 24 24" fill="none" stroke="#1A8C3A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span>
+                                    <span class="cf-label">Tied to your Apple ID</span>
+                                    <span class="cf-desc">Install on any compatible Mac, iPhone, or iPad signed into your Apple ID — no activation limit. Supports Family Sharing.</span>
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="comparison-card-footer">
+                            <a href="https://apps.apple.com/us/app/awesome-copy-clipboard-history/id6745275375?mt=12" class="btn btn-secondary">Buy on the App Store</a>
+                            <p class="direct-license-note">Mac, iPhone &amp; iPad &middot; Managed via Apple ID</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="pricing-page-faq">
-                <h2>Common questions</h2>
-
-                <div class="faq-item">
-                    <h3>Can I try before I buy?</h3>
-                    <p>Yes. Download the Mac app directly and the free trial starts automatically. When it ends, you can purchase a license in-app or buy upfront on this page using the App Store or direct options above.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Do I need a subscription?</h3>
-                    <p>No subscription required. Awesome Copy is a one-time purchase of $7.99. Pay once and enjoy all features forever with free lifetime updates.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>What's the difference between App Store and direct?</h3>
-                    <p>The App Store version works on Mac, iPhone, and iPad and is managed through your Apple ID. The direct purchase gives you a license key for Mac and is sold through Polar — it comes with a 14-day refund guarantee and is a good option if you prefer buying outside the App Store.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Do you offer family sharing?</h3>
-                    <p>Yes, Awesome Copy supports Apple Family Sharing. One purchase can be shared with up to 5 family members.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Does this use iCloud?</h3>
-                    <p>Yes. Awesome Copy uses iCloud to securely sync your clipboard history across all your Apple devices. Your data stays in your iCloud account and is encrypted end-to-end.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>What devices are supported?</h3>
-                    <p>Awesome Copy works on Mac (macOS 12+), iPhone (iOS 15+), and iPad (iPadOS 15+). All devices sync seamlessly through iCloud.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>How do I restore my purchase after reinstalling?</h3>
-                    <p>Open Awesome Copy, go to Settings, and tap or click <strong>Restore Purchases</strong>. Make sure you are signed into the same Apple ID used to purchase. If it doesn't restore, contact us at <a href="mailto:awesomecopyapp@gmail.com">awesomecopyapp@gmail.com</a>.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3>Is my clipboard data secure?</h3>
-                    <p>Absolutely. Your clipboard data is stored locally on your device and synced through your personal iCloud account. We never have access to your data, and you can exclude sensitive apps from being tracked. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
-                </div>
-            </div>
         </div>
     </section>
 
