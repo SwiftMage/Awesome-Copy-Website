@@ -3,22 +3,6 @@
  * Handles animations, interactions, and dynamic behavior
  */
 
-// TEMPORARY: disable download and purchase links
-(function () {
-    var patterns = ['buy.polar.sh', 'polar.sh'];
-    document.querySelectorAll('a').forEach(function (link) {
-        var href = link.getAttribute('href') || '';
-        if (patterns.some(function (p) { return href.indexOf(p) !== -1; })) {
-            link.setAttribute('href', '#');
-            link.removeAttribute('data-polar-checkout');
-            link.removeAttribute('data-polar-checkout-theme');
-            link.removeAttribute('download');
-            link.addEventListener('click', function (e) { e.preventDefault(); });
-            link.style.opacity = '0.4';
-            link.style.cursor = 'not-allowed';
-        }
-    });
-})();
 
 
 // TODO: Re-enable scroll-to-top for production
