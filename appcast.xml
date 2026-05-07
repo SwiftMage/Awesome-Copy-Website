@@ -9,7 +9,7 @@
             <sparkle:shortVersionString>6.1b1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:channel>beta</sparkle:channel>
-            <enclosure url="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1b1-351.dmg" sparkle:edSignature="eZD5jtVOGgPQekONvmyN6jOVId3yiKhG3AhE16RF7N50kArE/OtdSoOZ4aLXR/ATP8UNirQghX0SwPsFmgJBDQ==" length="22177328" type="application/octet-stream"/>
+            <enclosure url="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1b1-351.dmg" sparkle:edSignature="78I35yZWXpkQxQ0vEcoco1LCzvJrlBb13ysvmitawgtdyLIiWGvT/bZ8XFJHhumauTGVzwnzNxonXfdmld3mBQ==" length="22187055" type="application/octet-stream"/>
         </item>
         <item>
             <title>6.0.2</title>
