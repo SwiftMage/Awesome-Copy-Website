@@ -8,6 +8,7 @@
             <sparkle:version>355</sparkle:version>
             <sparkle:shortVersionString>6.1b2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
             <enclosure url="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1b2-355.dmg" sparkle:edSignature="IsIaVrdW0kMvYGEiqEidbgCWdGF62sR9FyjyYKZfeWMr8nHO8pHQFut+V67HRR296NBa3m4gWGPSI9L1yPgGCg==" length="22269284" type="application/octet-stream" />
         </item>
         <item>
