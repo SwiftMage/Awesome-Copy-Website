@@ -3,6 +3,14 @@
     <channel>
         <title>Awesome Copy</title>
         <item>
+            <title>6.1b3</title>
+            <pubDate>Fri, 08 May 2026 11:54:43 -0400</pubDate>
+            <sparkle:version>356</sparkle:version>
+            <sparkle:shortVersionString>6.1b3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1b3-356.dmg" sparkle:edSignature="qJEzmUIat+hd9xRxigNq6i8+T8oMJ++KQhMIqMU/rCY1yukhpLgmEJFXucCNcdVKwUEbfhs+aBypfrWIrJxVBQ==" length="22273315" type="application/octet-stream" />
+        </item>
+        <item>
             <title>6.1b2</title>
             <pubDate>Fri, 08 May 2026 09:02:10 -0400</pubDate>
             <sparkle:version>355</sparkle:version>
