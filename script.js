@@ -4,10 +4,10 @@
  */
 
 // BEGIN AWESOME_COPY_DIRECT_RELEASE
-const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.0.2-347.dmg";
-const AWESOME_COPY_DIRECT_VERSION = "6.0.2";
-const AWESOME_COPY_DIRECT_BUILD = "347";
-const AWESOME_COPY_DIRECT_SIZE = "20.9 MB";
+const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1b2-355.dmg";
+const AWESOME_COPY_DIRECT_VERSION = "6.1b2";
+const AWESOME_COPY_DIRECT_BUILD = "355";
+const AWESOME_COPY_DIRECT_SIZE = "21.2 MB";
 // END AWESOME_COPY_DIRECT_RELEASE
 
 
