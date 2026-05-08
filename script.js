@@ -3,6 +3,12 @@
  * Handles animations, interactions, and dynamic behavior
  */
 
+// BEGIN AWESOME_COPY_DIRECT_RELEASE
+const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.0.2-347.dmg";
+const AWESOME_COPY_DIRECT_VERSION = "6.0.2";
+const AWESOME_COPY_DIRECT_BUILD = "347";
+const AWESOME_COPY_DIRECT_SIZE = "20.9 MB";
+// END AWESOME_COPY_DIRECT_RELEASE
 
 
 // TODO: Re-enable scroll-to-top for production
@@ -18,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.scrollTo(0, 0);
 
     // Initialize all components
+    initDirectReleaseMetadata();
     initNavigation();
     initScrollReveal();
     initFAQ();
@@ -26,6 +33,24 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroDeviceReveal();
     initViewsShowcase();
 });
+
+function initDirectReleaseMetadata() {
+    document.querySelectorAll('[data-direct-download-url]').forEach(link => {
+        link.href = AWESOME_COPY_DIRECT_DOWNLOAD_URL;
+    });
+
+    document.querySelectorAll('[data-direct-version]').forEach(element => {
+        element.textContent = `Version ${AWESOME_COPY_DIRECT_VERSION}`;
+    });
+
+    document.querySelectorAll('[data-direct-build]').forEach(element => {
+        element.textContent = `Build ${AWESOME_COPY_DIRECT_BUILD}`;
+    });
+
+    document.querySelectorAll('[data-direct-size]').forEach(element => {
+        element.textContent = AWESOME_COPY_DIRECT_SIZE;
+    });
+}
 
 /**
  * Navigation Toggle (Mobile)
