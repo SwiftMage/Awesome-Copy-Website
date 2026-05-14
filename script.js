@@ -4,7 +4,7 @@
  */
 
 // BEGIN AWESOME_COPY_DIRECT_RELEASE
-const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://wyddjiqfiabegjasyksr.supabase.co/storage/v1/object/public/DMG/releases/AwesomeCopy-6.1-357.dmg";
+const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://github.com/kindparkllc/Awesome-Copy/releases/download/v6.1/AwesomeCopy-6.1-357.dmg";
 const AWESOME_COPY_DIRECT_VERSION = "6.1";
 const AWESOME_COPY_DIRECT_BUILD = "357";
 const AWESOME_COPY_DIRECT_SIZE = "21.2 MB";
