@@ -3,6 +3,15 @@
     <channel>
         <title>Awesome Copy</title>
         <item>
+            <title>6.1.2b2</title>
+            <pubDate>Tue, 13 May 2026 00:00:00 -0400</pubDate>
+            <sparkle:version>359</sparkle:version>
+            <sparkle:shortVersionString>6.1.2b2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
+            <enclosure url="https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-6.1.2b2-359.dmg" sparkle:edSignature="R2N6ak+qSZwyPjBP9qlH6pSIINz57fTvolpRw594MY4a3cMk2PquArNQhwaOssBmafhQNs3dbuH9uvpQX+PyBw==" length="22445866" type="application/octet-stream" />
+        </item>
+        <item>
             <title>6.1.2b1</title>
             <pubDate>Thu, 12 May 2026 00:00:00 -0400</pubDate>
             <sparkle:version>358</sparkle:version>
