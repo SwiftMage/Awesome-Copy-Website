@@ -4,10 +4,10 @@
  */
 
 // BEGIN AWESOME_COPY_DIRECT_RELEASE
-const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://github.com/kindparkllc/Awesome-Copy/releases/download/v6.1/AwesomeCopy-6.1-357.dmg";
-const AWESOME_COPY_DIRECT_VERSION = "6.1";
-const AWESOME_COPY_DIRECT_BUILD = "357";
-const AWESOME_COPY_DIRECT_SIZE = "21.2 MB";
+const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://github.com/kindparkllc/Awesome-Copy/releases/download/v6.1.2/AwesomeCopy-6.1.2-367.dmg";
+const AWESOME_COPY_DIRECT_VERSION = "6.1.2";
+const AWESOME_COPY_DIRECT_BUILD = "367";
+const AWESOME_COPY_DIRECT_SIZE = "22.6 MB";
 // END AWESOME_COPY_DIRECT_RELEASE
 
 
