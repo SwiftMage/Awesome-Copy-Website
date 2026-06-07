@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17371664680"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17371664680');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Awesome Copy via Homebrew</title>
+    <meta name="description" content="Install Awesome Copy using Homebrew. Get the stable release or opt into the beta channel.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        .homebrew-page {
+            padding: calc(var(--nav-height) + var(--spacing-4xl)) 0 var(--spacing-5xl);
+            min-height: 100vh;
+        }
+        .homebrew-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .homebrew-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
+            margin: 0 auto var(--spacing-xl);
+            display: block;
+        }
+        .homebrew-content h1 {
+            font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            letter-spacing: -0.02em;
+        }
+        .homebrew-content > p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-lg);
+            line-height: 1.6;
+            margin-bottom: var(--spacing-2xl);
+        }
+        .brew-card {
+            background: var(--color-surface, rgba(0,0,0,0.03));
+            border: 1px solid var(--color-border, rgba(0,0,0,0.08));
+            border-radius: 16px;
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-xl);
+            text-align: left;
+        }
+        .brew-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+        }
+        .brew-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text);
+        }
+        .brew-badge {
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 99px;
+        }
+        .brew-badge-stable {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+        }
+        .brew-badge-beta {
+            background: rgba(0, 122, 255, 0.12);
+            color: #007AFF;
+        }
+        .brew-card p {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.6;
+        }
+        .code-block {
+            background: #1d1d1f;
+            border-radius: 10px;
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-md);
+        }
+        .code-block code {
+            font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, monospace;
+            font-size: var(--font-size-sm);
+            color: #f5f5f7;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .copy-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 6px;
+            color: #f5f5f7;
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+            padding: 4px 10px;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .copy-btn.copied {
+            color: #22c55e;
+        }
+        .brew-divider {
+            border: none;
+            border-top: 1px solid var(--color-border, rgba(0,0,0,0.08));
+            margin: var(--spacing-2xl) 0;
+        }
+        .brew-note {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-xl);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/App icon.webp" alt="Awesome Copy" class="nav-logo-icon">
+                <span>Awesome Copy</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="blog.html">Blog</a>
+            </div>
+            <a href="https://apps.apple.com/us/app/awesome-copy-2/id6761966640?mt=12" class="nav-cta">App Store</a>
+            <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <section class="homebrew-page">
+        <div class="container">
+            <div class="homebrew-content">
+                <img src="images/App icon.webp" alt="Awesome Copy" class="homebrew-icon">
+                <h1>Install via Homebrew</h1>
+                <p>Install Awesome Copy with a single command. Choose the stable release or opt into the beta channel.</p>
+
+                <!-- Stable -->
+                <div class="brew-card">
+                    <div class="brew-card-header">
+                        <span class="brew-card-title">Stable</span>
+                        <span class="brew-badge brew-badge-stable">Recommended</span>
+                    </div>
+                    <p>The latest stable release of Awesome Copy.</p>
+                    <div class="code-block">
+                        <code>brew install kindparkllc/tap/awesome-copy</code>
+                        <button class="copy-btn" onclick="copyCode(this, 'brew install kindparkllc/tap/awesome-copy')">Copy</button>
+                    </div>
+                </div>
+
+                <!-- Beta -->
+                <div class="brew-card">
+                    <div class="brew-card-header">
+                        <span class="brew-card-title">Beta</span>
+                        <span class="brew-badge brew-badge-beta">Beta</span>
+                    </div>
+                    <p>Early access to new features. Beta builds are updated frequently and may contain bugs.</p>
+                    <div class="code-block">
+                        <code>brew install kindparkllc/tap/awesome-copy-beta</code>
+                        <button class="copy-btn" onclick="copyCode(this, 'brew install kindparkllc/tap/awesome-copy-beta')">Copy</button>
+                    </div>
+                </div>
+
+                <hr class="brew-divider">
+
+                <!-- Upgrade -->
+                <div class="brew-card">
+                    <div class="brew-card-header">
+                        <span class="brew-card-title">Upgrading</span>
+                    </div>
+                    <p>To get the latest version after it's already installed:</p>
+                    <div class="code-block">
+                        <code>brew update && brew upgrade kindparkllc/tap/awesome-copy</code>
+                        <button class="copy-btn" onclick="copyCode(this, 'brew update && brew upgrade kindparkllc/tap/awesome-copy')">Copy</button>
+                    </div>
+                    <div class="code-block">
+                        <code>brew update && brew upgrade kindparkllc/tap/awesome-copy-beta</code>
+                        <button class="copy-btn" onclick="copyCode(this, 'brew update && brew upgrade kindparkllc/tap/awesome-copy-beta')">Copy</button>
+                    </div>
+                </div>
+
+                <p class="brew-note">Don't have Homebrew? Install it at <a href="https://brew.sh" target="_blank" rel="noopener">brew.sh</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-bg">
+            <img src="images/minimal-framed.webp" alt="" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/App icon.webp" alt="Awesome Copy" class="footer-logo">
+                    <span class="footer-name">Awesome Copy</span>
+                    <p class="footer-tagline">Copy once. Sync everywhere.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="pricing.html">Pricing</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="blog.html">Blog</a>
+                        <a href="release-notes.html">Release Notes</a>
+                        <a href="community.html">Community</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="refund-policy.html">Refund Policy</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <a href="crash-reports.html">Submit Crash Report</a>
+                        <a href="troubleshooting.html">Troubleshooting</a>
+                        <a href="support.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Awesome Copy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function copyCode(btn, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

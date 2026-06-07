@@ -65,4 +65,15 @@
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
+  <url>
+    <loc>https://awesomecopy.app/homebrew</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://awesomecopy.app/pricing</loc>
+  </url>
+  <url>
+    <loc>https://awesomecopy.app/support</loc>
+  </url>
 </urlset>
