@@ -3,6 +3,15 @@
     <channel>
         <title>Awesome Copy</title>
         <item>
+            <title>7.0b7</title>
+            <pubDate>Thu, 09 Jul 2026 13:18:57 -0400</pubDate>
+            <sparkle:version>382</sparkle:version>
+            <sparkle:shortVersionString>7.0b7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
+            <enclosure url="https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-7.0b7-382.dmg" sparkle:edSignature="vf9YkV+p6PQRHZbBHQAAB/qlpomhtKdp5V6GJLhjH4VgUWKbIHCAYz+z3w5kLpJ05lnPky9mrLchSw5JuZpPAA==" length="25610598" type="application/octet-stream" />
+        </item>
+        <item>
             <title>7.0b6</title>
             <pubDate>Mon, 06 Jul 2026 00:25:17 -0400</pubDate>
             <sparkle:version>381</sparkle:version>
