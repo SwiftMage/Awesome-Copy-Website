@@ -112,6 +112,62 @@
             display: inline-block;
         }
 
+        .release-summary-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .release-summary-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.55;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .release-summary-list li:last-child {
+            margin-bottom: 0;
+        }
+        .release-summary-list li:hover {
+            border-color: rgba(0, 122, 255, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+        .release-summary-list li::before {
+            content: "+";
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            margin-top: 2px;
+            border-radius: var(--radius-md);
+            background: rgba(88, 86, 214, 0.12);
+            color: #5856D6;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1;
+        }
+        .release-summary-list.improvements li::before {
+            content: "↗";
+            background: rgba(0, 122, 255, 0.12);
+            color: #007AFF;
+            font-size: 18px;
+        }
+        .release-summary-list.fixes li::before {
+            content: "✓";
+            background: rgba(52, 199, 89, 0.08);
+            color: #34C759;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
         /* Feature items */
         .feature-item {
             display: flex;
@@ -241,7 +297,7 @@
 
                 <!-- Table of Contents -->
                 <div class="version-toc">
-                    <a href="#v7.0b4">v7.0b4</a>
+                    <a href="#v7.0">v7.0</a>
                     <a href="#v6.2">v6.2</a>
                     <a href="#v6.1.2">v6.1.2</a>
                     <a href="#v6.1">v6.1</a>
@@ -264,279 +320,92 @@
                     <a href="#v3.0">v3.0</a>
                 </div>
 
-                <!-- Version 7.0 Beta 4 -->
-                <div class="version-block" id="v7.0b4">
+                <!-- Version 7.0 -->
+                <div class="version-block" id="v7.0">
                     <div class="version-header">
-                        <span class="version-badge beta latest">Version 7.0 Beta 4</span>
-                        <span class="version-date">Beta release</span>
+                        <span class="version-badge latest">Version 7.0</span>
+                        <span class="version-date">Stable release</span>
                     </div>
 
                     <div class="version-columns">
                         <div>
                             <div class="version-category">
                                 <h3 class="category-title">New Features</h3>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon purple">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h14"/><circle cx="20" cy="18" r="2"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Text Selection Popup Extensions</div>
-                                        <div class="feature-desc">Added text selection popup extension support for YAML and URL-based actions.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon blue">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Clipboard History Access API</div>
-                                        <div class="feature-desc">Added an API that lets users grant clipboard history access to other apps.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon orange">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Native Image Markup</div>
-                                        <div class="feature-desc">Added native image markup tools, including automatic blurring for sensitive text.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon gray">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Debug Logger Shortcut</div>
-                                        <div class="feature-desc">Control-click the app icon to open the debug logger window.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon cyan">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.78"/><path d="M10 10h4v4h-4z"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Rolling Quick Paste Hotkeys</div>
-                                        <div class="feature-desc">Quick Paste can now roll numbered hotkeys so 0-9 are always assigned to visible entries.</div>
-                                    </div>
-                                </div>
+                                <ul class="release-summary-list new-features">
+                                    <li>Added native image markup tools with automatic sensitive text blurring.</li>
+                                    <li>Added numbered annotation markers and an improved arrow drawing tool.</li>
+                                    <li>Added support for Text Selection Popup extensions (YAML &amp; URL).</li>
+                                    <li>Added an API allowing other apps to securely access clipboard history.</li>
+                                    <li>Boards now sync between macOS and iOS.</li>
+                                    <li>Added a new minimal Quick Paste mode.</li>
+                                    <li>Added new sort order options.</li>
+                                    <li>Added an option to automatically move the last pasted item to the top of the clipboard history.</li>
+                                    <li>Added pause/resume support, including keyboard shortcuts, menu bar controls, and a status indicator.</li>
+                                    <li>Added snippet preview using the Space bar or right-click.</li>
+                                    <li>Added an option to dynamically assign Quick Paste hotkeys (0-9) to visible entries.</li>
+                                    <li>Added support for ignoring specific app bundle IDs, including Apple Universal Clipboard.</li>
+                                    <li>Added Control-click on the menu bar icon to open the Debug Logger.</li>
+                                </ul>
                             </div>
                         </div>
 
                         <div>
                             <div class="version-category">
-                                <h3 class="category-title">Changes</h3>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon red">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Ignore More Apps</div>
-                                        <div class="feature-desc">Added the ability to ignore apps by bundle ID, including Apple apps such as Universal Clipboard.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon blue">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Selection Stays Put After Delete</div>
-                                        <div class="feature-desc">Deleting an entry keeps the selected item in place instead of moving selection upward, making it easier to delete downward.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon green">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 12h13M3 18h18"/><circle cx="5" cy="12" r="2"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Expanded Multi-Item Menus</div>
-                                        <div class="feature-desc">Multi-item selection now has a wider set of right-click menu options.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon cyan">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6M7 16h4"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Refined Clipboard Item Layout</div>
-                                        <div class="feature-desc">Moved copy time under copy type in card and normal views, and slightly increased horizontal header button size.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon orange">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M12 14v-4"/><circle cx="12" cy="14" r="8"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Menu Bar Pause Indicator</div>
-                                        <div class="feature-desc">Added a new pause indicator for the menu bar icon.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon purple">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M6 8h6a2 2 0 0 1 0 4H6z"/><path d="M14 12h4a2 2 0 0 1 0 4h-4z"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Snippets Bar Refresh</div>
-                                        <div class="feature-desc">Reworked the horizontal snippets folders bar.</div>
-                                    </div>
-                                </div>
-
-                                <div class="feature-item">
-                                    <div class="feature-icon indigo">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79z"/></svg>
-                                    </div>
-                                    <div class="feature-content">
-                                        <div class="feature-title">Improved Dark Theme</div>
-                                        <div class="feature-desc">Reworked the dark theme for a cleaner, more polished look.</div>
-                                    </div>
-                                </div>
+                                <h3 class="category-title">Improvements</h3>
+                                <ul class="release-summary-list improvements">
+                                    <li>Significantly improved overall performance, especially with large clipboard histories.</li>
+                                    <li>Optimized delete performance when iCloud Sync is enabled.</li>
+                                    <li>Greatly improved Quick Paste search responsiveness.</li>
+                                    <li>Improved clipboard list rendering and responsiveness for very large histories.</li>
+                                    <li>Reworked the overall clipboard list design for better performance and readability.</li>
+                                    <li>Added a horizontal list layout.</li>
+                                    <li>Improved drag-and-drop reordering with cleaner insertion indicators.</li>
+                                    <li>Boards can now be rearranged using drag and drop.</li>
+                                    <li>Reworked the horizontal snippets bar.</li>
+                                    <li>Improved the Dark theme.</li>
+                                    <li>Improved toolbar visibility in the Clear theme.</li>
+                                    <li>Refined toolbar resizing and button layout in the vertical list.</li>
+                                    <li>Improved the appearance of rich text clipboard items with background colors.</li>
+                                    <li>Moved copy time beneath the copy type in list items.</li>
+                                    <li>Expanded multi-selection context menu options.</li>
+                                    <li>Deleting an item now keeps the current selection in place, making it easier to remove multiple items.</li>
+                                    <li>Clicking the trash button no longer scrolls the list.</li>
+                                    <li>Improved image scaling and layout in compact list views.</li>
+                                    <li>Adjusted spacing, padding, and button sizing throughout the interface.</li>
+                                    <li>Improved Quick Paste positioning near the active text field.</li>
+                                    <li>Improved single-click Copy and Paste responsiveness.</li>
+                                    <li>Improved keyboard handling while the Debug Logger is open.</li>
+                                    <li>Added improved diagnostic logging to help troubleshoot user-reported issues.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="version-category">
                         <h3 class="category-title">Fixes</h3>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Memory-Only Image Sources</div>
-                                <div class="feature-desc">Memory-only images now show the app they came from again, and the source app is preserved in the filename through app restarts.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Security Improvements</div>
-                                <div class="feature-desc">Includes important security fixes.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Long Text Card Layout</div>
-                                <div class="feature-desc">Fixed long text items not filling cards and corrected horizontal padding in the normal list style.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Snippet iCloud Reloads</div>
-                                <div class="feature-desc">Fixed snippets reloading from iCloud when they did not need to.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Large List Performance</div>
-                                <div class="feature-desc">Fixed several large-list performance issues, including operations that could run in O(n^2) time.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Multiple Image Copying</div>
-                                <div class="feature-desc">Copying multiple images now copies all selected images instead of only the last one.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Enter Key Paste</div>
-                                <div class="feature-desc">Pressing Enter now pastes the selected item as expected.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">List Rendering Redesign</div>
-                                <div class="feature-desc">Reworked the list design to improve efficiency for large clipboard histories.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Image Item Details</div>
-                                <div class="feature-desc">Fixed image file size, name, and icon text at the bottom of image clipboard items that are not full-card sized.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Responsive Image Scaling</div>
-                                <div class="feature-desc">Non-full-card images now scale with the window size.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Link Item Icon</div>
-                                <div class="feature-desc">Fixed the link icon at the bottom of link items getting cut off.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Board Item Counts</div>
-                                <div class="feature-desc">Items deleted from the All board now correctly reduce the item count.</div>
-                            </div>
-                        </div>
-
-                        <div class="feature-item">
-                            <div class="feature-icon bugfix">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                            </div>
-                            <div class="feature-content">
-                                <div class="feature-title">Board Button Hit Area</div>
-                                <div class="feature-desc">Clicking board buttons outside their text now correctly counts as a click.</div>
-                            </div>
-                        </div>
+                        <ul class="release-summary-list fixes">
+                            <li>Fixed Enter key correctly pasting the selected item.</li>
+                            <li>Fixed single-click behavior honoring the configured click preference.</li>
+                            <li>Fixed snippet click-to-paste behavior.</li>
+                            <li>Fixed copying multiple images only copying the last image.</li>
+                            <li>Fixed saving snippets now preserving embedded links.</li>
+                            <li>Fixed password concealment and pasting in the minimal Quick Paste window.</li>
+                            <li>Fixed images not appearing in the minimal Quick Paste window.</li>
+                            <li>Fixed unnecessary iCloud reloading of snippets.</li>
+                            <li>Fixed board item counts after deleting items.</li>
+                            <li>Fixed board creation occasionally losing keyboard focus.</li>
+                            <li>Fixed board button click detection.</li>
+                            <li>Fixed pinned items occasionally appearing in the wrong order during startup.</li>
+                            <li>Fixed the Remove Tag button.</li>
+                            <li>Fixed memory-only images displaying their source application again.</li>
+                            <li>Fixed memory-only image source information persisting across app restarts.</li>
+                            <li>Fixed long text items filling cards correctly.</li>
+                            <li>Fixed image sizing inconsistencies in compact layouts.</li>
+                            <li>Fixed clipped link icons.</li>
+                            <li>Fixed Italian translation issues.</li>
+                            <li>Fixed clipboard card title bar buttons occasionally becoming unresponsive.</li>
+                            <li>Included numerous additional bug fixes, security improvements, stability improvements, and reliability enhancements.</li>
+                        </ul>
                     </div>
                 </div>
 
