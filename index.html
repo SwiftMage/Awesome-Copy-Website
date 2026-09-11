@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#2445e8">
-  <title>Awesome Copy — Taking a little pause</title>
-  <meta name="description" content="Awesome Copy is taking a little time off. Thanks for stopping by.">
+  <title>Awesome Copy</title>
+  <meta name="description" content="Thanks for stopping by. This website is currently unavailable.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Awesome Copy">
-  <meta property="og:title" content="A little pause. Still awesome.">
-  <meta property="og:description" content="Awesome Copy is taking a little time off. Thanks for stopping by.">
+  <meta property="og:title" content="Awesome Copy">
+  <meta property="og:description" content="Thanks for stopping by. This website is currently unavailable.">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <style>
@@ -21,14 +21,9 @@
     header { display: flex; align-items: center; gap: 12px; }
     .logo { width: 42px; height: 42px; border-radius: 10px; }
     .name { font-size: 20px; font-weight: 650; letter-spacing: -.6px; }
-    main { flex: 1; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; gap: 4vw; padding: 90px 0 110px; }
+    main { flex: 1; display: grid; grid-template-columns: 1fr; align-items: center; gap: 4vw; padding: 90px 0 110px; }
     h1 { margin: 0; font-size: clamp(64px, 7.8vw, 130px); line-height: 1.02; letter-spacing: -.065em; font-weight: 650; }
-    h1 span { display: block; }
-    .message { margin: 32px 0 0; max-width: 355px; color: var(--soft); font-size: 19px; line-height: 1.65; }
-    .pause { width: min(100%, 420px); aspect-ratio: 1; justify-self: center; border-radius: 50%; background: var(--pink); display: flex; justify-content: center; align-items: center; gap: 28px; transform: rotate(-10deg); }
-    .pause::before, .pause::after { content: ""; height: 43%; width: 15%; background: var(--blue); border-radius: 5px; }
-    footer { display: flex; justify-content: space-between; gap: 20px; color: var(--soft); font-size: 14px; line-height: 1.5; }
-    footer p { margin: 0; }
+    .message { margin: 32px 0 0; max-width: 480px; color: var(--soft); font-size: 19px; line-height: 1.65; }
     @media (min-width: 1600px) { main { gap: 100px; } }
     @media (max-width: 760px) {
       .page { padding: 26px 7vw 24px; }
@@ -37,8 +32,6 @@
       main { grid-template-columns: 1fr; gap: 52px; padding: 64px 0; }
       h1 { font-size: clamp(56px, 11.7vw, 88px); }
       .message { margin-top: 24px; font-size: 17px; max-width: 320px; }
-      .pause { width: 210px; gap: 17px; justify-self: end; margin-right: 5vw; }
-      footer { font-size: 13px; flex-wrap: wrap; gap: 8px 24px; }
     }
   </style>
 </head>
@@ -50,15 +43,10 @@
     </header>
     <main>
       <div>
-        <h1><span>A little pause.</span><span>Still awesome.</span></h1>
-        <p class="message">Awesome Copy is taking a little time off.<br>Thanks for stopping by.</p>
+        <h1>Awesome Copy</h1>
+        <p class="message">Thanks for stopping by.<br>This website is currently unavailable.</p>
       </div>
-      <div class="pause" aria-hidden="true"></div>
     </main>
-    <footer>
-      <p>Temporarily offline.</p>
-      <p>Even copy needs a break.</p>
-    </footer>
   </div>
 </body>
 </html>
