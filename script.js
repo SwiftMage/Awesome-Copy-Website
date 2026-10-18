@@ -4,10 +4,13 @@
  */
 
 // BEGIN AWESOME_COPY_DIRECT_RELEASE
-const AWESOME_COPY_DIRECT_DOWNLOAD_URL = "https://github.com/kindparkllc/Awesome-Copy/releases/download/v7.0/AwesomeCopy-7.0-387.dmg";
-const AWESOME_COPY_DIRECT_VERSION = "7.0";
-const AWESOME_COPY_DIRECT_BUILD = "387";
-const AWESOME_COPY_DIRECT_SIZE = "24.7 MB";
+const AWESOME_COPY_DIRECT_RELEASE_FALLBACK = {
+    url: "https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-8.0b2-406.dmg",
+    version: "8.0b2",
+    build: "406",
+    sizeBytes: 27965074,
+    minimumSystemVersion: "13.0"
+};
 // END AWESOME_COPY_DIRECT_RELEASE
 
 
@@ -34,20 +37,96 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initDirectReleaseMetadata() {
+    const downloadLinks = [...document.querySelectorAll('[data-direct-download-url]')];
+    if (!downloadLinks.length) return;
+
+    applyDirectReleaseMetadata(AWESOME_COPY_DIRECT_RELEASE_FALLBACK);
+
+    const releasePromise = fetchLatestBetaRelease().catch(() => AWESOME_COPY_DIRECT_RELEASE_FALLBACK);
+
+    releasePromise.then(release => {
+        applyDirectReleaseMetadata(release);
+        downloadLinks.forEach(link => {
+            link.dataset.directReleaseReady = 'true';
+        });
+    });
+
+    downloadLinks.forEach(link => {
+        link.addEventListener('click', async event => {
+            if (link.dataset.directReleaseReady === 'true') return;
+
+            event.preventDefault();
+            const release = await releasePromise;
+            applyDirectReleaseMetadata(release);
+            link.dataset.directReleaseReady = 'true';
+            link.click();
+        });
+    });
+}
+
+async function fetchLatestBetaRelease() {
+    const response = await fetch(new URL('/appcast.xml', window.location.origin), { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`Could not load beta release feed (${response.status})`);
+
+    const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
+    if (xml.querySelector('parsererror')) throw new Error('Could not parse beta release feed');
+
+    const sparkleNamespace = 'http://www.andymatuschak.org/xml-namespaces/sparkle';
+    const getSparkleValue = (item, name) =>
+        item.getElementsByTagNameNS(sparkleNamespace, name)[0]?.textContent.trim() || '';
+    const betaItem = [...xml.getElementsByTagName('item')].find(item =>
+        getSparkleValue(item, 'channel') === 'beta'
+    );
+    if (!betaItem) throw new Error('No beta release found in release feed');
+
+    const enclosure = betaItem.getElementsByTagName('enclosure')[0];
+    const downloadUrl = enclosure?.getAttribute('url');
+    const sizeBytes = Number(enclosure?.getAttribute('length'));
+    const url = new URL(downloadUrl);
+    if (url.protocol !== 'https:' || url.hostname !== 'github.com' ||
+        !url.pathname.startsWith('/kindparkllc/Awesome-Copy/releases/download/')) {
+        throw new Error('Beta release feed contains an unexpected download URL');
+    }
+
+    const release = {
+        url: url.href,
+        version: getSparkleValue(betaItem, 'shortVersionString'),
+        build: getSparkleValue(betaItem, 'version'),
+        sizeBytes,
+        minimumSystemVersion: getSparkleValue(betaItem, 'minimumSystemVersion') ||
+            AWESOME_COPY_DIRECT_RELEASE_FALLBACK.minimumSystemVersion
+    };
+    if (!release.version || !release.build || !Number.isFinite(sizeBytes) || sizeBytes <= 0) {
+        throw new Error('Beta release feed is missing version metadata');
+    }
+
+    return release;
+}
+
+function applyDirectReleaseMetadata(release) {
     document.querySelectorAll('[data-direct-download-url]').forEach(link => {
-        link.href = AWESOME_COPY_DIRECT_DOWNLOAD_URL;
+        link.href = release.url;
     });
 
     document.querySelectorAll('[data-direct-version]').forEach(element => {
-        element.textContent = `Version ${AWESOME_COPY_DIRECT_VERSION}`;
+        element.textContent = `Version ${release.version}`;
     });
 
     document.querySelectorAll('[data-direct-build]').forEach(element => {
-        element.textContent = `Build ${AWESOME_COPY_DIRECT_BUILD}`;
+        element.textContent = `Build ${release.build}`;
     });
 
     document.querySelectorAll('[data-direct-size]').forEach(element => {
-        element.textContent = AWESOME_COPY_DIRECT_SIZE;
+        element.textContent = `${(release.sizeBytes / (1024 * 1024)).toFixed(1)} MB`;
+    });
+
+    const minimumSystemVersion = release.minimumSystemVersion.replace(/\.0$/, '');
+    document.querySelectorAll('[data-direct-minimum-system]').forEach(element => {
+        element.textContent = `macOS ${minimumSystemVersion}+`;
+    });
+
+    document.querySelectorAll('[data-direct-minimum-system-requirement]').forEach(element => {
+        element.textContent = `macOS ${minimumSystemVersion} or later`;
     });
 }
 
