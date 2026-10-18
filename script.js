@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initNavScrollEffect();
     initHeroDeviceReveal();
-    initViewsShowcase();
 });
 
 function initDirectReleaseMetadata() {
@@ -108,48 +107,40 @@ function initNavScrollEffect() {
 
 /**
  * Hero Intro Animation
- * Full-screen screenshot zooms out to reveal MacBook, then devices pop out
+ * Full-screen app screenshot fades and zooms away to reveal the MacBook hero
  */
 function initHeroDeviceReveal() {
     const introOverlay = document.getElementById('intro-overlay');
-    const introWhite = document.getElementById('intro-white');
+    const introFlash = document.getElementById('intro-flash');
     const introScreenshot = document.querySelector('.intro-screenshot');
     const heroDevices = document.querySelector('.hero-devices');
     const heroContent = document.querySelector('.hero-content');
 
     if (!introOverlay || !heroDevices) return;
 
-    // Skip on mobile/tablet where devices are hidden
-    if (window.innerWidth <= 1024) {
-        introOverlay.classList.add('hidden');
-        heroDevices.classList.add('revealed');
-        if (heroContent) heroContent.classList.add('visible');
-        return;
-    }
-
     // Check if user prefers reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        introOverlay.classList.add('hidden');
+        if (introFlash) introFlash.classList.add('fade-out');
+        if (introScreenshot) introScreenshot.classList.add('visible');
         heroDevices.classList.add('revealed');
         if (heroContent) heroContent.classList.add('visible');
+        setTimeout(() => introOverlay.classList.add('hidden'), 2500);
         return;
     }
 
-    let animationPhase = 0; // 0 = waiting for reveal, 1 = image revealed, 2 = zooming, 3 = revealing devices, 4 = done
+    let animationPhase = 0; // 0 = screenshot fading in, 1 = ready to continue, 2 = zooming, 3 = revealing hero, 4 = done
 
     // Lock scrolling initially
     document.body.style.overflow = 'hidden';
 
-    // Start the dramatic reveal sequence after a brief moment
     setTimeout(() => {
-        // Fade out white, fade in screenshot
-        if (introWhite) introWhite.classList.add('fade-out');
+        if (introFlash) introFlash.classList.add('fade-out');
         if (introScreenshot) introScreenshot.classList.add('visible');
         animationPhase = 1;
     }, 500);
 
     function startAnimation() {
-        if (animationPhase < 1) return; // Wait for initial reveal
+        if (animationPhase < 1) return; // Wait for the screenshot fade-in
         if (animationPhase >= 2) return; // Already started
         animationPhase = 2;
 
@@ -236,7 +227,7 @@ function initHeroDeviceReveal() {
         introOverlay.removeEventListener('click', handleClick);
     }
 
-    // Fallback: auto-start after 2.5 seconds (after white-to-image fade completes)
+    // Fallback: continue into the hero after the screenshot has been on screen briefly.
     setTimeout(() => {
         if (animationPhase <= 1) {
             startAnimation();
@@ -304,158 +295,6 @@ function initFAQ() {
             });
         }
     });
-}
-
-/**
- * Views Showcase - Scroll-driven view switcher
- * Transitions from Card → Normal → Minimal as you scroll
- * Falls back to auto-cycling on smaller screens
- */
-function initViewsShowcase() {
-    const buttons = document.querySelectorAll('.view-btn');
-    const images = document.querySelectorAll('.view-image');
-    const indicator = document.querySelector('.view-btn-indicator');
-    const section = document.querySelector('.feature-views');
-    const showcase = document.querySelector('.views-showcase');
-
-    if (!buttons.length || !images.length || !section) return;
-
-    // Order for scroll: Card → Normal → Minimal
-    const views = ['card', 'normal', 'minimal'];
-    // Map view names to indicator positions (minimal=0, normal=1, card=2)
-    const indicatorPositions = { 'minimal': 0, 'normal': 1, 'card': 2 };
-    let currentView = 'card';
-    let autoPlayInterval = null;
-    let isPaused = false;
-
-    function switchView(viewName) {
-        if (viewName === currentView) return;
-        currentView = viewName;
-
-        // Update buttons
-        buttons.forEach(btn => btn.classList.remove('active'));
-        const activeBtn = document.querySelector(`.view-btn[data-view="${viewName}"]`);
-        if (activeBtn) activeBtn.classList.add('active');
-
-        // Update indicator position based on button order (minimal, normal, card)
-        if (indicator) {
-            const pos = indicatorPositions[viewName];
-            indicator.style.transform = `translateX(calc(${pos * 100}% + ${pos * 4}px))`;
-        }
-
-        // Update images with crossfade
-        images.forEach(img => img.classList.remove('active'));
-        const activeImg = document.querySelector(`.view-image[data-view="${viewName}"]`);
-        if (activeImg) activeImg.classList.add('active');
-    }
-
-    // Click handlers still work for manual selection
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const view = btn.dataset.view;
-            switchView(view);
-            // Reset auto-play if active
-            if (autoPlayInterval) {
-                startAutoPlay();
-            }
-        });
-    });
-
-    // Check if we're on a screen size where sticky scroll is disabled
-    function isStickyDisabled() {
-        return window.innerWidth <= 1024;
-    }
-
-    // Auto-play for smaller screens
-    function nextView() {
-        const currentIndex = views.indexOf(currentView);
-        const nextIndex = (currentIndex + 1) % views.length;
-        switchView(views[nextIndex]);
-    }
-
-    function startAutoPlay() {
-        if (autoPlayInterval) clearInterval(autoPlayInterval);
-        autoPlayInterval = setInterval(() => {
-            if (!isPaused) nextView();
-        }, 3000);
-    }
-
-    function stopAutoPlay() {
-        if (autoPlayInterval) {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = null;
-        }
-    }
-
-    // Scroll-driven transitions based on sticky scroll progress
-    function handleScroll() {
-        // Skip scroll handling on smaller screens
-        if (isStickyDisabled()) return;
-
-        const rect = section.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = section.offsetHeight;
-        const windowHeight = window.innerHeight;
-
-        // Calculate how far we've scrolled through the section
-        // Progress goes from 0 (section just entered) to 1 (section about to leave)
-        // The section has extra height (250vh), so we scroll through it while it's sticky
-        const scrollableHeight = sectionHeight - windowHeight;
-        const scrolled = -sectionTop; // How much of the section has scrolled past the top
-
-        // Clamp progress between 0 and 1
-        const progress = Math.max(0, Math.min(1, scrolled / scrollableHeight));
-
-        // Divide into 3 zones: 0-0.33 = card, 0.33-0.66 = normal, 0.66-1 = minimal
-        let targetView;
-        if (progress < 0.33) {
-            targetView = 'card';
-        } else if (progress < 0.66) {
-            targetView = 'normal';
-        } else {
-            targetView = 'minimal';
-        }
-
-        switchView(targetView);
-    }
-
-    // Use requestAnimationFrame for smooth scroll handling
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                handleScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-
-    // Pause auto-play on hover (for smaller screens)
-    if (showcase) {
-        showcase.addEventListener('mouseenter', () => isPaused = true);
-        showcase.addEventListener('mouseleave', () => isPaused = false);
-    }
-
-    // Initialize based on screen size
-    function init() {
-        if (isStickyDisabled()) {
-            // Use auto-play on smaller screens
-            startAutoPlay();
-        } else {
-            // Use scroll-driven on larger screens
-            stopAutoPlay();
-            handleScroll();
-        }
-    }
-
-    // Re-initialize on resize
-    window.addEventListener('resize', () => {
-        init();
-    });
-
-    // Initial setup
-    init();
 }
 
 /**
