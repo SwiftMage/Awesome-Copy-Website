@@ -68,9 +68,9 @@
     </script>
 
     <!-- Preload hints for performance -->
-    <link rel="preload" href="styles.css?v=fullscreen-image-transition" as="style">
+    <link rel="preload" href="styles.css?v=macbook-preview-zoom" as="style">
 
-    <link rel="stylesheet" href="styles.css?v=fullscreen-image-transition">
+    <link rel="stylesheet" href="styles.css?v=macbook-preview-zoom">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,17 +103,22 @@
     </nav>
 
     <!-- Full-screen app screenshot fades into the MacBook hero image -->
-    <div class="intro-overlay" id="intro-overlay">
+    <div class="intro-overlay" id="intro-overlay" role="dialog" aria-modal="true" aria-label="Full-screen clipboard history preview" aria-hidden="true">
         <div class="intro-flash" id="intro-flash"></div>
-        <img src="images/tall-light.webp" alt="Awesome Copy clipboard manager on Mac" class="intro-screenshot" fetchpriority="high">
+        <img src="images/dark-full-screen.webp" alt="Awesome Copy clipboard manager on Mac" class="intro-screenshot" fetchpriority="high">
+        <button class="intro-close" id="intro-close" type="button" aria-label="Close full-screen preview" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m6 6 12 12M18 6 6 18" />
+            </svg>
+        </button>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-devices">
-            <div class="hero-device hero-mac">
-                <img src="images/macbook-light-front.webp" alt="Mac clipboard manager app showing clipboard history">
-            </div>
+            <button class="hero-device hero-mac" type="button" aria-label="Open full-screen clipboard history preview" aria-haspopup="dialog" aria-controls="intro-overlay" disabled>
+                <img src="images/macbook-hero-dark.webp" alt="">
+            </button>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">Copy once. Sync everywhere.</h1>
@@ -829,7 +834,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=fullscreen-image-transition"></script>
+    <script src="script.js?v=macbook-preview-zoom"></script>
     <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
 </body>
 </html>

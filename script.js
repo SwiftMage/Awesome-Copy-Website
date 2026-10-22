@@ -194,8 +194,75 @@ function initHeroDeviceReveal() {
     const introScreenshot = document.querySelector('.intro-screenshot');
     const heroDevices = document.querySelector('.hero-devices');
     const heroContent = document.querySelector('.hero-content');
+    const heroMac = heroDevices?.querySelector('.hero-mac');
+    const closePreviewButton = document.getElementById('intro-close');
 
     if (!introOverlay || !heroDevices) return;
+
+    let previewOpen = false;
+    let introReady = false;
+    let previewCloseTimer;
+    let bodyOverflowBeforePreview = '';
+
+    function openFullScreenPreview() {
+        if (!heroMac || !closePreviewButton || !introReady || previewOpen) return;
+
+        clearTimeout(previewCloseTimer);
+        previewOpen = true;
+        bodyOverflowBeforePreview = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        closePreviewButton.hidden = false;
+        closePreviewButton.disabled = false;
+        introOverlay.classList.add('preview-modal', 'zoom-out');
+        introOverlay.classList.remove('hidden', 'preview-open');
+        introOverlay.setAttribute('aria-hidden', 'false');
+
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                if (!previewOpen) return;
+                introOverlay.classList.remove('zoom-out');
+                introOverlay.classList.add('preview-open');
+                closePreviewButton.focus({ preventScroll: true });
+            });
+        });
+    }
+
+    function closeFullScreenPreview() {
+        if (!previewOpen || !closePreviewButton) return;
+
+        previewOpen = false;
+        closePreviewButton.disabled = true;
+        introOverlay.classList.remove('preview-open');
+        introOverlay.classList.add('zoom-out');
+        introOverlay.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = bodyOverflowBeforePreview;
+        heroMac?.focus({ preventScroll: true });
+
+        clearTimeout(previewCloseTimer);
+        previewCloseTimer = setTimeout(() => {
+            if (previewOpen) return;
+            introOverlay.classList.add('hidden');
+            introOverlay.classList.remove('preview-modal');
+            closePreviewButton.hidden = true;
+            closePreviewButton.disabled = false;
+        }, 1200);
+    }
+
+    function handlePreviewKeydown(event) {
+        if (!previewOpen) return;
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            closeFullScreenPreview();
+        } else if (event.key === 'Tab') {
+            event.preventDefault();
+            closePreviewButton?.focus();
+        }
+    }
+
+    heroMac?.addEventListener('click', openFullScreenPreview);
+    closePreviewButton?.addEventListener('click', closeFullScreenPreview);
+    window.addEventListener('keydown', handlePreviewKeydown);
 
     // Check if user prefers reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -203,7 +270,11 @@ function initHeroDeviceReveal() {
         if (introScreenshot) introScreenshot.classList.add('visible');
         heroDevices.classList.add('revealed');
         if (heroContent) heroContent.classList.add('visible');
-        setTimeout(() => introOverlay.classList.add('hidden'), 2500);
+        setTimeout(() => {
+            introOverlay.classList.add('hidden');
+            introReady = true;
+            if (heroMac) heroMac.disabled = false;
+        }, 2500);
         return;
     }
 
@@ -242,6 +313,8 @@ function initHeroDeviceReveal() {
             introOverlay.classList.add('hidden');
             document.body.style.overflow = '';
             animationPhase = 4;
+            introReady = true;
+            if (heroMac) heroMac.disabled = false;
             cleanup();
         }, 3000);
     }
