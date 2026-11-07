@@ -3,6 +3,15 @@
     <channel>
         <title>Awesome Copy</title>
         <item>
+            <title>8.1b2</title>
+            <pubDate>Fri, 06 Nov 2026 20:34:45 -0500</pubDate>
+            <sparkle:version>415</sparkle:version>
+            <sparkle:shortVersionString>8.1b2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
+            <enclosure url="https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-8.1b2-415.dmg" sparkle:edSignature="jS+6KQABFqj4FaNmVXrPphZ8RWig94Gg8PVB62HGpStVvDYQVlu81XlS1/I74pQYlSCIQfpqjuiW+eV0B40RBw==" length="27830098" type="application/octet-stream" />
+        </item>
+        <item>
             <title>8.1b1</title>
             <pubDate>Tue, 03 Nov 2026 21:24:54 -0500</pubDate>
             <sparkle:version>413</sparkle:version>
