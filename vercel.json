@@ -1,12 +1,30 @@
 {
   "cleanUrls": true,
   "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/blog/support.html",
+      "destination": "/support",
+      "permanent": true
+    },
+    {
+      "source": "/blog/support",
+      "destination": "/support",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/appcast.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=300" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=300"
+        }
       ]
     }
   ]
