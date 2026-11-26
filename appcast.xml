@@ -4,6 +4,15 @@
         <title>Awesome Copy</title>
         <item>
             <title>8.1b5</title>
+            <pubDate>Thu, 26 Nov 2026 00:09:37 -0500</pubDate>
+            <sparkle:version>419</sparkle:version>
+            <sparkle:shortVersionString>8.1b5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:channel>beta</sparkle:channel>
+            <enclosure url="https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-8.1b5-419.dmg" sparkle:edSignature="cNueEiifyvq+S0R0yb53KMSxVXNdH+H16yG6+t+kLUmzCnrTd8uHrdvtR9Kks/k4Gak6ad992F3MGx48qch/AA==" length="28114189" type="application/octet-stream" />
+        </item>
+        <item>
+            <title>8.1b5</title>
             <pubDate>Wed, 25 Nov 2026 16:10:03 -0500</pubDate>
             <sparkle:version>418</sparkle:version>
             <sparkle:shortVersionString>8.1b5</sparkle:shortVersionString>
