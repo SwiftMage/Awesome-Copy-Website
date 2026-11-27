@@ -234,6 +234,10 @@
             border-color: rgba(0, 122, 255, 0.42);
             box-shadow: 0 18px 60px rgba(0, 122, 255, 0.13);
         }
+        .temporary-direct-card {
+            max-width: 560px;
+            margin: 0 auto;
+        }
         .recommended-ribbon {
             position: absolute;
             top: -13px;
@@ -404,7 +408,7 @@
                 <a href="/#faq">FAQ</a>
                 <a href="/blog">Blog</a>
             </div>
-            <a href="https://apps.apple.com/us/app/awesome-copy-2/id6761966640?mt=12" class="nav-cta">Download</a>
+            <a href="/downloads" class="nav-cta">Download</a>
             <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -419,7 +423,7 @@
             <div class="pricing-page-header">
                 <img src="images/App icon.webp" alt="Awesome Copy" class="pricing-hero-icon">
                 <h1>Simple, transparent pricing.</h1>
-                <p>One price. All features. Forever yours. Two ways to buy.</p>
+                <p>One price. All features. Forever yours.</p>
                 <div class="pricing-price-lockup" aria-label="$14.99 one-time purchase">
                     <span class="price">$14.99</span>
                     <span class="terms">one-time purchase</span>
@@ -445,8 +449,8 @@
                 </div>
             </div>
 
-            <!-- Version Comparison -->
-            <div class="version-comparison">
+            <!-- Temporarily hidden while the Mac App Store listing is unavailable. Remove the hidden attribute to restore the comparison. -->
+            <div class="version-comparison" hidden>
                 <div class="version-comparison-header">
                     <h2>Direct download vs. App Store</h2>
                     <p>Both versions are $14.99 and share the same core feature set. Here's how they differ.</p>
@@ -564,6 +568,35 @@
                             <a href="https://apps.apple.com/us/app/awesome-copy-2/id6761966640?mt=12" class="btn btn-secondary">Buy on the App Store</a>
                             <p class="direct-license-note">Mac, iPhone &amp; iPad &middot; Managed via Apple ID</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Temporary pricing while the Mac App Store version is unavailable. Replace with the version comparison above when it returns. -->
+            <div class="version-comparison">
+                <div class="version-comparison-header">
+                    <h2>Available now: Direct Download</h2>
+                    <p>Choose the direct Mac download while the Mac App Store version is unavailable.</p>
+                </div>
+
+                <div class="comparison-card is-recommended temporary-direct-card">
+                    <div class="comparison-card-header">
+                        <div>
+                            <span class="comparison-card-badge badge-direct">Direct Download</span>
+                            <h3>DMG License</h3>
+                            <span class="comparison-card-subtitle">Sold &amp; fulfilled by Polar</span>
+                        </div>
+                        <div class="comparison-card-price">
+                            <strong>$14.99</strong>
+                            <span>one-time</span>
+                        </div>
+                    </div>
+                    <div class="comparison-card-footer">
+                        <a href="https://buy.polar.sh/polar_cl_DlDGyXwFNiapo0VkMWWiNCLXhDqgYiErfs1td44paPm" class="btn btn-primary" data-polar-checkout data-polar-checkout-theme="light">Buy Direct — $14.99</a>
+                        <p class="direct-license-note">Mac only &middot; Includes license key &middot; 14-day refund guarantee</p>
+                        <div class="purchase-divider"><span>or try it free first</span></div>
+                        <a href="https://github.com/kindparkllc/Awesome-Copy/releases/download/Beta/AwesomeCopy-8.0b2-406.dmg" class="btn btn-ghost" data-direct-download-url download>Download for Mac</a>
+                        <p class="direct-license-note">Free trial included &middot; Purchase in-app when ready</p>
                     </div>
                 </div>
             </div>
